@@ -1,5 +1,6 @@
+/* FOOTER */
 footer {
-  background-color: #0074c1;
+  background-color: #007bff !important; 
   padding: 0 !important;
   height: 100px;
 }
@@ -10,10 +11,6 @@ ul {
 }
 li {
   padding: 5px;
-}
-.nav{
-    background-color: #0074c1;
-
 }
 
 /* NAVBAR */
