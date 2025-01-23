@@ -9,9 +9,6 @@ import DefaultLayout from "./layout/DefaultLayout";
 //Components
 import HomePage from "./pages/HomePage";
 
-// Custom CSS
-import "./assets/App.css";
-
 function App() {
   return (
     <>
