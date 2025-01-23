@@ -1,8 +1,16 @@
-import { GlobalProvider } from "./contex/GlobalContex";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+
+// Global Var
+import { GlobalProvider } from "./contex/GlobalContex";
+
+// Default Layout
 import DefaultLayout from "./layout/DefaultLayout";
+
+//Components
 import HomePage from "./pages/HomePage";
+
+// Custom CSS
+import "./App.css";
 
 function App() {
   return (
