@@ -23,7 +23,7 @@ export default function HomePage() {
         />
       </form>
 
-      <div className="row row-cols-1 row-cols-md-3 g-4 mt-5">
+      <div className="row row-cols-1 row-cols-md-3 g-4 my-5">
         {propertyList.map(
           (property) =>
             property.nome.toLowerCase().includes(search.toLowerCase()) && (

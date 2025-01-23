@@ -10,7 +10,9 @@ export const GlobalProvider = ({ children }) => {
   const indexProperty = () => {
     fetch(`http://localhost:3000/property`)
       .then((res) => res.json())
-      .then((res) => setPropertyList(res));
+      .then((res) =>
+        setPropertyList(res.sort((a, b) => b.numero_like - a.numero_like))
+      );
   };
 
   useEffect(() => {
