@@ -3,13 +3,16 @@ footer {
 	padding: 0 !important;
 	height: 100px;
 }
+
 ul {
 	list-style: none;
 	display: flex;
 }
+
 li {
 	padding: 5px;
 }
+
 .nav {
 	background-color: #0074c1;
 }
@@ -34,12 +37,20 @@ li {
 .card-img-top {
 	position: relative;
 }
-.heart {
-	color: red;
+
+.heart-btn {
 	position: absolute;
-	top: 20px;
-	right: 0;
-	left: 5px;
-	bottom: 0;
-	cursor: pointer;
+	top: 0px;
+	right: 0px;
+	background-color: transparent;
+	border: none;
+}
+
+.heart-btn:active,
+.heart-btn:hover {
+	background-color: transparent !important;
+}
+
+.heart {
+	color: rgb(11, 94, 215);
 }
