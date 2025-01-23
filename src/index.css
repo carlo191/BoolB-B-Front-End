@@ -1,0 +1,25 @@
+footer {
+	background-color: #0074c1;
+	padding: 0 !important;
+	height: 100px;
+}
+ul {
+	list-style: none;
+	display: flex;
+}
+li {
+	padding: 5px;
+}
+
+.card-img-top {
+	position: relative;
+}
+.heart {
+	color: red;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	left: 5px;
+	bottom: 0;
+	cursor: pointer;
+}
