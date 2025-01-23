@@ -10,7 +10,7 @@ import DefaultLayout from "./layout/DefaultLayout";
 import HomePage from "./pages/HomePage";
 
 // Custom CSS
-import "./App.css";
+import "./assets/App.css";
 
 function App() {
   return (
