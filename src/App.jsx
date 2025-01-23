@@ -9,8 +9,7 @@ import DefaultLayout from "./layout/DefaultLayout";
 //Components
 import HomePage from "./pages/HomePage";
 
-// Custom CSS
-import "./assets/App.css";
+
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route Component={DefaultLayout}>
-              <Route path="/" element={<HomePage />}></Route>
+              <Route index element={<HomePage />}></Route>
               <Route path="*" element={""}></Route>
             </Route>
           </Routes>

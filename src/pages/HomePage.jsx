@@ -17,7 +17,7 @@ export default function HomePage() {
         <input
           type="text"
           className="form-control col-lg-8"
-          placeholder="Search"
+          placeholder="Cerca"
           value={search}
           onChange={handleSearch}
         />
