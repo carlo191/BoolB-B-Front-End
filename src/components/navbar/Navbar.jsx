@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-primary text-light">
+    <nav className="navbar navbar-expand-lg bg-primary text-light position-fixed z-1 w-100">
       <div className="container-fluid">
         {/* Logo */}
         <Link className="fs-2 fw-semibold pe-4" to="/">
@@ -30,7 +30,7 @@ export default function Navbar() {
             <li className="nav-item">
               <NavLink
                 className={({ isActive }) =>
-                  "fs-6 " + (isActive ? "text-light" : "text-gray")
+                  "fs-6 " + (isActive ? "text-white" : "text-gray")
                 }
                 to="/"
               >
@@ -43,7 +43,7 @@ export default function Navbar() {
             {/* <li className="nav-item">
               <NavLink
                 className={({ isActive }) =>
-                  "fs-6 " + (isActive ? "text-light" : "text-gray")
+                  "fs-6 " + (isActive ? "text-white" : "text-gray")
                 }
                 to="/property/10"
               >

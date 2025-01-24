@@ -9,11 +9,11 @@ export default function DefaultLayout() {
     <>
       <div className="wrapper d-flex flex-column">
         <header>
-          <Navbar></Navbar>
+          <Navbar />
         </header>
 
         <main className="flex-grow-1 mt-4 mb-5">
-          <Outlet></Outlet>
+          <Outlet />
         </main>
 
         <footer>

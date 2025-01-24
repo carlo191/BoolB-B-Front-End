@@ -18,8 +18,17 @@ li {
   height: 100vh;
 }
 
+main {
+  padding-top: 64px;
+}
+
+/* COLOR UTILITIES */
+.text-white {
+  color: whitesmoke;
+}
+
 .text-gray {
-  color: lightgray;
+  color: rgb(230, 230, 230);
 }
 
 /* NAVBAR */
