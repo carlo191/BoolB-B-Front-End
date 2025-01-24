@@ -1,7 +1,13 @@
+
 import { useParams } from "react-router-dom";
+import { useGlobalContex } from "../contex/GlobalContex";
+import { use } from "react";
 export default function DetailPage() {
   const { id } = useParams();
+  const {showProperty, property} = useGlobalContex();
+  useEffect(() => {showProperty(id)}, [id]);
     return (
+        
     <div className="container">
       <div className="row">
         <div className="col">
