@@ -17,7 +17,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const showProperty = (id) => {
-    fetch(`http://localhost:3000/property/${property.id}`)
+    fetch(`http://localhost:3000/property/${id}`)
       .then((res) => res.json())
       .then((res) => setProperty(res));
   };
