@@ -21,12 +21,13 @@ export const GlobalProvider = ({ children }) => {
     id_proprietario: 0,
   });
 
+  const [reviewList, setReviewList] = useState([]);
+
   const indexProperty = () => {
     fetch(`http://localhost:3000/property`)
       .then((res) => res.json())
       .then((res) => {
         setPropertyList(res.sort((a, b) => b.numero_like - a.numero_like));
-        console.log(res);
       });
   };
 
@@ -34,8 +35,15 @@ export const GlobalProvider = ({ children }) => {
     fetch(`http://localhost:3000/property/${id}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setProperty(res);
+      });
+  };
+
+  const indexReview = (id) => {
+    fetch(`http://localhost:3000/review/${id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setReviewList(res);
       });
   };
 
@@ -44,7 +52,9 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ propertyList, showProperty, property }}>
+    <GlobalContext.Provider
+      value={{ propertyList, showProperty, property, indexReview, reviewList }}
+    >
       {children}
     </GlobalContext.Provider>
   );
