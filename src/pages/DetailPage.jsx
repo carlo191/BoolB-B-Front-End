@@ -20,6 +20,7 @@ export default function DetailPage() {
             <p>{property.indirizzo}</p>
             <p>{property.descrizione}</p>
             <p>{property.numero_like}</p>
+            <p>ciao</p>
           </div>
         </div>
       </div>
