@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useGlobalContex } from "../contex/GlobalContex";
+import { useGlobalContext } from "../contex/GlobalContext";
 import PropertyCard from "../components/propertyCard/PropertyCard";
 
 export default function HomePage() {
-  const { propertyList } = useGlobalContex();
+  const { propertyList } = useGlobalContext();
 
   const [search, setSearch] = useState("");
 

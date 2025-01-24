@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Global Var
-import { GlobalProvider } from "./contex/GlobalContex";
+import { GlobalProvider } from "./contex/GlobalContext";
 
 // Default Layout
 import DefaultLayout from "./layout/DefaultLayout";
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route Component={DefaultLayout}>
               <Route index element={<HomePage />}></Route>
-              <Route path="/:id" element={<DetailPage />}></Route>
+              <Route path="/property/:id" element={<DetailPage />}></Route>
               <Route path="*" element={""}></Route>
             </Route>
           </Routes>

@@ -1,7 +1,7 @@
 footer {
   background-color: #0074c1;
   padding: 0 !important;
-  height: 100px;
+  height: 10vh;
 }
 
 ul {
@@ -15,6 +15,10 @@ li {
 
 main {
   min-height: 80vh;
+}
+
+header {
+  height: 10vh;
 }
 
 .nav {
@@ -59,5 +63,5 @@ main {
   color: rgb(11, 94, 215);
 }
 .heart:hover {
-	color: red;
+  color: red;
 }
