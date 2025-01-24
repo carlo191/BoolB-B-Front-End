@@ -1,56 +1,60 @@
 footer {
-	background-color: #0074c1;
-	padding: 0 !important;
-	height: 100px;
+  background-color: #0074c1;
+  padding: 0 !important;
+  height: 100px;
 }
 
 ul {
-	list-style: none;
-	display: flex;
+  list-style: none;
+  display: flex;
 }
 
 li {
-	padding: 5px;
+  padding: 5px;
+}
+
+main {
+  min-height: 80vh;
 }
 
 .nav {
-	background-color: #0074c1;
+  background-color: #0074c1;
 }
 
 /* NAVBAR */
 .bg-primary {
-	background-color: #007bff !important;
+  background-color: #007bff !important;
 }
 
 .text-white {
-	color: white !important;
+  color: white !important;
 }
 
 .nav-link {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .navbar-brand i {
-	color: white !important;
+  color: white !important;
 }
 
 .card-img-top {
-	position: relative;
+  position: relative;
 }
 
 .heart-btn {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	background-color: transparent;
-	border: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
 }
 
 .heart-btn:active,
 .heart-btn:hover {
-	background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .heart {
-	color: rgb(11, 94, 215);
+  color: rgb(11, 94, 215);
 }
