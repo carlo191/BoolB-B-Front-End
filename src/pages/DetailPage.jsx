@@ -5,9 +5,12 @@ import ReviewList from "../components/Review/ReviewList";
 
 export default function DetailPage() {
   const { id } = useParams();
-  const { showProperty, property } = useGlobalContext();
+  const { showProperty, property, indexReview, reviewList } =
+    useGlobalContext();
+
   useEffect(() => {
     showProperty(id);
+    indexReview(id);
   }, []);
   return (
     <>
@@ -26,7 +29,7 @@ export default function DetailPage() {
             <p>{property.descrizione}</p>
             <p>{property.numero_like}</p>
             <div>
-              <ReviewList reviews={review} />
+              <ReviewList reviews={reviewList} />
             </div>
           </div>
         </div>
