@@ -1,20 +1,21 @@
 import { Outlet } from "react-router-dom";
 
 // Components
-import NavBar from "../components/navbar/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 export default function DefaultLayout() {
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper d-flex flex-column">
         <header>
-          <NavBar></NavBar>
+          <Navbar></Navbar>
         </header>
 
-        <main>
+        <main className="flex-grow-1">
           <Outlet></Outlet>
         </main>
+
         <footer>
           <Footer />
         </footer>
