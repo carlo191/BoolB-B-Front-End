@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+
+// Global variables
 import { useGlobalContext } from "../context/GlobalContext";
+
+// Components
 import PropertyCard from "../components/propertyCard/PropertyCard";
 
 export default function HomePage() {
   const { propertyList } = useGlobalContext();
-
   const [search, setSearch] = useState("");
 
   function handleSearch(event) {
@@ -13,6 +16,7 @@ export default function HomePage() {
 
   return (
     <div className="container">
+      {/* SearchBar */}
       <h2>Cerca qui:</h2>
       <form className="navbar-form navbar-left mb-5">
         <input
@@ -24,6 +28,7 @@ export default function HomePage() {
         />
       </form>
 
+      {/* Property List */}
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {propertyList.map(
           (property) =>

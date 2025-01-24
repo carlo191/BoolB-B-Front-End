@@ -1,14 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-// Global Var
+// Global variables
 import { GlobalProvider } from "./context/GlobalContext";
 
 // Default Layout
 import DefaultLayout from "./layout/DefaultLayout";
 
-//Components
+// Pages
 import HomePage from "./pages/HomePage";
-
 import DetailPage from "./pages/DetailPage";
 
 function App() {

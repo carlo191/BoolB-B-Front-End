@@ -2,8 +2,10 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white py-3">
+    <div className="bg-primary text-white py-3">
+      {/* Upper Row */}
       <ul className="d-flex justify-content-center list-unstyled mb-3">
+        {/* Facebook */}
         <li className="mx-3">
           <a
             href="https://facebook.com"
@@ -14,6 +16,8 @@ export default function Footer() {
             <i className="fa-brands fa-facebook fa-xl"></i>
           </a>
         </li>
+
+        {/* Instagram */}
         <li className="mx-3">
           <a
             href="https://instagram.com"
@@ -24,6 +28,8 @@ export default function Footer() {
             <i className="fa-brands fa-instagram fa-xl"></i>
           </a>
         </li>
+
+        {/* Linkedin */}
         <li className="mx-3">
           <a
             href="https://linkedin.com"
@@ -35,9 +41,11 @@ export default function Footer() {
           </a>
         </li>
       </ul>
+
+      {/* Lower Row */}
       <div className="d-flex justify-content-center">
         <p className="mb-0">@2025</p>
       </div>
-    </footer>
+    </div>
   );
 }

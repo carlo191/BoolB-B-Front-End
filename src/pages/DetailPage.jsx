@@ -1,6 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useGlobalContext } from "../context/GlobalContext";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+// Global variables
+import { useGlobalContext } from "../context/GlobalContext";
+
+// Components
 import ReviewList from "../components/Review/ReviewList";
 
 export default function DetailPage() {
@@ -8,14 +12,17 @@ export default function DetailPage() {
   const { showProperty, property, indexReview, reviewList } =
     useGlobalContext();
 
+  // Load Data
   useEffect(() => {
     showProperty(id);
     indexReview(id);
   }, []);
+
   return (
     <>
       <div className="container">
         <div className="row">
+          {/* Property Image */}
           <div className="col">
             <img
               className="img-fluid"
@@ -23,6 +30,8 @@ export default function DetailPage() {
               alt={property.immagine}
             />
           </div>
+
+          {/* Property Details */}
           <div className="col">
             <h1>{property.nome}</h1>
             <p>{property.indirizzo}</p>
