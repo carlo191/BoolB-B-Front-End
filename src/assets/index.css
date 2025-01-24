@@ -54,22 +54,17 @@ main {
 }
 
 /* HEART */
-.heart-btn {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  background-color: transparent;
-  border: none;
-}
-
-.heart-btn:active,
-.heart-btn:hover {
-  background-color: transparent !important;
+.heart-pill {
+  top: 9px;
+  right: 9px;
+  padding: 10px 12px;
 }
 
 .heart {
-  color: rgb(11, 94, 215);
+  color: darkgray;
+  transition: color 0.15s;
 }
-.heart:hover {
+.heart-pill:hover .heart {
   color: red;
+  transition: color 0.15s;
 }
