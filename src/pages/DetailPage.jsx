@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useGlobalContext } from "../contex/GlobalContext";
+import { useGlobalContext } from "../context/GlobalContext";
 import { useEffect } from "react";
 import ReviewList from "../components/Review/ReviewList";
 

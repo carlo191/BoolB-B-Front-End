@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../contex/GlobalContext";
+import { useGlobalContext } from "../context/GlobalContext";
 import PropertyCard from "../components/propertyCard/PropertyCard";
 
 export default function HomePage() {

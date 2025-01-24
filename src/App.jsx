@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Global Var
-import { GlobalProvider } from "./contex/GlobalContext";
+import { GlobalProvider } from "./context/GlobalContext";
 
 // Default Layout
 import DefaultLayout from "./layout/DefaultLayout";
