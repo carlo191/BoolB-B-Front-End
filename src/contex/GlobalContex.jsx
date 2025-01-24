@@ -6,6 +6,7 @@ export const useGlobalContex = () => useContext(GlobalContex);
 
 export const GlobalProvider = ({ children }) => {
   const [propertyList, setPropertyList] = useState([]);
+  const [property, setProperty] = useState({});
 
   const indexProperty = () => {
     fetch(`http://localhost:3000/property`)
@@ -15,12 +16,18 @@ export const GlobalProvider = ({ children }) => {
       );
   };
 
+  const showProperty = (id) => {
+    fetch(`http://localhost:3000/property/${property.id}`)
+      .then((res) => res.json())
+      .then((res) => setProperty(res));
+  };
+
   useEffect(() => {
     indexProperty();
   }, []);
 
   return (
-    <GlobalContex.Provider value={{ propertyList }}>
+    <GlobalContex.Provider value={{ propertyList, showProperty, property }}>
       {children}
     </GlobalContex.Provider>
   );
