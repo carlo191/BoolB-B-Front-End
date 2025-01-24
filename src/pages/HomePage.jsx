@@ -13,17 +13,18 @@ export default function HomePage() {
 
   return (
     <div className="container">
-      <form className="navbar-form navbar-left my-5">
+      <h2>Cerca qui:</h2>
+      <form className="navbar-form navbar-left mb-5">
         <input
           type="text"
           className="form-control col-lg-8"
-          placeholder="Cerca"
+          placeholder="..."
           value={search}
           onChange={handleSearch}
         />
       </form>
 
-      <div className="row row-cols-1 row-cols-md-3 g-4 my-5">
+      <div className="row row-cols-1 row-cols-md-3 g-4">
         {propertyList.map(
           (property) =>
             property.nome.toLowerCase().includes(search.toLowerCase()) && (
