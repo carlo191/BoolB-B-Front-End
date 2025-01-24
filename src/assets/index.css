@@ -54,3 +54,6 @@ li {
 .heart {
 	color: rgb(11, 94, 215);
 }
+.heart:hover {
+	color: red;
+}
