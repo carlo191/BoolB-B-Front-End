@@ -19,7 +19,10 @@ export default function HomePage() {
     <div className="container">
       {/* SearchBar */}
       <h2>Cerca qui:</h2>
-      <form className="navbar-form navbar-left mb-5">
+      <form
+        className="navbar-form navbar-left mb-5"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <input
           type="text"
           className="form-control col-lg-8"
@@ -33,7 +36,7 @@ export default function HomePage() {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {propertyList.map(
           (property) =>
-            property.nome.toLowerCase().includes(search.toLowerCase()) && (
+            property.indirizzo.toLowerCase().includes(search.toLowerCase()) && (
               <div className="col" key={property.id}>
                 <PropertyCard property={property} />
                 {property.tipologie &&
