@@ -15,7 +15,7 @@ export default function ReviewItem({ review }) {
 
   return (
     <div className="col-12">
-      <strong>Review by: {review.nome}</strong>
+      <strong>Review by: {review.nome_utente}</strong>
       <div>Voto: {generateStars(review.voto).map((star) => star)}</div>
       <div>{review.contenuto}</div>
     </div>

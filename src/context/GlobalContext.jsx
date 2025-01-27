@@ -19,9 +19,9 @@ export const GlobalProvider = ({ children }) => {
     tipologia: "",
     numero_like: 0,
     id_proprietario: 0,
+    recensioni: [],
+    tipologie: [],
   });
-
-  const [reviewList, setReviewList] = useState([]);
 
   const indexProperty = () => {
     fetch(`http://localhost:3000/property`)
@@ -39,22 +39,12 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
-  const indexReview = (id) => {
-    fetch(`http://localhost:3000/review/${id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setReviewList(res);
-      });
-  };
-
   useEffect(() => {
     indexProperty();
   }, []);
 
   return (
-    <GlobalContext.Provider
-      value={{ propertyList, showProperty, property, indexReview, reviewList }}
-    >
+    <GlobalContext.Provider value={{ propertyList, showProperty, property }}>
       {children}
     </GlobalContext.Provider>
   );

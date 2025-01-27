@@ -5,6 +5,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 // Components
 import PropertyCard from "../components/propertyCard/PropertyCard";
+import Badge from "../components/badge";
 
 export default function HomePage() {
   const { propertyList } = useGlobalContext();
@@ -35,6 +36,10 @@ export default function HomePage() {
             property.nome.toLowerCase().includes(search.toLowerCase()) && (
               <div className="col" key={property.id}>
                 <PropertyCard property={property} />
+                {property.tipologie &&
+                  property.tipologie.map((tipologia, index) => (
+                    <Badge key={index} tipologia={tipologia.tipologia}></Badge>
+                  ))}
               </div>
             )
         )}

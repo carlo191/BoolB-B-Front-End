@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Badge from "../components/badge";
 
 // Global variables
 import { useGlobalContext } from "../context/GlobalContext";
@@ -9,13 +10,11 @@ import ReviewList from "../components/Review/ReviewList";
 
 export default function DetailPage() {
   const { id } = useParams();
-  const { showProperty, property, indexReview, reviewList } =
-    useGlobalContext();
+  const { showProperty, property } = useGlobalContext();
 
   // Load Data
   useEffect(() => {
     showProperty(id);
-    indexReview(id);
   }, []);
 
   return (
@@ -31,6 +30,11 @@ export default function DetailPage() {
             />
           </div>
 
+          {property.tipologie &&
+            property.tipologie.map((tipologia, index) => (
+              <Badge key={index} tipologia={tipologia.tipologia}></Badge>
+            ))}
+
           {/* Property Details */}
           <div className="col">
             <h1>{property.nome}</h1>
@@ -38,7 +42,7 @@ export default function DetailPage() {
             <p>{property.descrizione}</p>
             <p>{property.numero_like}</p>
             <div>
-              <ReviewList reviews={reviewList} />
+              <ReviewList reviews={property.recensioni} />
             </div>
           </div>
         </div>
