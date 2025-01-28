@@ -41,8 +41,8 @@ export default function HomePage() {
           onChange={(e) => handleSearch(e)}
         />
 
-        <button type="submit" className="btn btn-primary">
-          Primary
+        <button type="submit" className="btn btn-primary mt-2">
+          Vai alla ricerca avanzata
         </button>
       </form>
 
@@ -51,10 +51,7 @@ export default function HomePage() {
         {propertyList.map((property) => (
           <div className="col" key={property.id}>
             <PropertyCard property={property} />
-            <Badge
-              tipologia={property.tipologia}
-              icona={property.icona}
-            ></Badge>
+            
           </div>
         ))}
       </div>

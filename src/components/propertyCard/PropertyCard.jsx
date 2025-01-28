@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Badge from "../badge/Badge";
 
 export default function PropertyCard({ property }) {
   const handleHeartClick = (event) => {
@@ -17,6 +18,10 @@ export default function PropertyCard({ property }) {
           className="card-img-top"
           alt={property.immagine}
         />
+        {/* Badge */}
+        <span className="position-absolute top-5 start-0 mt-1 ms-2">
+          <Badge tipologia={property.tipologia} icona={property.icona} />
+        </span>
 
         {/* Heart */}
         <span
