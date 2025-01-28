@@ -4,9 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function SearchPage() {
   const {
-    // All Property
     propertyList,
-    // Advanced Research Form Field Data (in SearchPage.jsx)
     search,
     setSearch,
     tipologia,
@@ -18,45 +16,48 @@ export default function SearchPage() {
   } = useGlobalContext();
   const [filteredList, setFilteredList] = useState([]);
 
-  useEffect(() => {
+  const applyFilters = () => {
     let filtered = propertyList.filter((property) => {
       // Check the filters:
       // Search
       if (
-        search.isActivated === true &&
-        property.indirizzo
-          .toLowerCase()
-          .includes(search.value.toLowerCase()) === false
+        search.value &&
+        !property.indirizzo.toLowerCase().includes(search.value.toLowerCase())
       )
         return false;
       // Tipologia
       if (
-        tipologia.isActivated === true &&
-        (property.tipologia === tipologia.value) === false
+        tipologia.isActivated &&
+        tipologia.value &&
+        property.tipologia !== tipologia.value
       )
         return false;
 
       // Stanze
       const stanzeNumber = parseInt(stanze.value);
-      if (!isNaN(stanzeNumber))
-        if (
-          stanze.isActivated === true &&
-          property.numero_stanze >= stanzeNumber === false
-        )
-          return false;
+      if (
+        stanze.isActivated &&
+        !isNaN(stanzeNumber) &&
+        property.numero_stanze < stanzeNumber
+      )
+        return false;
       // Letti
       const lettiNumber = parseInt(letti.value);
-      if (!isNaN(lettiNumber))
-        if (
-          letti.isActivated === true &&
-          property.numero_letti >= lettiNumber === false
-        )
-          return false;
+      if (
+        letti.isActivated &&
+        !isNaN(lettiNumber) &&
+        property.numero_letti < lettiNumber
+      )
+        return false;
 
       return true;
     });
 
     setFilteredList(filtered);
+  };
+
+  useEffect(() => {
+    applyFilters();
   }, [propertyList, search, tipologia, stanze, letti]);
 
   return (
@@ -79,7 +80,7 @@ export default function SearchPage() {
 
         {/* Sidebar Header */}
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title">Advanced filters</h5>
+          <h5 className="offcanvas-title"> Filtri</h5>
         </div>
 
         {/* Sidebar Body */}
@@ -94,29 +95,16 @@ export default function SearchPage() {
               <div className="col">
                 {/* Description */}
                 <label htmlFor="searchInput" className="form-label">
-                  City or Address:
+                  Città o Indirizzo:
                 </label>
 
                 <div className="d-flex align-items-center">
-                  {/* Activation Box */}
-                  <input
-                    type="checkbox"
-                    id="searchActivation"
-                    className="form-check-input big-checkbox m-0 me-3"
-                    value=""
-                    defaultChecked={search.isActivated}
-                    onClick={(e) => {
-                      setSearch({ ...search, isActivated: e.target.checked });
-                    }}
-                  ></input>
-
                   {/* Input Field */}
                   <input
                     type="text"
                     id="searchInput"
                     className="form-control"
                     placeholder="..."
-                    disabled={!search.isActivated}
                     value={search.value}
                     onChange={(e) =>
                       setSearch({ ...search, value: e.target.value })
@@ -128,24 +116,23 @@ export default function SearchPage() {
               {/* Type */}
               <div className="col">
                 <label htmlFor="typeInput" className="form-label">
-                  Type:
+                  Tipologia:
                 </label>
 
                 <div className="d-flex align-items-center">
                   {/* Activation Box */}
                   <input
                     type="checkbox"
-                    id="searchActivation"
+                    id="typeActivation"
                     className="form-check-input big-checkbox m-0 me-3"
-                    value=""
-                    defaultChecked={tipologia.isActivated}
-                    onClick={(e) => {
+                    checked={tipologia.isActivated}
+                    onChange={(e) => {
                       setTipologia({
                         ...tipologia,
                         isActivated: e.target.checked,
                       });
                     }}
-                  ></input>
+                  />
 
                   {/* Input Field */}
                   <select
@@ -155,10 +142,10 @@ export default function SearchPage() {
                     value={tipologia.value}
                     onChange={(e) => {
                       setTipologia({ ...tipologia, value: e.target.value });
-                      console.log(tipologia);
                     }}
                   >
-                    <option defaultValue="Appartamento">Appartamento</option>
+                    <option value="">Seleziona Tipologia</option>
+                    <option value="Appartamento">Appartamento</option>
                     <option value="Villa">Villa</option>
                     <option value="Attico">Attico</option>
                     <option value="Loft">Loft</option>
@@ -177,32 +164,36 @@ export default function SearchPage() {
               {/* Rooms number */}
               <div className="col">
                 <label htmlFor="roomsNumberInput" className="form-label">
-                  Rooms Number:
+                  Numero stanze:
                 </label>
 
                 <div className="d-flex align-items-center">
                   {/* Activation Box */}
                   <input
                     type="checkbox"
-                    id="searchActivation"
+                    id="roomsActivation"
                     className="form-check-input big-checkbox m-0 me-3"
-                    value=""
-                    defaultChecked={stanze.isActivated}
-                    onClick={(e) => {
+                    checked={stanze.isActivated}
+                    onChange={(e) => {
                       setStanze({ ...stanze, isActivated: e.target.checked });
                     }}
-                  ></input>
+                  />
 
                   {/* Input Field */}
                   <input
                     type="number"
                     id="roomsNumberInput"
                     className="form-control"
+                    min="0"
+                    inputMode="numeric"
                     disabled={!stanze.isActivated}
                     value={stanze.value}
-                    onChange={(e) =>
-                      setStanze({ ...stanze, value: e.target.value })
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) {
+                        setStanze({ ...stanze, value });
+                      }
+                    }}
                   />
                 </div>
               </div>
@@ -210,34 +201,49 @@ export default function SearchPage() {
               {/* Beds number */}
               <div className="col">
                 <label htmlFor="bedsNumberInput" className="form-label">
-                  Beds Number:
+                  Numero letti:
                 </label>
 
                 <div className="d-flex align-items-center">
                   {/* Activation Box */}
                   <input
                     type="checkbox"
-                    id="searchActivation"
+                    id="bedsActivation"
                     className="form-check-input big-checkbox m-0 me-3"
-                    value=""
-                    defaultChecked={letti.isActivated}
-                    onClick={(e) => {
+                    checked={letti.isActivated}
+                    onChange={(e) => {
                       setLetti({ ...letti, isActivated: e.target.checked });
                     }}
-                  ></input>
+                  />
 
                   {/* Input Field */}
                   <input
                     type="number"
                     id="bedsNumberInput"
                     className="form-control"
+                    min="0"
+                    inputMode="numeric"
                     disabled={!letti.isActivated}
                     value={letti.value}
-                    onChange={(e) =>
-                      setLetti({ ...letti, value: e.target.value })
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) {
+                        setLetti({ ...letti, value });
+                      }
+                    }}
                   />
                 </div>
+              </div>
+
+              {/* Apply Filters Button */}
+              <div className="col">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={applyFilters}
+                >
+                  Applica Filtri
+                </button>
               </div>
             </div>
           </form>
@@ -245,9 +251,13 @@ export default function SearchPage() {
       </div>
 
       {/* Showing Filtered Properties */}
-      {filteredList.map((property) => (
-        <PropertyCard property={property} key={property.id}></PropertyCard>
-      ))}
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {filteredList.map((property) => (
+          <div className="col" key={property.id}>
+            <PropertyCard property={property} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
