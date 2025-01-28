@@ -31,43 +31,48 @@ export default function SearchPage() {
 
   return (
     <>
-      <form className="navbar-form navbar-left mb-5">
-        <input
-          type="text"
-          className="form-control col-lg-8"
-          placeholder="Ricerca per città o via..."
-          value={search}
-          onChange={(e) => handleSearch(e)}
-        />
+      <div className="container">
+        <form className="navbar-form navbar-left mb-5">
+          <input
+            type="text"
+            className="form-control col-lg-8"
+            placeholder="Ricerca per città o via..."
+            value={search}
+            onChange={(e) => handleSearch(e)}
+          />
 
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          value={tipologia}
-          onChange={(e) => handleSelect(e)}
-        >
-          <option value="null" selected>
-            Tipologia
-          </option>
-          <option value="Appartamento">Appartamento</option>
-          <option value="Villa">Villa</option>
-          <option value="Attico">Attico</option>
-          <option value="Loft">Loft</option>
-          <option value="Monolocale">Monolocale</option>
-          <option value="Baita">Baita</option>
-          <option value="Casa indipendente">Casa indipendente</option>
-          <option value="Cottage">Cottage</option>
-          <option value="Residenza storica">Residenza storica</option>
-          <option value="Villetta a schiera">Villetta a schiera</option>
-        </select>
-      </form>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            value={tipologia}
+            onChange={(e) => handleSelect(e)}
+          >
+            <option value="null" selected>
+              Tipologia
+            </option>
+            <option value="Appartamento">Appartamento</option>
+            <option value="Villa">Villa</option>
+            <option value="Attico">Attico</option>
+            <option value="Loft">Loft</option>
+            <option value="Monolocale">Monolocale</option>
+            <option value="Baita">Baita</option>
+            <option value="Casa indipendente">Casa indipendente</option>
+            <option value="Cottage">Cottage</option>
+            <option value="Residenza storica">Residenza storica</option>
+            <option value="Villetta a schiera">Villetta a schiera</option>
+          </select>
+        </form>
 
-      {filteredList.map(
-        (property) =>
-          property.indirizzo.toLowerCase().includes(search.toLowerCase()) && (
-            <PropertyCard property={property} key={property.id}></PropertyCard>
-          )
-      )}
+        {filteredList.map(
+          (property) =>
+            property.indirizzo.toLowerCase().includes(search.toLowerCase()) && (
+              <PropertyCard
+                property={property}
+                key={property.id}
+              ></PropertyCard>
+            )
+        )}
+      </div>
     </>
   );
 }
