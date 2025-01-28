@@ -12,13 +12,13 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   function handleSearch(e) {
-    setSearch(e.target.value);
+    setSearch({ isActived: true, value: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (search === "") {
+    if (search.value === "") {
       return;
     } else {
       navigate(`/search`);
@@ -37,7 +37,7 @@ export default function HomePage() {
           type="text"
           className="form-control col-lg-8"
           placeholder="..."
-          value={search}
+          value={search.value}
           onChange={(e) => handleSearch(e)}
         />
 

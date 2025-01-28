@@ -23,8 +23,6 @@ export const GlobalProvider = ({ children }) => {
     tipologie: [],
   });
 
-  const [search, setSearch] = useState("");
-
   const indexProperty = () => {
     fetch(`http://localhost:3000/property`)
       .then((res) => res.json())
@@ -45,9 +43,33 @@ export const GlobalProvider = ({ children }) => {
     indexProperty();
   }, []);
 
+  // Advanced Research Form Field Data (in SearchPage.jsx)
+  const [search, setSearch] = useState({ isActivated: false, value: "" });
+  const [tipologia, setTipologia] = useState({
+    isActivated: false,
+    value: "Appartamento",
+  });
+  const [stanze, setStanze] = useState({ isActivated: false, value: "0" });
+  const [letti, setLetti] = useState({ isActivated: false, value: "0" });
+
   return (
     <GlobalContext.Provider
-      value={{ propertyList, showProperty, property, search, setSearch }}
+      value={{
+        // Property Crud
+        showProperty,
+        // All Property
+        propertyList,
+        property,
+        // Advanced Research Form Field Data (in SearchPage.jsx)
+        search,
+        setSearch,
+        tipologia,
+        setTipologia,
+        stanze,
+        setStanze,
+        letti,
+        setLetti,
+      }}
     >
       {children}
     </GlobalContext.Provider>
