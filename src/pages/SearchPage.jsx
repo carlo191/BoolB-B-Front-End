@@ -1,12 +1,32 @@
 // Global variables
 import PropertyCard from "../components/propertyCard/PropertyCard";
 import { useGlobalContext } from "../context/GlobalContext";
+import { useState, useEffect } from "react";
 
 export default function SearchPage() {
   const { propertyList, search, setSearch } = useGlobalContext();
 
+  const [tipologia, setTipologia] = useState("");
+
+  const [filteredList, setFilteredList] = useState(propertyList);
+
+  useEffect(() => {
+    if (tipologia === "null") {
+      setFilteredList(propertyList);
+      return;
+    }
+    const filtered = propertyList.filter((property) =>
+      property.tipologia.includes(tipologia)
+    );
+    setFilteredList(filtered);
+  }, [tipologia]);
+
   function handleSearch(e) {
     setSearch(e.target.value);
+  }
+
+  function handleSelect(e) {
+    setTipologia(e.target.value);
   }
 
   return (
@@ -20,25 +40,32 @@ export default function SearchPage() {
           onChange={(e) => handleSearch(e)}
         />
 
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Tipologia</option>
-          <option value="1">Appartamento</option>
-          <option value="2">Villa</option>
-          <option value="3">Attico</option>
-          <option value="4">Loft</option>
-          <option value="5">Monolocale</option>
-          <option value="6">Baita</option>
-          <option value="7">Casa indipendente</option>
-          <option value="8">Cottage</option>
-          <option value="9">Residenza storica</option>
-          <option value="10">Villetta a schiera</option>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          value={tipologia}
+          onChange={(e) => handleSelect(e)}
+        >
+          <option value="null" selected>
+            Tipologia
+          </option>
+          <option value="Appartamento">Appartamento</option>
+          <option value="Villa">Villa</option>
+          <option value="Attico">Attico</option>
+          <option value="Loft">Loft</option>
+          <option value="Monolocale">Monolocale</option>
+          <option value="Baita">Baita</option>
+          <option value="Casa indipendente">Casa indipendente</option>
+          <option value="Cottage">Cottage</option>
+          <option value="Residenza storica">Residenza storica</option>
+          <option value="Villetta a schiera">Villetta a schiera</option>
         </select>
       </form>
 
-      {propertyList.map(
+      {filteredList.map(
         (property) =>
           property.indirizzo.toLowerCase().includes(search.toLowerCase()) && (
-            <PropertyCard property={property}></PropertyCard>
+            <PropertyCard property={property} key={property.id}></PropertyCard>
           )
       )}
     </>
