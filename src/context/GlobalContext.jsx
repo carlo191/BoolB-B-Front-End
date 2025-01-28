@@ -23,6 +23,8 @@ export const GlobalProvider = ({ children }) => {
     tipologie: [],
   });
 
+  const [search, setSearch] = useState("");
+
   const indexProperty = () => {
     fetch(`http://localhost:3000/property`)
       .then((res) => res.json())
@@ -44,7 +46,9 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ propertyList, showProperty, property }}>
+    <GlobalContext.Provider
+      value={{ propertyList, showProperty, property, search, setSearch }}
+    >
       {children}
     </GlobalContext.Provider>
   );

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Badge from "../components/badge";
+import Badge from "../components/badge/badge";
 
 // Global variables
 import { useGlobalContext } from "../context/GlobalContext";
@@ -30,10 +30,7 @@ export default function DetailPage() {
             />
           </div>
 
-          {property.tipologie &&
-            property.tipologie.map((tipologia, index) => (
-              <Badge key={index} tipologia={tipologia.tipologia}></Badge>
-            ))}
+          <Badge tipologia={property.tipologia} icona={property.icona}></Badge>
 
           {/* Property Details */}
           <div className="col">

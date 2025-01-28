@@ -1,18 +1,28 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 // Global variables
 import { useGlobalContext } from "../context/GlobalContext";
 
 // Components
 import PropertyCard from "../components/propertyCard/PropertyCard";
-import Badge from "../components/badge";
+import Badge from "../components/badge/badge";
 
 export default function HomePage() {
-  const { propertyList } = useGlobalContext();
-  const [search, setSearch] = useState("");
+  const { propertyList, search, setSearch } = useGlobalContext();
+  const navigate = useNavigate();
 
-  function handleSearch(event) {
-    setSearch(event.target.value);
+  function handleSearch(e) {
+    setSearch(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (search === "") {
+      return;
+    } else {
+      navigate(`/search`);
+    }
   }
 
   return (
@@ -21,31 +31,32 @@ export default function HomePage() {
       <h2>Cerca qui:</h2>
       <form
         className="navbar-form navbar-left mb-5"
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e) => handleSubmit(e)}
       >
         <input
           type="text"
           className="form-control col-lg-8"
           placeholder="..."
           value={search}
-          onChange={handleSearch}
+          onChange={(e) => handleSearch(e)}
         />
+
+        <button type="submit" className="btn btn-primary">
+          Primary
+        </button>
       </form>
 
       {/* Property List */}
       <div className="row row-cols-1 row-cols-md-3 g-4">
-        {propertyList.map(
-          (property) =>
-            property.indirizzo.toLowerCase().includes(search.toLowerCase()) && (
-              <div className="col" key={property.id}>
-                <PropertyCard property={property} />
-                {property.tipologie &&
-                  property.tipologie.map((tipologia, index) => (
-                    <Badge key={index} tipologia={tipologia.tipologia}></Badge>
-                  ))}
-              </div>
-            )
-        )}
+        {propertyList.map((property) => (
+          <div className="col" key={property.id}>
+            <PropertyCard property={property} />
+            <Badge
+              tipologia={property.tipologia}
+              icona={property.icona}
+            ></Badge>
+          </div>
+        ))}
       </div>
     </div>
   );
