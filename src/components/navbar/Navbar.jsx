@@ -7,7 +7,7 @@ export default function Navbar() {
       <div className="container-fluid">
         {/* Logo */}
         <Link className="fs-2 fw-semibold pe-4 text-light" to="/">
-          BoolBnB
+          <i class="fa-brands fa-airbnb"></i> BoolBnB
         </Link>
         {/* Hamburger Menu */}
         <button
