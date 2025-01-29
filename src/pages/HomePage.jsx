@@ -41,7 +41,7 @@ export default function HomePage() {
           </div>
           <div className="col-2">
             <button type="submit" className="btn btn-primary w-100">
-              Vai alla ricerca avanzata
+              Cerca
             </button>
           </div>
         </div>
