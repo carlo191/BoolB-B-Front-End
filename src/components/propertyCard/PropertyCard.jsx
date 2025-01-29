@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
 import Badge from "../badge/Badge";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function PropertyCard({ property }) {
+  const { updateProperty } = useGlobalContext();
+
   const handleHeartClick = (event) => {
     event.stopPropagation(); // Impedisce che l'evento si propaghi al genitore
     event.preventDefault(); // Impedisce il comportamento predefinito del Link
 
-    // onLike(property.id); // Chiama una funzione per mettere like
+    console.log(property);
+
+    updateProperty({
+      ...property,
+      immagine: property.immagine.split("/").pop(),
+      numero_like: property.numero_like + 1,
+    });
   };
 
   return (

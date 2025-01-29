@@ -40,6 +40,33 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
+  const updateProperty = (updatedProperty) => {
+    fetch(`http://localhost:3000/property/${updatedProperty.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: updatedProperty.nome,
+        numero_stanze: updatedProperty.numero_stanze,
+        numero_letti: updatedProperty.numero_letti,
+        numero_bagni: updatedProperty.numero_bagni,
+        metri_quadrati: updatedProperty.metri_quadrati,
+        indirizzo: updatedProperty.indirizzo,
+        email_proprietario: updatedProperty.email_proprietario,
+        immagine: updatedProperty.immagine,
+        numero_like: updatedProperty.numero_like,
+        id_proprietario: updatedProperty.id_proprietario,
+        id_tipologia: updatedProperty.id_tipologia,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(updatedProperty);
+        indexProperty();
+      });
+  };
+
   const indexCategory = () => {
     fetch(`http://localhost:3000/category`)
       .then((res) => res.json())
@@ -81,6 +108,7 @@ export const GlobalProvider = ({ children }) => {
         setLetti,
         // Category
         categoryList,
+        updateProperty,
       }}
     >
       {children}
