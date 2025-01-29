@@ -62,7 +62,6 @@ export const GlobalProvider = ({ children }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(updatedProperty);
         indexProperty();
       });
   };
