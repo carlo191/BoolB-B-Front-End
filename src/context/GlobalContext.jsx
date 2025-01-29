@@ -5,6 +5,7 @@ const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
 
 export const GlobalProvider = ({ children }) => {
+  const [categoryList, setCategoryList] = useState([]);
   const [propertyList, setPropertyList] = useState([]);
   const [property, setProperty] = useState({
     id: 0,
@@ -39,8 +40,17 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
+  const indexCategory = () => {
+    fetch(`http://localhost:3000/category`)
+      .then((res) => res.json())
+      .then((res) => {
+        setCategoryList(res);
+      });
+  };
+
   useEffect(() => {
     indexProperty();
+    indexCategory();
   }, []);
 
   // Advanced Research Form Field Data (in SearchPage.jsx)
@@ -69,6 +79,8 @@ export const GlobalProvider = ({ children }) => {
         setStanze,
         letti,
         setLetti,
+        // Category
+        categoryList,
       }}
     >
       {children}

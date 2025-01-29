@@ -13,6 +13,7 @@ export default function SearchPage() {
     setStanze,
     letti,
     setLetti,
+    categoryList,
   } = useGlobalContext();
   const [filteredList, setFilteredList] = useState([]);
 
@@ -145,18 +146,14 @@ export default function SearchPage() {
                     }}
                   >
                     <option value="">Seleziona Tipologia</option>
-                    <option value="Appartamento">Appartamento</option>
-                    <option value="Villa">Villa</option>
-                    <option value="Attico">Attico</option>
-                    <option value="Loft">Loft</option>
-                    <option value="Monolocale">Monolocale</option>
-                    <option value="Baita">Baita</option>
-                    <option value="Casa indipendente">Casa indipendente</option>
-                    <option value="Cottage">Cottage</option>
-                    <option value="Residenza storica">Residenza storica</option>
-                    <option value="Villetta a schiera">
-                      Villetta a schiera
-                    </option>
+                    {categoryList.map((category) => (
+                      <option
+                        key={category.tipologia}
+                        value={category.tipologia}
+                      >
+                        {category.tipologia}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
