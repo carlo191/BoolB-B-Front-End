@@ -233,15 +233,6 @@ export default function SearchPage() {
               </div>
 
               {/* Apply Filters Button */}
-              <div className="col">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={applyFilters}
-                >
-                  Applica Filtri
-                </button>
-              </div>
             </div>
           </form>
         </div>
