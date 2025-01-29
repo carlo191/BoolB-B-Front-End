@@ -20,7 +20,7 @@ export default function PropertyCard({ property }) {
 
   return (
     <Link to={`/property/${property.id}`}>
-      <div className="card property-card p-0 position-relative ">
+      <div className="card property-card p-0 position-relative">
         {/* Property Image */}
         <img
           src={property.immagine}
