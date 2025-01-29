@@ -47,7 +47,7 @@ export const GlobalProvider = ({ children }) => {
   const [search, setSearch] = useState({ isActivated: false, value: "" });
   const [tipologia, setTipologia] = useState({
     isActivated: false,
-    value: "Appartamento",
+    value: "",
   });
   const [stanze, setStanze] = useState({ isActivated: false, value: "0" });
   const [letti, setLetti] = useState({ isActivated: false, value: "0" });

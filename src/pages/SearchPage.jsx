@@ -144,7 +144,9 @@ export default function SearchPage() {
                       setTipologia({ ...tipologia, value: e.target.value });
                     }}
                   >
-                    <option value="">Seleziona Tipologia</option>
+                    <option disabled value="">
+                      Seleziona Tipologia
+                    </option>
                     <option value="Appartamento">Appartamento</option>
                     <option value="Villa">Villa</option>
                     <option value="Attico">Attico</option>
