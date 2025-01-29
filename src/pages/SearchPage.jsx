@@ -145,7 +145,9 @@ export default function SearchPage() {
                       setTipologia({ ...tipologia, value: e.target.value });
                     }}
                   >
-                    <option value="">Seleziona Tipologia</option>
+                    <option disabled value="">
+                      Seleziona Tipologia
+                    </option>
                     {categoryList.map((category) => (
                       <option
                         key={category.tipologia}
@@ -234,11 +236,11 @@ export default function SearchPage() {
                 </div>
               </div>
 
-              {/* Apply Filters Button */}
-            </div>
-          </form>
-        </div>
-      </div>
+							{/* Apply Filters Button */}
+						</div>
+					</form>
+				</div>
+			</div>
 
       {/* Showing Filtered Properties */}
       <div className="row row-cols-1 row-cols-md-3 g-4">
