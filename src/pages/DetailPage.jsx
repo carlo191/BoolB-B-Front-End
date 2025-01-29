@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Badge from "../components/badge/badge.jsx";
+import Badge from "../components/badge/Badge.jsx";
 
 // Global variables
 import { useGlobalContext } from "../context/GlobalContext";

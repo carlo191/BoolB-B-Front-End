@@ -27,7 +27,7 @@ export default function HomePage() {
 	return (
 		<div className="container">
 			{/* SearchBar */}
-			<h2>Cerca qui:</h2>
+			<h2>Inizia la tua ricerca inserendo una città</h2>
 			<form
 				className="navbar-form navbar-left mb-5"
 				onSubmit={(e) => handleSubmit(e)}
