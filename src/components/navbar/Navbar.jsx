@@ -6,7 +6,7 @@ export default function Navbar() {
 		<nav className="navbar navbar-expand-lg bg-primary position-fixed z-1 w-100">
 			<div className="container-fluid">
 				{/* Logo */}
-				<Link className="fs-2 fw-semibold pe-4" to="/">
+				<Link className="fs-2 fw-semibold pe-4 text-light" to="/">
 					BoolBnB
 				</Link>
 				{/* Hamburger Menu */}
