@@ -1,3 +1,14 @@
-export default function Badge({ tipologia, icona }) {
-  return <span className="badge text-bg-primary">{tipologia}</span>;
+export default function Badge({ tipologia, type, text }) {
+  return (
+    <>
+      {text ? (
+        <span className={`badge text-bg-${type}`}>
+          {text}
+          {tipologia}
+        </span>
+      ) : (
+        <span className={`badge text-bg-${type}`}>{tipologia}</span>
+      )}
+    </>
+  );
 }
