@@ -22,18 +22,22 @@ export default function DetailPage() {
       <div className="container">
         <div className="row">
           {/* Property Image */}
-          <div className="col-6 immagine-dettaglio">
+          <div className="col-12 col-sm-6 immagine-dettaglio">
             <img
               className="img-fluid "
               src={property.immagine}
               alt={property.immagine}
             />
+
+            {/* Badge */}
             <div className="badge-dettaglio">
               <Badge
                 tipologia={property.tipologia}
-                icona={property.icona}
-              ></Badge>
+                type={"primary"}
+                text={null}
+              />
             </div>
+
             {/* Heart */}
             <span
               className="position-absolute badge rounded-pill heart-pill text-bg-light fs-6 fw-semibold me-2"
@@ -44,10 +48,38 @@ export default function DetailPage() {
               {property.numero_like}
             </span>
           </div>
-          <div className="col-6">
-            <h1>{property.nome}</h1>
-            <p>{property.indirizzo}</p>
-            <p>{property.descrizione}</p>
+
+          {/* Property Description */}
+          <div className="col-12 col-sm-6">
+            <ul>
+              <li>
+                <h1>{property.nome}</h1>
+              </li>
+              <li>
+                <strong>Indirizzo: </strong>
+                {property.indirizzo}
+              </li>
+              <li>
+                <strong>Numero stanze: </strong>
+                {property.numero_stanze}
+              </li>
+              <li>
+                <strong>Numero letti: </strong>
+                {property.numero_letti}
+              </li>
+              <li>
+                <strong>Numero bagni: </strong>
+                {property.numero_bagni}
+              </li>
+              <li>
+                <strong>Metri quadrati: </strong>
+                {property.metri_quadrati}
+              </li>
+              <li>
+                <strong>Email proprietario: </strong>
+                {property.email_proprietario}
+              </li>
+            </ul>
           </div>
         </div>
         {/* Property Details */}
