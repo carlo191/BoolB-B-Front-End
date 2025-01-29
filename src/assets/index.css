@@ -47,7 +47,6 @@ main {
 }
 /* PROPERTY CARD */
 .property-card {
-  height: 390px !important;
   box-shadow: 0 0 10px 3px transparent;
   transition: box-shadow 0.2s;
 }
@@ -58,8 +57,7 @@ main {
 }
 
 .card-img-top {
-  height: 275px !important;
-  object-fit: cover;
+  height: 250px;
 }
 
 /* HEART */
