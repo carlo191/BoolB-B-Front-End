@@ -244,19 +244,13 @@ export default function SearchPage() {
 
 			{/* Showing Filtered Properties */}
 
-			{filteredList.lenght > 0 ? (
-				<div className="row row-cols-1 row-cols-md-3 g-4">
-					{filteredList.map((property) => (
-						<div className="col" key={property.id}>
-							<PropertyCard property={property} />
-						</div>
-					))}
-				</div>
-			) : (
-				<div className="text-center">
-					<h2>Nessun risultato trovato, prova ad inserire filtri diversi</h2>
-				</div>
-			)}
+			<div className="row row-cols-1 row-cols-md-3 g-4">
+				{filteredList.map((property) => (
+					<div className="col" key={property.id}>
+						<PropertyCard property={property} />
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
