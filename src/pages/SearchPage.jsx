@@ -236,11 +236,11 @@ export default function SearchPage() {
                 </div>
               </div>
 
-              {/* Apply Filters Button */}
-            </div>
-          </form>
-        </div>
-      </div>
+							{/* Apply Filters Button */}
+						</div>
+					</form>
+				</div>
+			</div>
 
       {/* Showing Filtered Properties */}
       <div className="row row-cols-1 row-cols-md-3 g-4">
