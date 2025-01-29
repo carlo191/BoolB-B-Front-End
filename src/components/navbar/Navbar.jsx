@@ -6,7 +6,7 @@ export default function Navbar() {
 		<nav className="navbar navbar-expand-lg bg-primary position-fixed z-1 w-100">
 			<div className="container-fluid">
 				{/* Logo */}
-				<Link className="fs-2 fw-semibold pe-4" to="/">
+				<Link className="fs-2 fw-semibold pe-4 text-light" to="/">
 					BoolBnB
 				</Link>
 				{/* Hamburger Menu */}
@@ -42,36 +42,36 @@ export default function Navbar() {
 						</li>
 					</ul>
 
-					<span className="nav-link">
-						<button
-							type="button"
-							class="btn btn-primary dropdown-toggle"
-							data-bs-toggle="dropdown"
-							data-bs-display="static"
-							aria-expanded="false"
-						>
-							<i className="fa-solid fa-user"></i>
-						</button>
-						<ul className="dropdown-menu">
-							<li>
-								<a className="dropdown-item" href="#">
-									Accedi
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Registrati
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Centro assistenza
-								</a>
-							</li>
-						</ul>
-					</span>
-				</div>
-			</div>
-		</nav>
-	);
+          <span className="nav-link">
+            <button
+              type="button"
+              className="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-expanded="false"
+            >
+              <i className="fa-solid fa-user"></i>
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#">
+                  Accedi
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Registrati
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Centro assistenza
+                </a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
+    </nav>
+  );
 }
