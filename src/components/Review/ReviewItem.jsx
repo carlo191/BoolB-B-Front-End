@@ -1,3 +1,6 @@
+// Components
+import ProfileIcon from "../profileIcon/profileIcon";
+
 export default function ReviewItem({ review }) {
   const generateStars = (rating) => {
     const stars = [];
@@ -16,7 +19,10 @@ export default function ReviewItem({ review }) {
   return (
     <div className="col-12 d-flex flex-column flex-sm-row border rounded-4 p-3 mb-3">
       <div className="user-text flex-grow-1">
-        <h5>Review by: {review.nome_utente}</h5>
+        <h5 className="d-flex align-items-center">
+          <ProfileIcon name={review.nome_utente} />
+          {review.nome_utente}
+        </h5>
 
         <div>{review.contenuto}</div>
       </div>

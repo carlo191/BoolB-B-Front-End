@@ -6,7 +6,7 @@ a {
 
 ul {
   list-style: none;
-  display: flex;
+  padding: 0;
 }
 
 li {
@@ -101,4 +101,15 @@ main {
   right: 0;
   bottom: 0;
   left: 20px;
+}
+
+/* PROFILE ICON */
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.profile-icon > h6 {
+  font-size: 1.5rem;
 }
