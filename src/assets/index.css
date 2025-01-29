@@ -11,6 +11,7 @@ ul {
 
 li {
 	padding: 5px;
+	cursor: pointer;
 }
 
 /* UTILITIES */
@@ -75,6 +76,7 @@ main {
 	color: darkgray;
 	transition: color 0.15s;
 }
+
 .heart-pill:hover .heart {
 	color: red;
 	transition: color 0.15s;
