@@ -14,10 +14,18 @@ export default function ReviewItem({ review }) {
   };
 
   return (
-    <div className="col-12">
-      <strong>Review by: {review.nome_utente}</strong>
-      <div>Voto: {generateStars(review.voto).map((star) => star)}</div>
-      <div>{review.contenuto}</div>
+    <div className="col-12 d-flex flex-column flex-sm-row border rounded-4 p-3 mb-3">
+      <div className="user-text flex-grow-1">
+        <h5>Review by: {review.nome_utente}</h5>
+
+        <div>{review.contenuto}</div>
+      </div>
+
+      <div className="vote">
+        <h6 className="review-vote">
+          Voto: {generateStars(review.voto).map((star) => star)}
+        </h6>
+      </div>
     </div>
   );
 }
