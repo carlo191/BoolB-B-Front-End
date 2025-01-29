@@ -37,28 +37,22 @@ export default function PropertyCard({ property }) {
         <div className="card-body h-100">
           <h5 className="card-title">{property.nome}</h5>
           <p className="card-text">{property.indirizzo}</p>
-          <div className="mt-2 row">
-            <div className="col-2 me-2 p-0">
-              <Badge
-                tipologia={property.numero_stanze}
-                type={"success"}
-                text={"Stanze: "}
-              />
-            </div>
-            <div className="col-2 me-2 p-0">
-              <Badge
-                tipologia={property.numero_letti}
-                type={"success"}
-                text={"Letti: "}
-              />
-            </div>
-            <div className="col-2 me-2 p-0">
-              <Badge
-                tipologia={property.numero_bagni}
-                type={"success"}
-                text={"Bagni: "}
-              />
-            </div>
+          <div className="d-flex flex-wrap gap-2 mt-2">
+            <Badge
+              tipologia={property.numero_stanze}
+              type={"success"}
+              text={"Stanze: "}
+            />
+            <Badge
+              tipologia={property.numero_letti}
+              type={"success"}
+              text={"Letti: "}
+            />
+            <Badge
+              tipologia={property.numero_bagni}
+              type={"success"}
+              text={"Bagni: "}
+            />
           </div>
         </div>
       </div>
