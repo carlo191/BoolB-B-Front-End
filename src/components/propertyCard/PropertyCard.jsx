@@ -9,8 +9,6 @@ export default function PropertyCard({ property }) {
     event.stopPropagation(); // Impedisce che l'evento si propaghi al genitore
     event.preventDefault(); // Impedisce il comportamento predefinito del Link
 
-    console.log(property);
-
     updateProperty({
       ...property,
       immagine: property.immagine.split("/").pop(),

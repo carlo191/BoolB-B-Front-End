@@ -7,7 +7,7 @@ export default function Navbar() {
       <div className="container-fluid">
         {/* Logo */}
         <Link className="fs-2 fw-semibold pe-4 text-light" to="/">
-          <i class="fa-brands fa-airbnb"></i> BoolBnB
+          <i className="fa-brands fa-airbnb"></i> BoolBnB
         </Link>
         {/* Hamburger Menu */}
         <button
@@ -32,7 +32,8 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/search">
-                <i class="fa-solid fa-magnifying-glass"></i> Ricerca avanzata
+                <i className="fa-solid fa-magnifying-glass"></i> Ricerca
+                avanzata
               </NavLink>
             </li>
             <li className="nav-item">
