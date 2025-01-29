@@ -42,36 +42,36 @@ export default function Navbar() {
 						</li>
 					</ul>
 
-					<span className="nav-link">
-						<button
-							type="button"
-							class="btn btn-primary dropdown-toggle"
-							data-bs-toggle="dropdown"
-							data-bs-display="static"
-							aria-expanded="false"
-						>
-							<i className="fa-solid fa-user"></i>
-						</button>
-						<ul className="dropdown-menu">
-							<li>
-								<a className="dropdown-item" href="#">
-									Accedi
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Registrati
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Centro assistenza
-								</a>
-							</li>
-						</ul>
-					</span>
-				</div>
-			</div>
-		</nav>
-	);
+          <span className="nav-link">
+            <button
+              type="button"
+              className="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-expanded="false"
+            >
+              <i className="fa-solid fa-user"></i>
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#">
+                  Accedi
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Registrati
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Centro assistenza
+                </a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
+    </nav>
+  );
 }

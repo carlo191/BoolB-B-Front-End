@@ -145,7 +145,9 @@ export default function SearchPage() {
                       setTipologia({ ...tipologia, value: e.target.value });
                     }}
                   >
-                    <option value="">Seleziona Tipologia</option>
+                    <option disabled value="">
+                      Seleziona Tipologia
+                    </option>
                     {categoryList.map((category) => (
                       <option
                         key={category.tipologia}
