@@ -10,7 +10,20 @@ import ReviewList from "../components/Review/ReviewList";
 
 export default function DetailPage() {
   const { id } = useParams();
-  const { showProperty, property } = useGlobalContext();
+  const { showProperty, property, updateProperty } = useGlobalContext();
+
+  const handleHeartClick = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    console.log(property);
+
+    updateProperty({
+      ...property,
+      immagine: property.immagine.split("/").pop(),
+      numero_like: property.numero_like + 1,
+    });
+  };
 
   // Load Data
   useEffect(() => {
@@ -41,7 +54,7 @@ export default function DetailPage() {
             {/* Heart */}
             <span
               className="position-absolute badge rounded-pill heart-pill text-bg-light fs-6 fw-semibold me-2"
-              // onClick={handleHeartClick}
+              onClick={handleHeartClick}
             >
               <i className="fa-solid fa-heart fa-2xl heart" />
               &nbsp;

@@ -64,6 +64,7 @@ export const GlobalProvider = ({ children }) => {
       .then((res) => {
         console.log(updatedProperty);
         indexProperty();
+        showProperty(updatedProperty.id);
       });
   };
 
