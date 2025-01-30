@@ -5,9 +5,11 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 // Components
 import PropertyCard from "../components/propertyCard/PropertyCard";
+import CarouselItem from "../components/carouselItem/CarouselItem";
+import CarouselButton from "../components/carouselButton/CarouselButton";
 
 export default function HomePage() {
-  const { propertyList, search, setSearch } = useGlobalContext();
+  const { propertyListLimit, search, setSearch } = useGlobalContext();
   const navigate = useNavigate();
 
   function handleSearch(e) {
@@ -50,18 +52,63 @@ export default function HomePage() {
         </div>
       </form>
 
-      {/* Property List */}
-      <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-        {propertyList.map((property) => (
-          <div className="col" key={property.id}>
-            <PropertyCard property={property} />
+      <div className="row d-flex">
+        <div className="col-8">
+          {/* Carousel */}
+          <div className="carousel-container">
+            <div
+              id="carouselExampleCaptions"
+              className="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div className="carousel-indicators">
+                {propertyListLimit.map((property, index) => (
+                  <CarouselButton
+                    key={property.id}
+                    index={index}
+                    isActive={index === 0}
+                  />
+                ))}
+              </div>
+              <div className="carousel-inner">
+                {propertyListLimit.map((property, index) => (
+                  <CarouselItem
+                    property={property}
+                    key={property.id}
+                    isActive={index === 0}
+                  />
+                ))}
+              </div>
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
           </div>
-        ))}
-      </div>
-
-      <div className="text-center mt-5">
-        <h2> Continua a esplorare le nostre soluzioni immobiliari</h2>
-        <button className="btn btn-primary">Mostra altro</button>
+        </div>
+        <div className="col-2">
+          <h2>I migliori immobili per le persone</h2>
+        </div>
       </div>
     </div>
   );

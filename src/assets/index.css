@@ -126,7 +126,17 @@ main {
   font-size: 1.5rem;
 }
 
+.carousel-container {
+  width: 100%;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
 /* OFFCANVAS */
+
 .offcanvas-backdrop {
   background-color: rgba(0, 0, 0, 0.3) !important; /* 30% trasparenza */
 }

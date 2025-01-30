@@ -7,6 +7,7 @@ export const useGlobalContext = () => useContext(GlobalContext);
 export const GlobalProvider = ({ children }) => {
   const [categoryList, setCategoryList] = useState([]);
   const [propertyList, setPropertyList] = useState([]);
+  const [propertyListLimit, setPropertyListLimit] = useState([]);
   const [property, setProperty] = useState({
     id: 0,
     nome: "",
@@ -28,7 +29,15 @@ export const GlobalProvider = ({ children }) => {
     fetch(`http://localhost:3000/property`)
       .then((res) => res.json())
       .then((res) => {
-        setPropertyList(res.sort((a, b) => b.numero_like - a.numero_like));
+        setPropertyList(res);
+      });
+  };
+
+  const indexPropertyLimit = (limit) => {
+    fetch(`http://localhost:3000/property?limit=${limit}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setPropertyListLimit(res);
       });
   };
 
@@ -64,6 +73,7 @@ export const GlobalProvider = ({ children }) => {
       .then((res) => {
         indexProperty();
         showProperty(updatedProperty.id);
+        indexPropertyLimit(12);
       });
   };
 
@@ -78,6 +88,7 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     indexProperty();
     indexCategory();
+    indexPropertyLimit(9);
   }, []);
 
   // Advanced Research Form Field Data (in SearchPage.jsx)
@@ -106,6 +117,7 @@ export const GlobalProvider = ({ children }) => {
         // Category
         categoryList,
         updateProperty,
+        propertyListLimit,
       }}
     >
       {children}
