@@ -81,13 +81,10 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   // Advanced Research Form Field Data (in SearchPage.jsx)
-  const [search, setSearch] = useState({ isActivated: false, value: "" });
-  const [tipologia, setTipologia] = useState({
-    isActivated: false,
-    value: "",
-  });
-  const [stanze, setStanze] = useState({ isActivated: false, value: "0" });
-  const [letti, setLetti] = useState({ isActivated: false, value: "0" });
+  const [search, setSearch] = useState("");
+  const [tipologia, setTipologia] = useState("");
+  const [stanze, setStanze] = useState("0");
+  const [letti, setLetti] = useState("0");
 
   return (
     <GlobalContext.Provider
