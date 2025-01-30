@@ -7,6 +7,7 @@ export const useGlobalContext = () => useContext(GlobalContext);
 export const GlobalProvider = ({ children }) => {
   const [categoryList, setCategoryList] = useState([]);
   const [propertyList, setPropertyList] = useState([]);
+  const [propertyListFiltered, setPropertyListFiltered] = useState([]);
   const [propertyListLimit, setPropertyListLimit] = useState([]);
   const [property, setProperty] = useState({
     id: 0,
@@ -38,6 +39,14 @@ export const GlobalProvider = ({ children }) => {
       .then((res) => res.json())
       .then((res) => {
         setPropertyListLimit(res);
+      });
+  };
+
+  const indexPropertyFiltered = () => {
+    fetch(`http://localhost:3000/propertyFiltered`)
+      .then((res) => res.json())
+      .then((res) => {
+        setPropertyListFiltered(res);
       });
   };
 
@@ -73,7 +82,8 @@ export const GlobalProvider = ({ children }) => {
       .then((res) => {
         indexProperty();
         showProperty(updatedProperty.id);
-        indexPropertyLimit(12);
+        indexPropertyLimit(9);
+        indexPropertyFiltered();
       });
   };
 
@@ -89,6 +99,7 @@ export const GlobalProvider = ({ children }) => {
     indexProperty();
     indexCategory();
     indexPropertyLimit(9);
+    indexPropertyFiltered();
   }, []);
 
   // Advanced Research Form Field Data (in SearchPage.jsx)
@@ -118,6 +129,7 @@ export const GlobalProvider = ({ children }) => {
         categoryList,
         updateProperty,
         propertyListLimit,
+        propertyListFiltered,
       }}
     >
       {children}

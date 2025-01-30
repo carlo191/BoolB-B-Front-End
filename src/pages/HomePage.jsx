@@ -9,8 +9,24 @@ import CarouselItem from "../components/carouselItem/CarouselItem";
 import CarouselButton from "../components/carouselButton/CarouselButton";
 
 export default function HomePage() {
-  const { propertyListLimit, search, setSearch } = useGlobalContext();
+  const {
+    propertyListLimit,
+    search,
+    setSearch,
+    propertyListFiltered,
+    categoryList,
+  } = useGlobalContext();
   const navigate = useNavigate();
+
+  const [filtered, setFiltered] = useState({
+    Appartamento: [],
+    Villa: [],
+    Loft: [],
+    Attico: [],
+    Monolocale: [],
+    Rustico: [],
+    Casa_indipendente: [],
+  });
 
   function handleSearch(e) {
     setSearch({ isActived: true, value: e.target.value });
@@ -109,6 +125,30 @@ export default function HomePage() {
         <div className="col-2">
           <h2>I migliori immobili per le persone</h2>
         </div>
+      </div>
+      <div className="row">
+        <div className="col-12">
+          <h2>Immobili in evidenza</h2>
+        </div>
+        {categoryList.map((category) => {
+          return (
+            <div key={category.id} className="mb-5 mt-5">
+              <h2>{category.tipologia}</h2>
+              <div className="row">
+                {propertyListFiltered.map((property) => {
+                  if (property.id_tipologia === category.id) {
+                    return (
+                      <div className="col-4" key={property.id}>
+                        <PropertyCard property={property} />
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

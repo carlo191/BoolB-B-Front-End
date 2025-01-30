@@ -57,7 +57,7 @@ export default function PropertyCard({ property }) {
               </li>
               <li>
                 <i className="fa-solid fa-bed me-2"></i>
-                {property.numero_letti} camere da letto &nbsp;
+                {property.numero_letti} posti letto &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-shower me-2"></i>
