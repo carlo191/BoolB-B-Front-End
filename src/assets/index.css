@@ -65,9 +65,15 @@ main {
 }
 
 /* HEART */
-.heart-pill {
+.heart-pill-top-right {
   top: 9px;
   right: 9px;
+  padding: 10px 12px;
+}
+.heart-pill-bottom-center {
+  bottom: 9px;
+  left: 50%;
+  transform: translate(-50%, 0);
   padding: 10px 12px;
 }
 
@@ -76,7 +82,8 @@ main {
   transition: color 0.15s;
 }
 
-.heart-pill:hover .heart {
+.heart-pill-top-right:hover .heart,
+.heart-pill-bottom-center:hover .heart {
   color: red;
   transition: color 0.15s;
 }

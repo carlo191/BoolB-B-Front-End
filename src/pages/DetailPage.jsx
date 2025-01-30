@@ -72,23 +72,14 @@ export default function DetailPage() {
           {/* Property Image */}
           <div className="col-12 col-sm-6 immagine-dettaglio">
             <img
-              className="img-fluid "
+              className="img-fluid rounded-4"
               src={property.immagine}
               alt={property.immagine}
             />
 
-            {/* Badge */}
-            <span className="badge-dettaglio">
-              <Badge
-                tipologia={property.tipologia}
-                type={"primary"}
-                text={null}
-              />
-            </span>
-
             {/* Heart */}
             <span
-              className="position-absolute badge rounded-pill heart-pill text-bg-light fs-6 fw-semibold me-2"
+              className="position-absolute badge rounded-pill heart-pill-bottom-center text-bg-light fs-6 fw-semibold me-2"
               onClick={handleHeartClick}
             >
               <i className="fa-solid fa-heart fa-2xl heart" />
@@ -100,30 +91,38 @@ export default function DetailPage() {
           {/* Property Description */}
           <div className="col-12 col-sm-6">
             <ul>
-              <li>
-                <h1>{property.nome}</h1>
+              <li className="">
+                <h1 className="m-0">{property.nome}</h1>
+                <p className="fs-4 m-0 mb-2">{property.tipologia}</p>
+                <hr className="mt-3 mb-2" />
               </li>
               <li>
+                <i className="fa-solid fa-location-dot me-2"></i>
                 <strong>Indirizzo: </strong>
                 {property.indirizzo}
               </li>
               <li>
+                <i className="fa-solid fa-house me-2"></i>
                 <strong>Numero stanze: </strong>
                 {property.numero_stanze}
               </li>
               <li>
+                <i className="fa-solid fa-bed me-2"></i>
                 <strong>Numero letti: </strong>
                 {property.numero_letti}
               </li>
               <li>
+                <i className="fa-solid fa-shower me-2"></i>
                 <strong>Numero bagni: </strong>
                 {property.numero_bagni}
               </li>
               <li>
+                <i className="fa-solid fa-ruler-combined me-2"></i>
                 <strong>Metri quadrati: </strong>
                 {property.metri_quadrati}
               </li>
               <li>
+                <i className="fa-solid fa-envelope me-2"></i>
                 <strong>Email proprietario: </strong>
                 {property.email_proprietario}
               </li>
@@ -133,7 +132,11 @@ export default function DetailPage() {
 
         {/* Form New Review */}
         <div className="border rounded-5 my-5 p-4">
-          <h2 className="mb-3">Scrivi la tua recensione:</h2>
+          <h2 className="mb-3">
+            <i class="fa-solid fa-pencil fa-md me-2"></i>
+            Scrivi la tua recensione:
+          </h2>
+
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               {/* Username Input */}

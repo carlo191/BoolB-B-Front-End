@@ -32,7 +32,7 @@ export default function PropertyCard({ property }) {
 
         {/* Heart */}
         <span
-          className="position-absolute badge rounded-pill heart-pill text-bg-light fs-6 fw-semibold"
+          className="position-absolute badge rounded-pill heart-pill-top-right text-bg-light fs-6 fw-semibold"
           onClick={handleHeartClick}
         >
           <i className="fa-solid fa-heart fa-xl heart" />
