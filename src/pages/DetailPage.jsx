@@ -8,6 +8,20 @@ import { useGlobalContext } from "../context/GlobalContext";
 // Components
 import ReviewList from "../components/Review/ReviewList";
 
+const addReviewToDatabase = (review) =>
+  fetch("http://localhost:3000/reviews", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      nome: review.nome_utente,
+      testo: review.contenuto,
+      voto: review.voto,
+      id_immobile: review.id_immobile,
+    }),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.error("Errore:", err));
+
 export default function DetailPage() {
   const { id } = useParams();
   const { showProperty, property, updateProperty } = useGlobalContext();
@@ -18,10 +32,16 @@ export default function DetailPage() {
     voto: 1,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setReviews([...reviews, formData]);
-    setFormData({ nome: "", testo: "", voto: 1 });
+    const newReview = { ...formData, id_immobile: id };
+
+    const addedReview = await addReviewToDatabase(newReview);
+
+    if (addedReview) {
+      setReviews([...reviews, addedReview]);
+      setFormData({ nome: "", testo: "", voto: 1 });
+    }
   };
 
   const handleChange = (e) => {
@@ -128,7 +148,7 @@ export default function DetailPage() {
             className="form-control"
             id="nome"
             placeholder="nome"
-            value={formData.nome}
+            value={formData.nome_utente}
             onChange={handleChange}
           />
         </div>
@@ -140,7 +160,7 @@ export default function DetailPage() {
             className="form-control"
             id="testo"
             rows="3"
-            value={formData.testo}
+            value={formData.contenuto}
             onChange={handleChange}
           ></textarea>
         </div>
@@ -169,8 +189,8 @@ export default function DetailPage() {
         {reviews.map((review, index) => (
           <div key={index} className="card mb-2">
             <div className="card-body">
-              <h5 className="card-title">{review.nome}</h5>
-              <p className="card-text">{review.testo}</p>
+              <h5 className="card-title">{review.nome_utente}</h5>
+              <p className="card-text">{review.contenuto}</p>
               <p className="card-text">Voto: {review.voto}</p>
             </div>
           </div>
