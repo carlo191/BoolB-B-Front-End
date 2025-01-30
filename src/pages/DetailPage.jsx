@@ -35,7 +35,7 @@ export default function DetailPage() {
 			<div className="container">
 				<div className="row">
 					{/* Property Image */}
-					<div className="col-12 col-sm-6 immagine-dettaglio">
+					<div className="col-12 col-sm-9 immagine-dettaglio">
 						<img
 							className="img-fluid "
 							src={property.immagine}
@@ -63,33 +63,34 @@ export default function DetailPage() {
 					</div>
 
 					{/* Property Description */}
-					<div className="col-12 col-sm-6">
+					<div className="col-12 col-sm-3">
 						<ul>
 							<li>
 								<h1>{property.nome}</h1>
 							</li>
 							<li>
-								<strong>Indirizzo: </strong>
+								<i className="fa-solid fa-location-dot fa-xl me-2"></i>
 								{property.indirizzo}
 							</li>
 							<li>
-								<strong>Numero stanze: </strong>
-								{property.numero_stanze}
+								<i className="fa-solid fa-house fa-xl me-2"></i>
+								{property.numero_stanze} stanze
 							</li>
 							<li>
-								<strong>Numero letti: </strong>
-								{property.numero_letti}
+								<i className="fa-solid fa-bed fa-xl me-2"></i>
+								{property.numero_letti} camere da letto
 							</li>
 							<li>
-								<strong>Numero bagni: </strong>
-								{property.numero_bagni}
+								<i className="fa-solid fa-shower fa-xl me-2"></i>
+								<i className="fa-solid fa-toilet fa-xl me-2"></i>
+								{property.numero_bagni} bagni
 							</li>
 							<li>
-								<strong>Metri quadrati: </strong>
-								{property.metri_quadrati}
+								<i className="fa-solid fa-ruler-combined fa-xl me-2"></i>
+								{property.metri_quadrati} mq
 							</li>
 							<li>
-								<strong>Email proprietario: </strong>
+								<i className="fa-solid fa-envelope fa-xl me-2"></i>
 								{property.email_proprietario}
 							</li>
 						</ul>
