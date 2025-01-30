@@ -21,35 +21,31 @@ export default function SearchPage() {
     let filtered = propertyList.filter((property) => {
       // Check the filters:
       // Search
-      if (
-        search.value &&
-        !property.indirizzo.toLowerCase().includes(search.value.toLowerCase())
-      )
-        return false;
-      // Tipologia
-      if (
-        tipologia.isActivated &&
-        tipologia.value &&
-        property.tipologia !== tipologia.value
-      )
-        return false;
+      if (!property.indirizzo.toLowerCase().includes(search.toLowerCase())) {
+        console.log("1");
 
+        return false;
+      }
+      // Tipologia
+      if (!property.tipologia.toLowerCase().includes(tipologia.toLowerCase())) {
+        console.log("2");
+
+        return false;
+      }
       // Stanze
-      const stanzeNumber = parseInt(stanze.value);
-      if (
-        stanze.isActivated &&
-        !isNaN(stanzeNumber) &&
-        property.numero_stanze < stanzeNumber
-      )
+      const stanzeNumber = parseInt(stanze);
+      if (!isNaN(stanzeNumber) && property.numero_stanze < stanzeNumber) {
+        console.log("3");
+
         return false;
+      }
       // Letti
-      const lettiNumber = parseInt(letti.value);
-      if (
-        letti.isActivated &&
-        !isNaN(lettiNumber) &&
-        property.numero_letti < lettiNumber
-      )
+      const lettiNumber = parseInt(letti);
+      if (!isNaN(lettiNumber) && property.numero_letti < lettiNumber) {
+        console.log("4");
+
         return false;
+      }
 
       return true;
     });
@@ -81,7 +77,7 @@ export default function SearchPage() {
 
         {/* Sidebar Header */}
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title"> Filtri</h5>
+          <h5 className="offcanvas-title">Filtri</h5>
         </div>
 
         {/* Sidebar Body */}
@@ -107,9 +103,7 @@ export default function SearchPage() {
                     className="form-control"
                     placeholder="Inserisci luogo o indirizzo"
                     value={search.value}
-                    onChange={(e) =>
-                      setSearch({ ...search, value: e.target.value })
-                    }
+                    onChange={(e) => setSearch(e.target.value)}
                   />
                 </div>
               </div>
@@ -121,33 +115,16 @@ export default function SearchPage() {
                 </label>
 
                 <div className="d-flex align-items-center">
-                  {/* Activation Box */}
-                  <input
-                    type="checkbox"
-                    id="typeActivation"
-                    className="form-check-input big-checkbox m-0 me-3"
-                    checked={tipologia.isActivated}
-                    onChange={(e) => {
-                      setTipologia({
-                        ...tipologia,
-                        isActivated: e.target.checked,
-                      });
-                    }}
-                  />
-
                   {/* Input Field */}
                   <select
                     id="typeInput"
                     className="form-select"
-                    disabled={!tipologia.isActivated}
                     value={tipologia.value}
                     onChange={(e) => {
-                      setTipologia({ ...tipologia, value: e.target.value });
+                      setTipologia(e.target.value);
                     }}
                   >
-                    <option disabled value="">
-                      Seleziona Tipologia
-                    </option>
+                    <option value="">Seleziona Tipologia</option>
                     {categoryList.map((category) => (
                       <option
                         key={category.tipologia}
@@ -167,17 +144,6 @@ export default function SearchPage() {
                 </label>
 
                 <div className="d-flex align-items-center">
-                  {/* Activation Box */}
-                  <input
-                    type="checkbox"
-                    id="roomsActivation"
-                    className="form-check-input big-checkbox m-0 me-3"
-                    checked={stanze.isActivated}
-                    onChange={(e) => {
-                      setStanze({ ...stanze, isActivated: e.target.checked });
-                    }}
-                  />
-
                   {/* Input Field */}
                   <input
                     type="number"
@@ -186,12 +152,11 @@ export default function SearchPage() {
                     placeholder="Inserisci un numero"
                     min="0"
                     inputMode="numeric"
-                    disabled={!stanze.isActivated}
                     value={stanze.value}
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) {
-                        setStanze({ ...stanze, value });
+                        setStanze(e.target.value);
                       }
                     }}
                   />
@@ -205,17 +170,6 @@ export default function SearchPage() {
                 </label>
 
                 <div className="d-flex align-items-center">
-                  {/* Activation Box */}
-                  <input
-                    type="checkbox"
-                    id="bedsActivation"
-                    className="form-check-input big-checkbox m-0 me-3"
-                    checked={letti.isActivated}
-                    onChange={(e) => {
-                      setLetti({ ...letti, isActivated: e.target.checked });
-                    }}
-                  />
-
                   {/* Input Field */}
                   <input
                     type="number"
@@ -224,12 +178,11 @@ export default function SearchPage() {
                     placeholder="Inserisci un numero"
                     min="0"
                     inputMode="numeric"
-                    disabled={!letti.isActivated}
                     value={letti.value}
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) {
-                        setLetti({ ...letti, value });
+                        setLetti(e.target.value);
                       }
                     }}
                   />
