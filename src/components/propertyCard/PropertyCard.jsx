@@ -65,11 +65,11 @@ export default function PropertyCard({ property }) {
 							type={"success"}
 							text={"Metri quadrati: "}
 						/>
-						{/* <Badge
-							tipologia={property.recensioni}
+						<Badge
+							tipologia={property.numero_recensioni}
 							type={"success"}
 							text={"Recensioni: "}
-						/> */}
+						/>
 					</div>
 				</div>
 			</div>
