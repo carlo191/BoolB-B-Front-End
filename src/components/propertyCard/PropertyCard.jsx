@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Badge from "../badge/Badge";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function PropertyCard({ property }) {
@@ -18,7 +17,7 @@ export default function PropertyCard({ property }) {
 
   return (
     <Link to={`/property/${property.id}`}>
-      <div className="card property-card p-0 ">
+      <div className="card property-card p-0 h-100">
         {/* Property Image */}
         <img
           src={property.immagine}
@@ -37,23 +36,23 @@ export default function PropertyCard({ property }) {
         </span>
 
         {/* Property Description */}
-        <div className="card-body h-100 position-relative">
-          {/* Badge */}
-          <span className="position-absolute card-badge mt-1 ms-2">
-            <Badge
-              tipologia={property.tipologia}
-              type={"primary"}
-              text={null}
-            />
-          </span>
+        <div className="card-body position-relative">
+          <h5 className="card-title mb-1">{property.nome}</h5>
+          <hr className="my-2" />
 
-          <h5 className="card-title">{property.nome}</h5>
-          <p className="card-text">{property.indirizzo}</p>
+          <p className="card-text">
+            <strong>Indirizzo:</strong> &nbsp;
+            {property.indirizzo}
+          </p>
 
-          <div className="mt-2">
+          <div className="mt-3">
             <ul className="d-flex flex-wrap mb-1">
               <li>
                 <i className="fa-solid fa-house me-2"></i>
+                {property.tipologia}
+              </li>
+              <li>
+                <i className="fa-solid fa-door-closed me-2"></i>
                 {property.numero_stanze} stanze &nbsp;
               </li>
               <li>
