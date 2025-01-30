@@ -53,8 +53,6 @@ export default function DetailPage() {
     event.stopPropagation();
     event.preventDefault();
 
-    console.log(property);
-
     updateProperty({
       ...property,
       immagine: property.immagine.split("/").pop(),

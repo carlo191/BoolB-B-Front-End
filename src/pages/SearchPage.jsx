@@ -22,28 +22,20 @@ export default function SearchPage() {
       // Check the filters:
       // Search
       if (!property.indirizzo.toLowerCase().includes(search.toLowerCase())) {
-        console.log("1");
-
         return false;
       }
       // Tipologia
       if (!property.tipologia.toLowerCase().includes(tipologia.toLowerCase())) {
-        console.log("2");
-
         return false;
       }
       // Stanze
       const stanzeNumber = parseInt(stanze);
       if (!isNaN(stanzeNumber) && property.numero_stanze < stanzeNumber) {
-        console.log("3");
-
         return false;
       }
       // Letti
       const lettiNumber = parseInt(letti);
       if (!isNaN(lettiNumber) && property.numero_letti < lettiNumber) {
-        console.log("4");
-
         return false;
       }
 
@@ -54,8 +46,15 @@ export default function SearchPage() {
   };
 
   useEffect(() => {
+    if (propertyList.length > 0) {
+      setFilteredList(propertyList);
+    }
+  }, [propertyList]);
+
+  function handleAdvancedSearchSubmit(e) {
+    e.preventDefault();
     applyFilters();
-  }, [propertyList, search, tipologia, stanze, letti]);
+  }
 
   return (
     <div className="container">
@@ -85,7 +84,7 @@ export default function SearchPage() {
           {/* Form Advanced Filters */}
           <form
             className="navbar-form navbar-left mb-5"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleAdvancedSearchSubmit}
           >
             <div className="row row-cols-1 g-3">
               {/* City, address */}
@@ -101,8 +100,7 @@ export default function SearchPage() {
                     type="text"
                     id="searchInput"
                     className="form-control"
-                    placeholder="Inserisci luogo o indirizzo"
-                    value={search.value}
+                    value={search}
                     onChange={(e) => setSearch(e.target.value)}
                   />
                 </div>
@@ -119,7 +117,7 @@ export default function SearchPage() {
                   <select
                     id="typeInput"
                     className="form-select"
-                    value={tipologia.value}
+                    value={tipologia}
                     onChange={(e) => {
                       setTipologia(e.target.value);
                     }}
@@ -149,10 +147,9 @@ export default function SearchPage() {
                     type="number"
                     id="roomsNumberInput"
                     className="form-control"
-                    placeholder="Inserisci un numero"
                     min="0"
                     inputMode="numeric"
-                    value={stanze.value}
+                    value={stanze}
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) {
@@ -175,10 +172,9 @@ export default function SearchPage() {
                     type="number"
                     id="bedsNumberInput"
                     className="form-control"
-                    placeholder="Inserisci un numero"
                     min="0"
                     inputMode="numeric"
-                    value={letti.value}
+                    value={letti}
                     onChange={(e) => {
                       const value = e.target.value;
                       if (/^\d*$/.test(value)) {
@@ -190,13 +186,17 @@ export default function SearchPage() {
               </div>
 
               {/* Apply Filters Button */}
+              <div className="col d-flex justify-content-center">
+                <button type="submit" className="btn btn-primary w-25 mt-2">
+                  Cerca
+                </button>
+              </div>
             </div>
           </form>
         </div>
       </div>
 
       {/* Showing Filtered Properties */}
-
       {filteredList.length > 0 ? (
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {filteredList.map((property) => (
