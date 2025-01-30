@@ -38,7 +38,6 @@ export default function SearchPage() {
       if (!isNaN(lettiNumber) && property.numero_letti < lettiNumber) {
         return false;
       }
-      console.log("ciao");
 
       return true;
     });
