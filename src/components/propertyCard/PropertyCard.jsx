@@ -18,17 +18,13 @@ export default function PropertyCard({ property }) {
 
   return (
     <Link to={`/property/${property.id}`}>
-      <div className="card property-card p-0 position-relative">
+      <div className="card property-card p-0 ">
         {/* Property Image */}
         <img
           src={property.immagine}
           className="card-img-top "
           alt={property.immagine}
         />
-        {/* Badge */}
-        <span className="position-absolute top-5 start-0 mt-1 ms-2">
-          <Badge tipologia={property.tipologia} type={"primary"} text={null} />
-        </span>
 
         {/* Heart */}
         <span
@@ -41,9 +37,19 @@ export default function PropertyCard({ property }) {
         </span>
 
         {/* Property Description */}
-        <div className="card-body h-100">
+        <div className="card-body h-100 position-relative">
+          {/* Badge */}
+          <span className="position-absolute card-badge mt-1 ms-2">
+            <Badge
+              tipologia={property.tipologia}
+              type={"primary"}
+              text={null}
+            />
+          </span>
+
           <h5 className="card-title">{property.nome}</h5>
           <p className="card-text">{property.indirizzo}</p>
+
           <div className="mt-2">
             <ul className="d-flex flex-wrap mb-1">
               <li>
