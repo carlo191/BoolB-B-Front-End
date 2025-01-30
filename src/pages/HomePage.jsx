@@ -41,7 +41,10 @@ export default function HomePage() {
 					</div>
 					<div className="col-2">
 						<button type="submit" className="btn btn-primary w-100">
-							Cerca
+							<span className="me-2 d-none d-md-inline-block">Cerca</span>
+							<span>
+								<i className="fa-solid fa-magnifying-glass"></i>
+							</span>
 						</button>
 					</div>
 				</div>
