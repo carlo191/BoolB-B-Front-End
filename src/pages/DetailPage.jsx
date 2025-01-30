@@ -130,59 +130,61 @@ export default function DetailPage() {
             </ul>
           </div>
         </div>
-        {/* Property Details */}
-        <div className="row mt-2">
-          <div></div>
-        </div>
-      </div>
-      <hr />
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="nome" className="form-label">
-            Nome
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="nome"
-            placeholder="nome"
-            value={formData.nome_utente}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="testo" className="form-label">
-            Example textarea
-          </label>
-          <textarea
-            className="form-control"
-            id="testo"
-            rows="3"
-            value={formData.contenuto}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="voto" className="form-label">
-            Voto
-          </label>
-          <input
-            type="number"
-            min="1"
-            max="5"
-            className="form-control"
-            id="voto"
-            placeholder="1"
-            value={formData.voto}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Aggiungi Recensione
-        </button>
-      </form>
 
-      <div className="mt-4">
+        {/* Form New Review */}
+        <div className="border rounded-5 my-5 p-4">
+          <h2 className="mb-3">Scrivi la tua recensione:</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              {/* Username Input */}
+              <label htmlFor="nome" className="form-label">
+                Username:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="nome"
+                value={formData.nome_utente}
+                onChange={handleChange}
+              />
+            </div>
+            {/* Description Input */}
+            <div className="mb-3">
+              <label htmlFor="testo" className="form-label">
+                Testo:
+              </label>
+              <textarea
+                className="form-control"
+                id="testo"
+                rows="3"
+                value={formData.contenuto}
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            {/* Vote Input */}
+            <div className="mb-3">
+              <label htmlFor="voto" className="form-label">
+                Voto:
+              </label>
+              <input
+                type="number"
+                min="1"
+                max="5"
+                className="form-control"
+                id="voto"
+                value={formData.voto}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Submit */}
+            <button type="submit" className="btn btn-primary">
+              Aggiungi recensione
+            </button>
+          </form>
+        </div>
+
+        {/* Review List */}
         <ReviewList reviews={property.recensioni} />
         {reviews.map((review, index) => (
           <div key={index} className="card mb-2">
