@@ -35,12 +35,26 @@ export default function DetailPage() {
 
     console.log(property);
 
+<<<<<<< HEAD
     updateProperty({
       ...property,
       immagine: property.immagine.split("/").pop(),
       numero_like: property.numero_like + 1,
     });
   };
+=======
+	return (
+		<>
+			<div className="container">
+				<div className="row">
+					{/* Property Image */}
+					<div className="col-12 col-sm-9 immagine-dettaglio">
+						<img
+							className="img-fluid "
+							src={property.immagine}
+							alt={property.immagine}
+						/>
+>>>>>>> e5bdc72f4b4d0eac010a760e693e3daf6a5ff90d
 
   // Load Data
   useEffect(() => {
