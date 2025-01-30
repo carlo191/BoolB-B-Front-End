@@ -48,7 +48,7 @@ export default function Navbar() {
 						</li>
 					</ul>
 
-					<span className="nav-link">
+					{/* <span className="nav-link">
 						<div className="dropdown">
 							<button
 								type="button"
@@ -77,7 +77,7 @@ export default function Navbar() {
 								</li>
 							</ul>
 						</div>
-					</span>
+					</span> */}
 				</div>
 			</div>
 		</nav>
