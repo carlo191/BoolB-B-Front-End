@@ -45,54 +45,28 @@ export default function PropertyCard({ property }) {
           <h5 className="card-title">{property.nome}</h5>
           <p className="card-text">{property.indirizzo}</p>
           <div className="mt-2">
-            <ul className="d-flex flex-wrap">
+            <ul className="d-flex flex-wrap mb-1">
               <li>
                 <i className="fa-solid fa-house me-2"></i>
-                {property.numero_stanze} stanze
+                {property.numero_stanze} stanze &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-bed me-2"></i>
-                {property.numero_letti} camere da letto
+                {property.numero_letti} camere da letto &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-shower me-2"></i>
-                <i className="fa-solid fa-toilet me-2"></i>
-                {property.numero_bagni} bagni
+                {property.numero_bagni} bagni &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-ruler-combined me-2"></i>
-                {property.metri_quadrati} mq
+                {property.metri_quadrati} mq &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-comment-dots me-2"></i>
-                {property.numero_recensioni} recensioni
+                {property.numero_recensioni} recensioni &nbsp;
               </li>
             </ul>
-            {/* <Badge
-							tipologia={property.numero_stanze}
-							type={"success"}
-							text={"Stanze: "}
-						/>
-						<Badge
-							tipologia={property.numero_letti}
-							type={"success"}
-							text={"Letti: "}
-						/>
-						<Badge
-							tipologia={property.numero_bagni}
-							type={"success"}
-							text={"Bagni: "}
-						/>
-						<Badge
-							tipologia={property.metri_quadrati}
-							type={"success"}
-							text={"Metri quadrati: "}
-						/>
-						<Badge
-							tipologia={property.numero_recensioni}
-							type={"success"}
-							text={"Recensioni: "}
-						/> */}
           </div>
         </div>
       </div>

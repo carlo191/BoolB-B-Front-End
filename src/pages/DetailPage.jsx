@@ -133,7 +133,7 @@ export default function DetailPage() {
         {/* Form New Review */}
         <div className="border rounded-5 my-5 p-4">
           <h2 className="mb-3">
-            <i class="fa-solid fa-pencil fa-md me-2"></i>
+            <i className="fa-solid fa-pencil fa-md me-2"></i>
             Scrivi la tua recensione:
           </h2>
 
