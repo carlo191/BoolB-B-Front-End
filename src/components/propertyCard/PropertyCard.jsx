@@ -18,21 +18,17 @@ export default function PropertyCard({ property }) {
 
   return (
     <Link to={`/property/${property.id}`}>
-      <div className="card property-card p-0 position-relative">
+      <div className="card property-card p-0 ">
         {/* Property Image */}
         <img
           src={property.immagine}
           className="card-img-top "
           alt={property.immagine}
         />
-        {/* Badge */}
-        <span className="position-absolute top-5 start-0 mt-1 ms-2">
-          <Badge tipologia={property.tipologia} type={"primary"} text={null} />
-        </span>
 
         {/* Heart */}
         <span
-          className="position-absolute badge rounded-pill heart-pill text-bg-light fs-6 fw-semibold"
+          className="position-absolute badge rounded-pill heart-pill-top-right text-bg-light fs-6 fw-semibold"
           onClick={handleHeartClick}
         >
           <i className="fa-solid fa-heart fa-xl heart" />
@@ -41,30 +37,40 @@ export default function PropertyCard({ property }) {
         </span>
 
         {/* Property Description */}
-        <div className="card-body h-100">
+        <div className="card-body h-100 position-relative">
+          {/* Badge */}
+          <span className="position-absolute card-badge mt-1 ms-2">
+            <Badge
+              tipologia={property.tipologia}
+              type={"primary"}
+              text={null}
+            />
+          </span>
+
           <h5 className="card-title">{property.nome}</h5>
           <p className="card-text">{property.indirizzo}</p>
+
           <div className="mt-2">
-            <ul className="d-flex flex-wrap">
+            <ul className="d-flex flex-wrap mb-1">
               <li>
                 <i className="fa-solid fa-house me-2"></i>
-                {property.numero_stanze} stanze
+                {property.numero_stanze} stanze &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-bed me-2"></i>
-                {property.numero_letti} camere da letto
+                {property.numero_letti} camere da letto &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-shower me-2"></i>
-                {property.numero_bagni} bagni
+                {property.numero_bagni} bagni &nbsp;
               </li>
               <li>
                 <i className="fa-solid fa-ruler-combined me-2"></i>
-                {property.metri_quadrati} mq
+                {property.metri_quadrati} mq &nbsp;
               </li>
               <li>
-                <i class="fa-solid fa-comment-dots me-2"></i>
-                {property.numero_recensioni} recensioni
+                <i className="fa-solid fa-comment-dots me-2"></i>
+                {property.numero_recensioni} recensioni &nbsp;
               </li>
             </ul>
           </div>
