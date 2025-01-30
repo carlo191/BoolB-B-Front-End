@@ -105,7 +105,7 @@ export default function SearchPage() {
                     type="text"
                     id="searchInput"
                     className="form-control"
-                    placeholder="..."
+                    placeholder="Inserisci luogo o indirizzo"
                     value={search.value}
                     onChange={(e) =>
                       setSearch({ ...search, value: e.target.value })
