@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function FormHouse() {
-  const { storeProperty, property } = useGlobalContext();
+  const { storeProperty, categoryList } = useGlobalContext();
   const [formData, setFormData] = useState({
     nome: "",
     numero_stanze: "",
@@ -13,13 +13,13 @@ export default function FormHouse() {
     metri_quadrati: "",
     indirizzo: "",
     email_proprietario: "",
-    immagine: null,
+    immagine: "default.jpg",
     id_tipologia: "",
   });
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Validazione lunghezza minima
+    console.log(formData);
     if (
       formData.nome.length < 3 ||
       formData.indirizzo.length < 5 ||
@@ -40,7 +40,7 @@ export default function FormHouse() {
       metri_quadrati: "",
       indirizzo: "",
       email_proprietario: "",
-      immagine: "",
+      immagine: "default.jpg",
       id_tipologia: "",
     });
   }
@@ -53,10 +53,18 @@ export default function FormHouse() {
       "numero_bagni",
       "metri_quadrati",
     ];
-    setFormData((formData) => ({
-      ...formData,
-      [name]: numberFields.includes(name) ? parseInt(value) || "" : value,
-    }));
+
+    if (e.target.name === "immagine") {
+      setFormData((formData) => ({
+        ...formData,
+        [e.target.name]: "default.jpg",
+      }));
+    } else {
+      setFormData((formData) => ({
+        ...formData,
+        [name]: numberFields.includes(name) ? parseInt(value) || "" : value,
+      }));
+    }
   }
 
   return (
@@ -194,24 +202,20 @@ export default function FormHouse() {
           <label htmlFor="id_tipologia" className="form-label">
             Tipologia:
           </label>
+
           <select
             name="id_tipologia"
-            className="form-control"
             id="id_tipologia"
+            className="form-select"
             value={formData.id_tipologia}
             onChange={handleChange}
           >
             <option value="">Seleziona Tipologia</option>
-            <option value="Appartamento">Appartamento</option>
-            <option value="Villa">Villa</option>
-            <option value="Attico">Attico</option>
-            <option value="Loft">Loft</option>
-            <option value="Monolocale">Monolocale</option>
-            <option value="Baita">Baita</option>
-            <option value="Casa indipendente">Casa indipendente</option>
-            <option value="Cottage">Cottage</option>
-            <option value="Residenza storica">Residenza storica</option>
-            <option value="Villetta a schiera">Villetta a schiera</option>
+            {categoryList.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.tipologia}
+              </option>
+            ))}
           </select>
         </div>
         {/* Submit */}

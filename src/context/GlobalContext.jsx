@@ -115,6 +115,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const storeProperty = (newProperty) => {
+    console.log(newProperty);
     fetch(`http://localhost:3000/property`, {
       method: "POST",
       headers: {
@@ -137,11 +138,9 @@ export const GlobalProvider = ({ children }) => {
       .then((res) => res.json())
       .then((res) => {
         indexProperty();
-        showProperty(res.id);
         indexPropertyLimit(9);
         indexPropertyFiltered();
-      })
-      .catch((error) => console.error("Errore in storeProperty:", error));
+      });
   };
 
   useEffect(() => {
