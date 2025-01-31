@@ -113,6 +113,24 @@ export const GlobalProvider = ({ children }) => {
         showProperty(review.id_immobile);
       });
   };
+  /*const storeReview = (review) => {
+    fetch(`http://localhost:3000/review`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id_immobile: review.id_immobile,
+        nome_utente: review.nome_utente,
+        contenuto: review.contenuto,
+        voto: review.voto,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        showProperty(review.id_immobile);
+      });
+  };*/
 
   useEffect(() => {
     indexProperty();
