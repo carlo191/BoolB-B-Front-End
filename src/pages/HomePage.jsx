@@ -107,7 +107,7 @@ export default function HomePage() {
                 data-bs-slide="prev"
               >
                 <i
-                  class="fa-solid fa-2xl fa-circle-left text-darkgray"
+                  className="fa-solid fa-2xl fa-circle-left text-darkgray"
                   aria-hidden="true"
                 ></i>
                 <span className="visually-hidden">Previous</span>
@@ -121,7 +121,7 @@ export default function HomePage() {
                 data-bs-slide="next"
               >
                 <i
-                  class="fa-solid fa-2xl fa-circle-right text-darkgray"
+                  className="fa-solid fa-2xl fa-circle-right text-darkgray"
                   aria-hidden="true"
                 ></i>
                 <span className="visually-hidden">Next</span>
