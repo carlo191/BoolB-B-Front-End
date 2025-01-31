@@ -130,7 +130,7 @@ export default function DetailPage() {
       >
         <div className="modal-dialog">
           <div className="modal-content bg-transparent border-0">
-            <div className="modal-body d-flex flex-column align-items-center">
+            <div className="modal-body d-flex flex-column align-items-center p-0">
               <img
                 className="img-fluid rounded-4 detail-img"
                 src={property.immagine}
