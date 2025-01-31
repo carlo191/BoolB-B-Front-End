@@ -1,7 +1,23 @@
-export default function ReviewForm() {
-    
+import { useState } from "react";
+
+export default function ReviewForm({}) {
+  const [formData, setFormData] = useState({
+    nome_utente: "",
+    contenuto: "",
+    voto: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+    });
+  };
+
   return (
-    
     <div className="border rounded-5 my-5 p-4">
       <h2 className="mb-3">
         <i className="fa-solid fa-pencil fa-md me-2"></i>
@@ -11,25 +27,25 @@ export default function ReviewForm() {
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           {/* Username Input */}
-          <label htmlFor="nome" className="form-label">
+          <label htmlFor="nome_utente" className="form-label">
             Username:
           </label>
           <input
             type="text"
             className="form-control"
-            id="nome"
+            id="nome_utente"
             value={formData.nome_utente}
             onChange={handleChange}
           />
         </div>
         {/* Description Input */}
         <div className="mb-3">
-          <label htmlFor="testo" className="form-label">
+          <label htmlFor="contenuto" className="form-label">
             Testo:
           </label>
           <textarea
             className="form-control"
-            id="testo"
+            id="contenuto"
             rows="3"
             value={formData.contenuto}
             onChange={handleChange}
