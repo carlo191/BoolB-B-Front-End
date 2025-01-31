@@ -10,6 +10,7 @@ import DefaultLayout from "./layout/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import SearchPage from "./pages/SearchPage";
+import AddPage from "./pages/AddPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route index element={<HomePage />}></Route>
               <Route path="/property/:id" element={<DetailPage />}></Route>
               <Route path="/search" element={<SearchPage />}></Route>
+              <Route path="/add" element={<AddPage />}></Route>
               <Route path="*" element={""}></Route>
             </Route>
           </Routes>
