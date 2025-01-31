@@ -7,7 +7,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 // Components
 import ReviewList from "../components/Review/ReviewList";
-import FormMessage from "../components/formMessage/formMessage";
+import FormMessage from "../components/formMessage/FormMessage";
 
 const addReviewToDatabase = (review) =>
 	fetch("http://localhost:3000/reviews", {
