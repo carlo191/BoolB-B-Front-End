@@ -22,6 +22,10 @@ main {
   padding-top: 64px;
 }
 
+.text-xl {
+  font-size: 2.6rem;
+}
+
 /* BIGGER BOOTSTRAP CHECKBOX */
 .big-checkbox {
   width: 20px;
@@ -35,6 +39,10 @@ main {
 
 .text-gray {
   color: rgb(230, 230, 230);
+}
+
+.text-darkgray {
+  color: rgb(56, 56, 56);
 }
 
 /********** COMPONENTS ***********/
@@ -105,6 +113,25 @@ main {
 
 .badge {
   font-size: 0.9rem;
+}
+
+/* CAROUSEL */
+.carousel-inner {
+  height: 471px;
+}
+.carousel-container {
+  height: 470px;
+  width: 80% !important;
+}
+.carousel-indicators {
+  background-color: rgb(210, 210, 210);
+  border-radius: 50px;
+}
+.carousel-control-next {
+  transform: translate(100%, 0);
+}
+.carousel-control-prev {
+  transform: translate(-100%, 0);
 }
 
 /********** SEARCHPAGE ***********/
