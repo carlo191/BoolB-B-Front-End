@@ -1,4 +1,4 @@
-/* RESET */
+/********** RESET ***********/
 a {
   color: inherit;
   text-decoration: none;
@@ -13,7 +13,7 @@ li {
   padding: 5px;
 }
 
-/* UTILITIES */
+/********** UTILITIES ***********/
 .wrapper {
   height: 100vh;
 }
@@ -36,6 +36,8 @@ main {
 .text-gray {
   color: rgb(230, 230, 230);
 }
+
+/********** COMPONENTS ***********/
 
 /* NAVBAR */
 .nav-link {
@@ -88,19 +90,9 @@ main {
   transition: color 0.15s;
 }
 
-/* SIDEBAR */
-.offcanvas-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 0 8px 8px 0 !important;
-  left: 419px;
-  top: 11%;
-  visibility: visible;
-}
+/********** HOMEPAGE ***********/
 
-/* HOMEPAGE */
-
-/* PAGINA DETTAGLIO IMMONBILE */
+/* PAGINA DETTAGLIO IMMOBILE */
 .immagine-dettaglio {
   position: relative !important;
 }
@@ -113,6 +105,19 @@ main {
 
 .badge {
   font-size: 0.9rem;
+}
+
+/********** SEARCHPAGE ***********/
+
+/* IMMAGINE IMMOBILE */
+.detail-img {
+  height: 400px !important;
+  object-fit: cover !important;
+}
+
+/* ZOOM IMAGE MODAL */
+.modal#imageModal {
+  top: 20%;
 }
 
 /* PROFILE ICON */
@@ -135,7 +140,18 @@ main {
   height: 600px;
   object-fit: cover;
 }
+
 /* OFFCANVAS */
+
+/* SIDEBAR */
+.offcanvas-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 0 8px 8px 0 !important;
+  left: 419px;
+  top: 11%;
+  visibility: visible;
+}
 
 .offcanvas-backdrop {
   background-color: rgba(0, 0, 0, 0.3) !important; /* 30% trasparenza */

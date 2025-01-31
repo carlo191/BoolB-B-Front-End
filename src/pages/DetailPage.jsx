@@ -67,13 +67,16 @@ export default function DetailPage() {
   return (
     <>
       <div className="container">
-        <div className="row">
+        <div className="row row-cols-1 row-cols-md-2 g-3 g-md-5 mx-1">
           {/* Property Image */}
-          <div className="col-12 col-sm-6 immagine-dettaglio">
+          <div className="immagine-dettaglio p-0">
             <img
-              className="img-fluid rounded-4"
+              className="img-fluid rounded-4 detail-img"
+              draggable="false"
               src={property.immagine}
               alt={property.immagine}
+              data-bs-toggle="modal"
+              data-bs-target="#imageModal"
             />
 
             {/* Heart */}
@@ -88,20 +91,26 @@ export default function DetailPage() {
           </div>
 
           {/* Property Description */}
-          <div className="col-12 col-sm-6">
+          <div className="">
             <ul>
               <li className="">
                 <h1 className="m-0">{property.nome}</h1>
-                <p className="fs-4 m-0 mb-2">{property.tipologia}</p>
-                <hr className="mt-3 mb-2" />
+
+                <hr className="my-1" />
+
+                <p className="fs-4 m-0 mb-2">
+                  <strong>Indirizzo: </strong>
+                  {property.indirizzo}
+                </p>
               </li>
               <li>
-                <i className="fa-solid fa-location-dot me-2"></i>
-                <strong>Indirizzo: </strong>
-                {property.indirizzo}
-              </li>
-              <li>
+                {/* <i className="fa-solid fa-location-dot me-2"></i> */}
                 <i className="fa-solid fa-house me-2"></i>
+                <strong>Tipologia: </strong>
+                {property.tipologia}
+              </li>
+              <li>
+                <i className="fa-solid fa-door-closed me-2"></i>
                 <strong>Numero stanze: </strong>
                 {property.numero_stanze}
               </li>
@@ -197,6 +206,28 @@ export default function DetailPage() {
             </div>
           </div>
         ))}
+
+        {/* Zoom Image Modal */}
+        <div
+          class="modal modal-lg fade"
+          id="imageModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content bg-transparent border-0">
+              <div class="modal-body">
+                <img
+                  className="img-fluid rounded-4 detail-img"
+                  src={property.immagine}
+                  alt={property.immagine}
+                />
+
+                <h1 className="text-center text-light mt-3">{property.nome}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
