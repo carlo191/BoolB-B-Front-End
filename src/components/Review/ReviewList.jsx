@@ -9,11 +9,15 @@ export default function ReviewList({ reviews }) {
         Recensioni:
       </h2>
 
-      <div className="row mx-0">
-        {reviews.map((review) => (
-          <ReviewItem review={review} key={review.id} />
-        ))}
-      </div>
+      {reviews.length === 0 ? (
+        <p>Non ci sono recensioni</p>
+      ) : (
+        <div className="row mx-0">
+          {reviews.map((review) => (
+            <ReviewItem review={review} key={review.id} />
+          ))}
+        </div>
+      )}
     </>
   );
 }
