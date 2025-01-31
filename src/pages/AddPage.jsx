@@ -1,3 +1,4 @@
+import FormHouse from "../components/FormHouse/FormHouse";
 export default function AddPage() {
-  return <h1>Add page</h1>;
+  return <FormHouse />;
 }

@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // Global variables
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function FormHouse() {
-  const { storeProperty } = useGlobalContext();
+  const { storeProperty, property } = useGlobalContext();
   const [formData, setFormData] = useState({
     nome: "",
     numero_stanze: "",
@@ -13,13 +13,25 @@ export default function FormHouse() {
     metri_quadrati: "",
     indirizzo: "",
     email_proprietario: "",
-    immagine: "",
+    immagine: null,
     id_tipologia: "",
   });
 
   function handleSubmit(e) {
     e.preventDefault();
-    storeReview(formData);
+    // Validazione lunghezza minima
+    if (
+      formData.nome.length < 3 ||
+      formData.indirizzo.length < 5 ||
+      formData.email_proprietario.length < 5
+    ) {
+      alert(`Indirizzo e email devono avere almeno 5 caratteri di lunghezza,
+            nome deve avere almeno 3 caratteri di lunghezza.`);
+      return;
+    }
+    console.log(formData);
+    storeProperty(formData);
+    alert("Casa inserita correttamente!");
     setFormData({
       nome: "",
       numero_stanze: "",
@@ -34,10 +46,16 @@ export default function FormHouse() {
   }
 
   function handleChange(e) {
+    const { name, value } = e.target;
+    const numberFields = [
+      "numero_stanze",
+      "numero_letti",
+      "numero_bagni",
+      "metri_quadrati",
+    ];
     setFormData((formData) => ({
       ...formData,
-      [e.target.name]:
-        e.target.name === "voto" ? parseInt(e.target.value) : e.target.value,
+      [name]: numberFields.includes(name) ? parseInt(value) || "" : value,
     }));
   }
 
@@ -45,58 +63,160 @@ export default function FormHouse() {
     <div className="border rounded-5 my-5 p-4">
       <h2 className="mb-3">
         <i className="fa-solid fa-pencil fa-md me-2"></i>
-        Scrivi la tua recensione:
+        Aggiungi il tuo immobile:
       </h2>
 
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          {/* Username Input */}
-          <label htmlFor="nome_utente" className="form-label">
-            Username:
+          {/* Nome Input */}
+          <label htmlFor="nome" className="form-label">
+            Nome:
           </label>
           <input
-            name="nome_utente"
+            name="nome"
             type="text"
             className="form-control"
-            id="nome_utente"
-            value={formData.nome_utente}
-            onChange={(e) => handleChange(e)}
+            id="nome"
+            value={formData.nome}
+            onChange={handleChange}
+            required
           />
         </div>
-        {/* Description Input */}
+        {/* Numero stanze Input */}
         <div className="mb-3">
-          <label htmlFor="contenuto" className="form-label">
-            Testo:
-          </label>
-          <textarea
-            name="contenuto"
-            className="form-control"
-            id="contenuto"
-            rows="3"
-            value={formData.contenuto}
-            onChange={(e) => handleChange(e)}
-          ></textarea>
-        </div>
-        {/* Vote Input */}
-        <div className="mb-3">
-          <label htmlFor="voto" className="form-label">
-            Voto:
+          <label htmlFor="numero_stanze" className="form-label">
+            Numero stanze:
           </label>
           <input
-            name="voto"
             type="number"
-            min="1"
-            max="5"
+            min={0}
+            name="numero_stanze"
             className="form-control"
-            id="voto"
-            value={formData.voto}
-            onChange={(e) => handleChange(e)}
+            id="numero_stanze"
+            value={formData.numero_stanze}
+            onChange={handleChange}
+            required
           />
         </div>
-
+        {/* Numero letti Input */}
+        <div className="mb-3">
+          <label htmlFor="numero_letti" className="form-label">
+            Numero letti:
+          </label>
+          <input
+            type="number"
+            min={0}
+            name="numero_letti"
+            className="form-control"
+            id="numero_letti"
+            value={formData.numero_letti}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Numero bagni Input */}
+        <div className="mb-3">
+          <label htmlFor="numero_bagni" className="form-label">
+            Numero bagni:
+          </label>
+          <input
+            type="number"
+            min={0}
+            name="numero_bagni"
+            className="form-control"
+            id="numero_bagni"
+            value={formData.numero_bagni}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Metri quadrati Input */}
+        <div className="mb-3">
+          <label htmlFor="metri_quadrati" className="form-label">
+            Metri quadrati:
+          </label>
+          <input
+            type="number"
+            min={0}
+            name="metri_quadrati"
+            className="form-control"
+            id="metri_quadrati"
+            value={formData.metri_quadrati}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Indirizzo Input */}
+        <div className="mb-3">
+          <label htmlFor="indirizzo" className="form-label">
+            Indirizzo:
+          </label>
+          <input
+            type="text"
+            name="indirizzo"
+            className="form-control"
+            id="indirizzo"
+            value={formData.indirizzo}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Email Input */}
+        <div className="mb-3">
+          <label htmlFor="email_proprietario" className="form-label">
+            Email:
+          </label>
+          <input
+            type="email"
+            name="email_proprietario"
+            className="form-control"
+            id="email_proprietario"
+            value={formData.email_proprietario}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {/* Immagine Input */}
+        <div className="mb-3">
+          <label htmlFor="immagine" className="form-label">
+            Immagine:
+          </label>
+          <input
+            type="file"
+            name="immagine"
+            className="form-control"
+            id="immagine"
+            onChange={handleChange}
+          />
+        </div>
+        {/* Tipologia Input */}
+        <div className="mb-3">
+          <label htmlFor="id_tipologia" className="form-label">
+            Tipologia:
+          </label>
+          <select
+            name="id_tipologia"
+            className="form-control"
+            id="id_tipologia"
+            value={formData.id_tipologia}
+            onChange={handleChange}
+          >
+            <option value="">Seleziona Tipologia</option>
+            <option value="Appartamento">Appartamento</option>
+            <option value="Villa">Villa</option>
+            <option value="Attico">Attico</option>
+            <option value="Loft">Loft</option>
+            <option value="Monolocale">Monolocale</option>
+            <option value="Baita">Baita</option>
+            <option value="Casa indipendente">Casa indipendente</option>
+            <option value="Cottage">Cottage</option>
+            <option value="Residenza storica">Residenza storica</option>
+            <option value="Villetta a schiera">Villetta a schiera</option>
+          </select>
+        </div>
         {/* Submit */}
         <button type="submit" className="btn btn-primary">
-          Aggiungi recensione
+          Aggiungi la tua casa
         </button>
       </form>
     </div>
