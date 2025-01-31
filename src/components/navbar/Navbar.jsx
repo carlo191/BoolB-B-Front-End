@@ -36,6 +36,12 @@ export default function Navbar() {
                 avanzata
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" to="/add">
+                <i className="fa-solid fa-plus"></i> Aggiungi qui il tuo
+                immobile
+              </NavLink>
+            </li>
           </ul>
 
           {/* <span className="nav-link">
