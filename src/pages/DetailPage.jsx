@@ -31,12 +31,12 @@ export default function DetailPage() {
 	}, [id, showProperty]);
 
 	return (
-		<div className="container">
-			<div className="row row-cols-1 row-cols-md-2 g-3 g-md-5 mx-1">
+		<div className="container-fluid m-5">
+			<div className="row g-3 g-md-5 justify-content-center">
 				{/* Property Image */}
-				<div className="immagine-dettaglio p-0">
+				<div className="col-6 immagine-dettaglio p-0 mb-5">
 					<img
-						className="img-fluid rounded-4 detail-img"
+						className="img-fluid rounded-4 "
 						draggable="false"
 						src={property.immagine}
 						alt={property.immagine}
@@ -56,7 +56,7 @@ export default function DetailPage() {
 				</div>
 
 				{/* Property Description */}
-				<div>
+				<div className="col-3 me-4">
 					<ul>
 						<li>
 							<h1 className="m-0">{property.nome}</h1>
@@ -99,26 +99,34 @@ export default function DetailPage() {
 							<strong>Email proprietario: </strong>
 							{property.email_proprietario}
 						</li>
+						<li>
+							<button className="btn btn-primary">
+								Contatta il proprietario
+							</button>
+						</li>
 					</ul>
 				</div>
+				<FormMessage />
 			</div>
-
-			<FormMessage />
-
-			{/* Form New Review */}
-			<ReviewForm></ReviewForm>
-
-			{/* Review List */}
-			<ReviewList reviews={property.recensioni} />
-			{reviews.map((review, index) => (
-				<div key={index} className="card mb-2">
-					<div className="card-body">
-						<h5 className="card-title">{review.nome_utente}</h5>
-						<p className="card-text">{review.contenuto}</p>
-						<p className="card-text">Voto: {review.voto}</p>
-					</div>
+			<div className="row g-3 g-md-5">
+				<div className="col-8">
+					{/* Review List */}
+					<ReviewList reviews={property.recensioni} />
+					{reviews.map((review, index) => (
+						<div key={index} className="card mb-2">
+							<div className="card-body">
+								<h5 className="card-title">{review.nome_utente}</h5>
+								<p className="card-text">{review.contenuto}</p>
+								<p className="card-text">Voto: {review.voto}</p>
+							</div>
+						</div>
+					))}
 				</div>
-			))}
+				<div className="col-3">
+					{/* Form New Review */}
+					<ReviewForm />
+				</div>
+			</div>
 
 			{/* Zoom Image Modal */}
 			<div

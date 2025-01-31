@@ -1,190 +1,191 @@
 /********** RESET ***********/
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 ul {
-  list-style: none;
-  padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 li {
-  padding: 5px;
+	padding: 5px;
 }
 
 /********** UTILITIES ***********/
+
 .wrapper {
-  height: 100vh;
+	height: 100vh;
 }
 
 main {
-  padding-top: 64px;
+	padding-top: 64px;
 }
 
 .text-xl {
-  font-size: 2.6rem;
+	font-size: 2.6rem;
 }
 
 /* BIGGER BOOTSTRAP CHECKBOX */
 .big-checkbox {
-  width: 20px;
-  height: 20px;
+	width: 20px;
+	height: 20px;
 }
 
 /* COLOR UTILITIES */
 .text-white {
-  color: whitesmoke;
+	color: whitesmoke;
 }
 
 .text-gray {
-  color: rgb(230, 230, 230);
+	color: rgb(230, 230, 230);
 }
 
 .text-darkgray {
-  color: rgb(56, 56, 56);
+	color: rgb(56, 56, 56);
 }
 
 /********** COMPONENTS ***********/
 
 /* NAVBAR */
 .nav-link {
-  color: white !important;
+	color: white !important;
 }
 
 .dropdown-menu {
-  position: absolute !important;
-  top: 100% !important; /* Posiziona il dropdown sotto il bottone */
-  left: -110px !important;
+	position: absolute !important;
+	top: 100% !important; /* Posiziona il dropdown sotto il bottone */
+	left: -110px !important;
 }
 
 /* PROPERTY CARD */
 .property-card {
-  box-shadow: 0 0 10px 3px transparent;
-  transition: box-shadow 0.2s;
+	box-shadow: 0 0 10px 3px transparent;
+	transition: box-shadow 0.2s;
 }
 
 .property-card:hover {
-  box-shadow: 0 0 10px 5px lightgray;
-  transition: box-shadow 0.2s;
+	box-shadow: 0 0 10px 5px lightgray;
+	transition: box-shadow 0.2s;
 }
 
 .card-img-top {
-  height: 250px;
-  object-fit: cover;
+	height: 250px;
+	object-fit: cover;
 }
 
 /* HEART */
 .heart-pill-top-right {
-  top: 9px;
-  right: 9px;
-  padding: 10px 12px;
+	top: 9px;
+	right: 9px;
+	padding: 10px 12px;
 }
 .heart-pill-bottom-center {
-  bottom: 9px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  padding: 10px 12px;
+	bottom: 9px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	padding: 10px 12px;
 }
 
 .heart {
-  color: darkgray;
-  transition: color 0.15s;
+	color: darkgray;
+	transition: color 0.15s;
 }
 
 .heart-pill-top-right:hover .heart,
 .heart-pill-bottom-center:hover .heart {
-  color: red;
-  transition: color 0.15s;
+	color: red;
+	transition: color 0.15s;
 }
 
 /********** HOMEPAGE ***********/
 
 /* PAGINA DETTAGLIO IMMOBILE */
 .immagine-dettaglio {
-  position: relative !important;
+	position: relative !important;
 }
 
 .immagine-dettaglio > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .badge {
-  font-size: 0.9rem;
+	font-size: 0.9rem;
 }
 
 /* CAROUSEL */
 .carousel-inner {
-  height: 471px;
+	height: 471px;
 }
 .carousel-container {
-  height: 470px;
-  width: 80% !important;
+	height: 470px;
+	width: 80% !important;
 }
 .carousel-indicators {
-  background-color: rgb(210, 210, 210);
-  border-radius: 50px;
+	background-color: rgb(210, 210, 210);
+	border-radius: 50px;
 }
 .carousel-control-next {
-  transform: translate(100%, 0);
+	transform: translate(100%, 0);
 }
 .carousel-control-prev {
-  transform: translate(-100%, 0);
+	transform: translate(-100%, 0);
 }
 
 /********** SEARCHPAGE ***********/
 
 /* IMMAGINE IMMOBILE */
 .detail-img {
-  height: 400px !important;
-  object-fit: cover !important;
+	height: 400px !important;
+	object-fit: cover !important;
 }
 
 /* ZOOM IMAGE MODAL */
 .modal#imageModal {
-  padding-top: 12vh;
+	padding-top: 12vh;
 }
 
 .modal-backdrop.show {
-  background-color: rgb(0, 0, 0, 1) !important;
-  z-index: 1040;
+	background-color: rgb(0, 0, 0, 1) !important;
+	z-index: 1040;
 }
 
 /* PROFILE ICON */
 .profile-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
 }
 
 .profile-icon > h6 {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 .carousel-container {
-  width: 100%;
+	width: 100%;
 }
 
 .carousel-image {
-  width: 100%;
-  height: 600px;
-  object-fit: cover;
+	width: 100%;
+	height: 600px;
+	object-fit: cover;
 }
 
 /* OFFCANVAS */
 
 /* SIDEBAR */
 .offcanvas-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 0 8px 8px 0 !important;
-  left: 419px;
-  top: 11%;
-  visibility: visible;
+	width: 40px;
+	height: 40px;
+	border-radius: 0 8px 8px 0 !important;
+	left: 419px;
+	top: 11%;
+	visibility: visible;
 }
 
 .offcanvas-backdrop {
-  background-color: rgba(0, 0, 0, 0.3) !important; /* 30% trasparenza */
+	background-color: rgba(0, 0, 0, 0.3) !important; /* 30% trasparenza */
 }
