@@ -6,6 +6,8 @@ export default function FormMessage() {
 		message: "",
 	});
 
+	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [showModal, setShowModal] = useState(false);
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
@@ -13,8 +15,18 @@ export default function FormMessage() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		alert("Messaggio inviato correttamente al proprietario");
+
+		setIsSubmitted(true);
+		setShowModal(true);
+
+		if (!formData.email || !formData.message) {
+			return;
+		}
 		setFormData({ email: "", message: "" });
+	};
+
+	const handleCloseModal = () => {
+		setShowModal(false);
 	};
 
 	return (
@@ -48,6 +60,40 @@ export default function FormMessage() {
 				<button className="btn btn-primary" type="submit">
 					Invia messaggio
 				</button>
+				{showModal && (
+					<div
+						class="modal fade show"
+						style={{ display: "block" }}
+						tabindex="-1"
+						aria-labelledby="exampleModalLabel"
+						aria-hidden="true"
+					>
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button
+										type="button"
+										class="btn-close"
+										aria-label="Close"
+										onClick={handleCloseModal}
+									></button>
+								</div>
+
+								<div class="modal-body">
+									{isSubmitted && formData.email && formData.message ? (
+										<h4>
+											Il tuo messaggio è stato inviato correttamente, il
+											proprietario ti risponderà al più presto!
+											<i className="fa-regular fa-face-smile"></i>
+										</h4>
+									) : (
+										<h4>Inserisci una email e un messaggio</h4>
+									)}
+								</div>
+							</div>
+						</div>
+					</div>
+				)}
 			</form>
 		</>
 	);
