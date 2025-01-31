@@ -114,6 +114,35 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
+  const storeProperty = (newProperty) => {
+    fetch(`http://localhost:3000/property/${updatedProperty.id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: newProperty.nome,
+        numero_stanze: newProperty.numero_stanze,
+        numero_letti: newProperty.numero_letti,
+        numero_bagni: newProperty.numero_bagni,
+        metri_quadrati: newProperty.metri_quadrati,
+        indirizzo: newProperty.indirizzo,
+        email_proprietario: newProperty.email_proprietario,
+        immagine: newProperty.immagine,
+        numero_like: 0,
+        id_proprietario: Math.floor(Math.random() * 35) + 1,
+        id_tipologia: newProperty.id_tipologia,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        indexProperty();
+        showProperty(updatedProperty.id);
+        indexPropertyLimit(9);
+        indexPropertyFiltered();
+      });
+  };
+
   useEffect(() => {
     indexProperty();
     indexCategory();
@@ -150,6 +179,7 @@ export const GlobalProvider = ({ children }) => {
         propertyListLimit,
         propertyListFiltered,
         storeReview,
+        storeProperty,
       }}
     >
       {children}
