@@ -1,21 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function ReviewForm({}) {
+// Global variables
+import { useGlobalContext } from "../../context/GlobalContext";
+
+export default function ReviewForm() {
+  const { storeReview, property } = useGlobalContext();
   const [formData, setFormData] = useState({
+    id_immobile: "",
     nome_utente: "",
     contenuto: "",
     voto: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  useEffect(() => {
+    if (property && property.id) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        id_immobile: property.id,
+      }));
+    }
+  }, [property]);
 
-  const handleChange = (e) => {
+  function handleSubmit(e) {
+    e.preventDefault();
+    storeReview(formData);
     setFormData({
-      ...formData,
+      id_immobile: "",
+      nome_utente: "",
+      contenuto: "",
+      voto: "",
     });
-  };
+  }
+
+  function handleChange(e) {
+    setFormData((formData) => ({
+      ...formData,
+      [e.target.name]:
+        e.target.name === "voto" ? parseInt(e.target.value) : e.target.value,
+    }));
+  }
 
   return (
     <div className="border rounded-5 my-5 p-4">
@@ -24,18 +47,19 @@ export default function ReviewForm({}) {
         Scrivi la tua recensione:
       </h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
           {/* Username Input */}
           <label htmlFor="nome_utente" className="form-label">
             Username:
           </label>
           <input
+            name="nome_utente"
             type="text"
             className="form-control"
             id="nome_utente"
             value={formData.nome_utente}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
         {/* Description Input */}
@@ -44,11 +68,12 @@ export default function ReviewForm({}) {
             Testo:
           </label>
           <textarea
+            name="contenuto"
             className="form-control"
             id="contenuto"
             rows="3"
             value={formData.contenuto}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           ></textarea>
         </div>
         {/* Vote Input */}
@@ -57,13 +82,14 @@ export default function ReviewForm({}) {
             Voto:
           </label>
           <input
+            name="voto"
             type="number"
             min="1"
             max="5"
             className="form-control"
             id="voto"
             value={formData.voto}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
 

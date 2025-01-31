@@ -7,48 +7,12 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 // Components
 import ReviewList from "../components/Review/ReviewList";
-import FormMessage from "../components/formMessage/formMessage";
-
-const addReviewToDatabase = (review) =>
-  fetch("http://localhost:3000/reviews", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      nome: review.nome_utente,
-      testo: review.contenuto,
-      voto: review.voto,
-      id_immobile: review.id_immobile,
-    }),
-  })
-    .then((res) => res.json())
-    .catch((err) => console.error("Errore:", err));
+import FormMessage from "../components/formMessage/FormMessage";
 
 export default function DetailPage() {
   const { id } = useParams();
   const { showProperty, property, updateProperty } = useGlobalContext();
   const [reviews, setReviews] = useState([]);
-  const [formData, setFormData] = useState({
-    nome: "",
-    testo: "",
-    voto: 1,
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newReview = { ...formData, id_immobile: id };
-
-    const addedReview = await addReviewToDatabase(newReview);
-
-    if (addedReview) {
-      setReviews([...reviews, addedReview]);
-      setFormData({ nome: "", testo: "", voto: 1 });
-    }
-  };
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-  };
 
   const handleHeartClick = (event) => {
     event.stopPropagation();
@@ -140,63 +104,10 @@ export default function DetailPage() {
       </div>
 
       <FormMessage />
+      <FormMessage />
 
       {/* Form New Review */}
-      <div className="border rounded-5 my-5 p-4">
-        <h2 className="mb-3">
-          <i className="fa-solid fa-pencil fa-md me-2"></i>
-          Scrivi la tua recensione:
-        </h2>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            {/* Username Input */}
-            <label htmlFor="nome" className="form-label">
-              Username:
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="nome"
-              value={formData.nome_utente}
-              onChange={handleChange}
-            />
-          </div>
-          {/* Description Input */}
-          <div className="mb-3">
-            <label htmlFor="testo" className="form-label">
-              Testo:
-            </label>
-            <textarea
-              className="form-control"
-              id="testo"
-              rows="3"
-              value={formData.contenuto}
-              onChange={handleChange}
-            ></textarea>
-          </div>
-          {/* Vote Input */}
-          <div className="mb-3">
-            <label htmlFor="voto" className="form-label">
-              Voto:
-            </label>
-            <input
-              type="number"
-              min="1"
-              max="5"
-              className="form-control"
-              id="voto"
-              value={formData.voto}
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* Submit */}
-          <button type="submit" className="btn btn-primary">
-            Aggiungi recensione
-          </button>
-        </form>
-      </div>
+      <ReviewForm></ReviewForm>
 
       {/* Review List */}
       <ReviewList reviews={property.recensioni} />
