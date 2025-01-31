@@ -117,7 +117,12 @@ main {
 
 /* ZOOM IMAGE MODAL */
 .modal#imageModal {
-  top: 20%;
+  padding-top: 12vh;
+}
+
+.modal-backdrop.show {
+  background-color: rgb(0, 0, 0, 1) !important;
+  z-index: 1040;
 }
 
 /* PROFILE ICON */
