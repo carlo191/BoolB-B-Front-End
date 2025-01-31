@@ -1,4 +1,7 @@
 export default function FormMessage() {
+	const sendForm = () => {
+		alert("Messaggio inviato correttamente");
+	};
 	return (
 		<>
 			<div className="mt-3 border rounded-5 my-5 p-4">
@@ -20,7 +23,10 @@ export default function FormMessage() {
 						rows="5"
 						placeholder="Scrivi un messaggio al proprietario"
 					></textarea>
-				</div>{" "}
+				</div>
+				<button className="btn btn-primary" onClick={sendForm}>
+					Invia messaggio
+				</button>
 			</div>
 		</>
 	);
