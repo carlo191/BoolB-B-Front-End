@@ -31,13 +31,7 @@ export default function FormMessage() {
 
 	return (
 		<>
-			<form
-				className="col-2 mt-3 border rounded-5 my-5 p-4"
-				onSubmit={handleSubmit}
-			>
-				<h3>
-					Vuoi ricevere più informazioni, invia un messaggio al proprietario
-				</h3>
+			<form className=" p-4" onSubmit={handleSubmit}>
 				<div className="mb-3 mt-3">
 					<input
 						value={formData.email}
@@ -60,9 +54,9 @@ export default function FormMessage() {
 						placeholder="Scrivi un messaggio al proprietario"
 					></textarea>
 				</div>
-				<button className="btn btn-primary" type="submit">
+				{/* <button className="btn btn-primary" type="submit">
 					Invia messaggio
-				</button>
+				</button> */}
 				{showModal && (
 					<div
 						className="modal fade show"

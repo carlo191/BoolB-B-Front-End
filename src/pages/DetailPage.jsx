@@ -100,13 +100,46 @@ export default function DetailPage() {
 							{property.email_proprietario}
 						</li>
 						<li>
-							<button className="btn btn-primary">
+							<button
+								type="button"
+								className="btn btn-primary"
+								data-bs-toggle="modal"
+								data-bs-target="#exampleModal"
+							>
 								Contatta il proprietario
 							</button>
+
+							<div
+								className="modal fade"
+								id="exampleModal"
+								tabIndex="-1"
+								aria-labelledby="exampleModalLabel"
+								aria-hidden="true"
+							>
+								<div className="modal-dialog">
+									<div className="modal-content">
+										<div className="modal-body">
+											<FormMessage />
+										</div>
+										<div className="modal-footer">
+											<button
+												type="button"
+												className="btn btn-secondary"
+												data-bs-dismiss="modal"
+											>
+												Annulla
+											</button>
+											<button type="button" className="btn btn-primary">
+												Invia messaggio
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</li>
 					</ul>
 				</div>
-				<FormMessage />
+				{/* <FormMessage /> */}
 			</div>
 			<div className="row g-3 g-md-5">
 				<div className="col-8">
