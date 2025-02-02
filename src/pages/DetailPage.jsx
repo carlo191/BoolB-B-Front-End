@@ -7,7 +7,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 // Components
 import ReviewList from "../components/Review/ReviewList";
-import FormMessage from "../components/formMessage/FormMessage";
+import FormMessage from "../components/formMessage/formMessage";
 
 export default function DetailPage() {
 	const { id } = useParams();
@@ -31,10 +31,10 @@ export default function DetailPage() {
 	}, [id, showProperty]);
 
 	return (
-		<div className="container-fluid m-5">
-			<div className="row g-3 g-md-5 justify-content-center">
+		<div className="container m-5">
+			<div className="row g-3 g-md-5 ">
 				{/* Property Image */}
-				<div className="col-6 immagine-dettaglio p-0 mb-5">
+				<div className="col-8 immagine-dettaglio p-0 mb-5">
 					<img
 						className="img-fluid rounded-4 "
 						draggable="false"
@@ -56,7 +56,7 @@ export default function DetailPage() {
 				</div>
 
 				{/* Property Description */}
-				<div className="col-3 me-4">
+				<div className="col-4 ps-5">
 					<ul>
 						<li>
 							<h1 className="m-0">{property.nome}</h1>
@@ -100,7 +100,7 @@ export default function DetailPage() {
 							{property.email_proprietario}
 						</li>
 						<li>
-							<button
+							{/* <button
 								type="button"
 								className="btn btn-primary"
 								data-bs-toggle="modal"
@@ -135,14 +135,14 @@ export default function DetailPage() {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> */}
+							<FormMessage />
 						</li>
 					</ul>
 				</div>
-				{/* <FormMessage /> */}
 			</div>
 			<div className="row g-3 g-md-5">
-				<div className="col-8">
+				<div className="col-7">
 					{/* Review List */}
 					<ReviewList reviews={property.recensioni} />
 					{reviews.map((review, index) => (
