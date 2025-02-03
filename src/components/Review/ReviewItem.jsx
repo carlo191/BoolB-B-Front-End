@@ -26,11 +26,21 @@ export default function ReviewItem({ review }) {
 
 				<div>{review.contenuto}</div>
 			</div>
-
-			<div className="vote">
-				<h6 className="review-vote">
-					Voto: {generateStars(review.voto).map((star) => star)}
-				</h6>
+			<div>
+				<div className="vote">
+					<h6 className="review-vote">
+						Voto: {generateStars(review.voto).map((star) => star)}
+					</h6>
+				</div>
+				<div>
+					<h6>Data di soggiorno: {review.data_soggiorno.split("T", 1)}</h6>
+				</div>
+				<div>
+					<h6>
+						Durata: {review.numero_giorni}{" "}
+						{review.numero_giorni == 1 ? "giorno" : "giorni"}{" "}
+					</h6>
+				</div>
 			</div>
 		</div>
 	);

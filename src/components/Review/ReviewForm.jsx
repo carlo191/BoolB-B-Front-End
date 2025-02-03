@@ -10,6 +10,8 @@ export default function ReviewForm() {
 		nome_utente: "",
 		contenuto: "",
 		voto: "",
+		data: "",
+		durata: "",
 	});
 
 	useEffect(() => {
@@ -29,6 +31,8 @@ export default function ReviewForm() {
 			nome_utente: "",
 			contenuto: "",
 			voto: "",
+			data: "",
+			durata: "",
 		});
 	}
 
@@ -94,15 +98,31 @@ export default function ReviewForm() {
 				</div>
 
 				<div className="mb-3">
-					<label className="active" htmlFor="dateStandard">
+					<label className="active" htmlFor="data">
 						Data di soggiorno
 					</label>
 					<input
 						className="form-control"
 						type="date"
-						id="dateStandard"
-						name="dateStandard"
+						id="data"
+						name="data"
+						value={formData.data}
 						max={new Date().toISOString().split("T")[0]}
+						onChange={(e) => handleChange(e)}
+					/>
+				</div>
+				<div className="mb-3">
+					<label htmlFor="durata" className="form-label">
+						Durata soggiorno:
+					</label>
+					<input
+						name="durata"
+						type="number"
+						min="1"
+						className="form-control"
+						id="durata"
+						value={formData.durata}
+						onChange={(e) => handleChange(e)}
 					/>
 				</div>
 
