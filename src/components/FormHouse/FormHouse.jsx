@@ -229,7 +229,7 @@ export default function FormHouse() {
           </div>
         </div>
         {/* Submit */}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mt-2 ">
           Aggiungi la tua casa
         </button>
       </form>
