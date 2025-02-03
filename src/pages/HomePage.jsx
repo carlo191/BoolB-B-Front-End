@@ -28,7 +28,7 @@ export default function HomePage() {
   });
 
   function handleSearch(e) {
-    setSearch({ isActived: true, value: e.target.value });
+    setSearch(e.target.value);
   }
 
   function handleSubmit(e) {
