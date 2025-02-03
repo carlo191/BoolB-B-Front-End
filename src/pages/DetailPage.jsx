@@ -142,7 +142,7 @@ export default function DetailPage() {
         </div>
       </div>
       <div className="row g-3 g-md-5">
-        <div className="col-6">
+        <div className="col-8 ">
           {/* Review List */}
           <ReviewList reviews={property.recensioni} />
           {reviews.map((review, index) => (
@@ -155,7 +155,7 @@ export default function DetailPage() {
             </div>
           ))}
         </div>
-        <div className="col-6">
+        <div className="col-4">
           {/* Form New Review */}
           <ReviewForm />
         </div>
