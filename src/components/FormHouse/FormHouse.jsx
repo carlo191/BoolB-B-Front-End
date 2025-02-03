@@ -68,158 +68,168 @@ export default function FormHouse() {
   }
 
   return (
-    <div className="border rounded-5 my-5 p-4">
-      <h2 className="mb-3">
+    <div className="border rounded-5 my-3 p-3">
+      <h2 className="mb-2">
         <i className="fa-solid fa-pencil fa-md me-2"></i>
         Aggiungi il tuo immobile:
       </h2>
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          {/* Nome Input */}
-          <label htmlFor="nome" className="form-label">
-            Nome:
-          </label>
-          <input
-            name="nome"
-            type="text"
-            className="form-control"
-            id="nome"
-            value={formData.nome}
-            onChange={handleChange}
-            required
-          />
+        <div className="row mb-2">
+          <div className="col-md-6">
+            {/* Nome Input */}
+            <label htmlFor="nome" className="form-label">
+              Nome:
+            </label>
+            <input
+              name="nome"
+              type="text"
+              className="form-control"
+              id="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="col-md-6">
+            {/* Numero stanze Input */}
+            <label htmlFor="numero_stanze" className="form-label">
+              Numero stanze:
+            </label>
+            <input
+              type="number"
+              min={0}
+              name="numero_stanze"
+              className="form-control"
+              id="numero_stanze"
+              value={formData.numero_stanze}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
-        {/* Numero stanze Input */}
-        <div className="mb-3">
-          <label htmlFor="numero_stanze" className="form-label">
-            Numero stanze:
-          </label>
-          <input
-            type="number"
-            min={0}
-            name="numero_stanze"
-            className="form-control"
-            id="numero_stanze"
-            value={formData.numero_stanze}
-            onChange={handleChange}
-            required
-          />
+        <div className="row mb-2">
+          <div className="col-md-6">
+            {/* Numero letti Input */}
+            <label htmlFor="numero_letti" className="form-label">
+              Numero letti:
+            </label>
+            <input
+              type="number"
+              min={0}
+              name="numero_letti"
+              className="form-control"
+              id="numero_letti"
+              value={formData.numero_letti}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="col-md-6">
+            {/* Numero bagni Input */}
+            <label htmlFor="numero_bagni" className="form-label">
+              Numero bagni:
+            </label>
+            <input
+              type="number"
+              min={0}
+              name="numero_bagni"
+              className="form-control"
+              id="numero_bagni"
+              value={formData.numero_bagni}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
-        {/* Numero letti Input */}
-        <div className="mb-3">
-          <label htmlFor="numero_letti" className="form-label">
-            Numero letti:
-          </label>
-          <input
-            type="number"
-            min={0}
-            name="numero_letti"
-            className="form-control"
-            id="numero_letti"
-            value={formData.numero_letti}
-            onChange={handleChange}
-            required
-          />
+        <div className="row mb-2">
+          <div className="col-md-6">
+            {/* Metri quadrati Input */}
+            <label htmlFor="metri_quadrati" className="form-label">
+              Metri quadrati:
+            </label>
+            <input
+              type="number"
+              min={0}
+              name="metri_quadrati"
+              className="form-control"
+              id="metri_quadrati"
+              value={formData.metri_quadrati}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="col-md-6">
+            {/* Indirizzo Input */}
+            <label htmlFor="indirizzo" className="form-label">
+              Indirizzo:
+            </label>
+            <input
+              type="text"
+              name="indirizzo"
+              className="form-control"
+              id="indirizzo"
+              value={formData.indirizzo}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
-        {/* Numero bagni Input */}
-        <div className="mb-3">
-          <label htmlFor="numero_bagni" className="form-label">
-            Numero bagni:
-          </label>
-          <input
-            type="number"
-            min={0}
-            name="numero_bagni"
-            className="form-control"
-            id="numero_bagni"
-            value={formData.numero_bagni}
-            onChange={handleChange}
-            required
-          />
+        <div className="row mb-2">
+          <div className="col-md-6">
+            {/* Email Input */}
+            <label htmlFor="email_proprietario" className="form-label">
+              Email:
+            </label>
+            <input
+              type="email"
+              name="email_proprietario"
+              className="form-control"
+              id="email_proprietario"
+              value={formData.email_proprietario}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="col-md-6">
+            {/* Immagine Input */}
+            <label htmlFor="immagine" className="form-label">
+              Immagine:
+            </label>
+            <input
+              type="file"
+              name="immagine"
+              className="form-control"
+              id="immagine"
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        {/* Metri quadrati Input */}
-        <div className="mb-3">
-          <label htmlFor="metri_quadrati" className="form-label">
-            Metri quadrati:
-          </label>
-          <input
-            type="number"
-            min={0}
-            name="metri_quadrati"
-            className="form-control"
-            id="metri_quadrati"
-            value={formData.metri_quadrati}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Indirizzo Input */}
-        <div className="mb-3">
-          <label htmlFor="indirizzo" className="form-label">
-            Indirizzo:
-          </label>
-          <input
-            type="text"
-            name="indirizzo"
-            className="form-control"
-            id="indirizzo"
-            value={formData.indirizzo}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Email Input */}
-        <div className="mb-3">
-          <label htmlFor="email_proprietario" className="form-label">
-            Email:
-          </label>
-          <input
-            type="email"
-            name="email_proprietario"
-            className="form-control"
-            id="email_proprietario"
-            value={formData.email_proprietario}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Immagine Input */}
-        <div className="mb-3">
-          <label htmlFor="immagine" className="form-label">
-            Immagine:
-          </label>
-          <input
-            type="file"
-            name="immagine"
-            className="form-control"
-            id="immagine"
-            onChange={handleChange}
-          />
-        </div>
-        {/* Tipologia Input */}
-        <div className="mb-3">
-          <label htmlFor="id_tipologia" className="form-label">
-            Tipologia:
-          </label>
-
-          <select
-            name="id_tipologia"
-            id="id_tipologia"
-            className="form-select"
-            value={formData.id_tipologia}
-            onChange={handleChange}
-          >
-            <option value="">Seleziona Tipologia</option>
-            {categoryList.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.tipologia}
-              </option>
-            ))}
-          </select>
+        <div className="row mb-2">
+          <div className="col-md-6">
+            {/* Tipologia Input */}
+            <label htmlFor="id_tipologia" className="form-label">
+              Tipologia:
+            </label>
+            <select
+              name="id_tipologia"
+              id="id_tipologia"
+              className="form-select"
+              value={formData.id_tipologia}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Seleziona Tipologia</option>
+              {categoryList.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.tipologia}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         {/* Submit */}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mt-2 ">
           Aggiungi la tua casa
         </button>
       </form>
