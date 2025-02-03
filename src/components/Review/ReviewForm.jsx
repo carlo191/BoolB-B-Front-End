@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { Modal } from "bootstrap";
 
 // Global variables
 import { useGlobalContext } from "../../context/GlobalContext";
@@ -26,6 +28,14 @@ export default function ReviewForm() {
 	function handleSubmit(e) {
 		e.preventDefault();
 		storeReview(formData);
+
+		// Trova la modale e mostralo
+		const modalElement = document.getElementById("exampleModalReview");
+		if (modalElement) {
+			const modal = new Modal(modalElement);
+			modal.show();
+		}
+
 		setFormData({
 			id_immobile: "",
 			nome_utente: "",
@@ -58,6 +68,7 @@ export default function ReviewForm() {
 						Username:
 					</label>
 					<input
+						required
 						name="nome_utente"
 						type="text"
 						className="form-control"
@@ -88,6 +99,7 @@ export default function ReviewForm() {
 						Voto:
 					</label>
 					<input
+						required
 						name="voto"
 						type="number"
 						min="1"
@@ -105,6 +117,7 @@ export default function ReviewForm() {
 						Data di soggiorno:
 					</label>
 					<input
+						required
 						className="form-control"
 						type="date"
 						id="data"
@@ -119,6 +132,7 @@ export default function ReviewForm() {
 						Durata del soggiorno:
 					</label>
 					<input
+						required
 						name="durata"
 						type="number"
 						min="1"
@@ -134,6 +148,24 @@ export default function ReviewForm() {
 				<button type="submit" className="btn btn-primary">
 					Aggiungi recensione
 				</button>
+				<div className="modal fade" id="exampleModalReview" tabindex="-1">
+					<div className="modal-dialog">
+						<div className="modal-content">
+							<div className="modal-body">
+								La recensione è stata aggiunta con successo!
+							</div>
+							<div className="modal-footer">
+								<button
+									type="button"
+									className="btn btn-secondary"
+									data-bs-dismiss="modal"
+								>
+									Chiudi
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	);
