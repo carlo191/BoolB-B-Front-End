@@ -102,6 +102,7 @@ export default function ReviewForm() {
 						type="date"
 						id="dateStandard"
 						name="dateStandard"
+						max={new Date().toISOString().split("T")[0]}
 					/>
 				</div>
 
