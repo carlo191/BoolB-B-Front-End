@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Modal } from "bootstrap";
 
 export default function FormMessage() {
   const [formData, setFormData] = useState({
@@ -7,7 +8,7 @@ export default function FormMessage() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const [showModal, setShowModal] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -21,42 +22,55 @@ export default function FormMessage() {
       return;
     }
     setIsSubmitted(true);
+    setShowModal(true);
+
+    // Trova la modale e mostralo
+    const modalElement = document.getElementById("exampleModalFormMessage");
+    if (modalElement) {
+      const modal = new Modal(modalElement);
+      modal.show();
+    }
+
     setFormData({ email: "", message: "" });
-    // Programmatically close the contact modal after submission
-    const contactModal = document.getElementById("contactModal");
-    const modalInstance = window.bootstrap.Modal.getInstance(contactModal);
-    if (modalInstance) {
-      modalInstance.hide();
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    // Chiudi la modale attualmente aperta
+    const modalElement = document.getElementById("exampleModal");
+    if (modalElement) {
+      const modal = Modal.getInstance(modalElement);
+      if (modal) {
+        modal.hide();
+      }
     }
   };
 
   return (
     <>
-      {/* BUTTON OPEN MODAL */}
+      {/* <button className="btn btn-primary" type="submit">
+					Invia messaggio
+				</button> */}
+
       <button
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#contactModal"
+        data-bs-target="#exampleModal"
       >
         Contatta il proprietario
       </button>
 
-      {/* CONTACT MODAL */}
       <div
         className="modal fade"
-        id="contactModal"
+        id="exampleModal"
         tabIndex="-1"
-        aria-labelledby="contactModal"
+        aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            {/* HEADER */}
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Contatta il proprietario
-              </h1>
               <button
                 type="button"
                 className="btn-close"
@@ -64,41 +78,41 @@ export default function FormMessage() {
                 aria-label="Close"
               ></button>
             </div>
-
-            {/* MAIN */}
             <div className="modal-body">
-              <form onSubmit={handleSubmit}>
-                {/* EMAIL INPUT */}
-                <div className="mb-3">
-                  <label htmlFor="emailInput" className="form-label">
-                    Inserisci la tua email
-                  </label>
+              <form className=" p-4" onSubmit={handleSubmit}>
+                <div className="mb-3 mt-3">
                   <input
+                    required
                     value={formData.email}
                     onChange={handleChange}
                     name="email"
                     type="email"
                     className="form-control"
-                    id="emailInput"
+                    id="exampleFormControlInput1"
+                    placeholder="Inserisci la tua email"
                   />
                 </div>
-                {/* MESSAGE INPUT */}
                 <div className="mb-3">
-                  <label htmlFor="messageInput" className="form-label">
-                    Scrivi un messaggio al proprietario
-                  </label>
                   <textarea
+                    required
                     value={formData.message}
                     onChange={handleChange}
                     name="message"
                     className="form-control"
-                    id="messageInput"
+                    id="exampleFormControlTextarea1"
                     rows="5"
+                    placeholder="Scrivi un messaggio al proprietario"
                   ></textarea>
                 </div>
-
-                {/* SUBMIT MODAL */}
                 <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    onClick={handleCloseModal}
+                  >
+                    Annulla
+                  </button>
                   <button type="submit" className="btn btn-primary">
                     Invia messaggio
                   </button>
@@ -108,40 +122,59 @@ export default function FormMessage() {
           </div>
         </div>
       </div>
-
-      {/* FEEDBACK MODAL */}
-      <div
-        className="modal fade"
-        id="sendedModal"
-        tabIndex="-1"
-        aria-labelledby="sendedModal"
-        aria-hidden="true"
-      >
+      <div className="modal fade " id="exampleModalFormMessage" tabindex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-body">
+              Il messaggio è stato inviato con successo!
+            </div>
+            <div className="modal-footer">
               <button
                 type="button"
-                className="btn-close"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-
-            <div className="modal-body">
-              {isSubmitted ? (
-                <h4>
-                  Il tuo messaggio è stato inviato correttamente, il
-                  proprietario ti risponderà al più presto!
-                  <i className="fa-regular fa-face-smile"></i>
-                </h4>
-              ) : (
-                <h4>Inserisci una email e un messaggio</h4>
-              )}
+              >
+                Chiudi
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* {showModal && (
+				<div
+					className="modal fade show"
+					style={{ display: "block" }}
+					tabindex="-1"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true"
+				>
+					<div className="modal-dialog">
+						<div className="modal-content">
+							<div className="modal-header">
+								<button
+									type="button"
+									className="btn-close"
+									aria-label="Close"
+									onClick={handleCloseModal}
+								></button>
+							</div>
+
+							<div className="modal-body">
+								{isSubmitted ? (
+									<h4>
+										Il tuo messaggio è stato inviato correttamente, il
+										proprietario ti risponderà al più presto!
+										<i className="fa-regular fa-face-smile"></i>
+									</h4>
+								) : (
+									<h4>Inserisci una email e un messaggio</h4>
+								)}
+							</div>
+						</div>
+					</div>
+				</div>
+			)} */}
     </>
   );
 }

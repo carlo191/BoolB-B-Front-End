@@ -68,9 +68,7 @@ export default function HomePage() {
       </form>
 
       {/* Carousel */}
-      <h2 className="text-center text-xl mt-3 mb-4">
-        Gli appartamenti più votati
-      </h2>
+      <h2 className="text-center text-xl mb-4 mt-4">Le soluzioni più votate</h2>
       <div className="row d-flex justify-content-center">
         <div className="col-12 col-md-8 d-flex justify-content-center">
           {/* Carousel */}
@@ -133,13 +131,13 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="row mt-5">
+      <div className="row mt-4">
         <div className="col-12">
           <h2 className="text-center text-xl m-0">Immobili in evidenza</h2>
         </div>
         {categoryList.map((category) => {
           return (
-            <div key={category.id} className="col-12 mb-5 mt-4">
+            <div key={category.id} className="col-12 mb-4 mt-4">
               <h2>{category.tipologia}</h2>
               <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                 {propertyListFiltered.map((property) => {

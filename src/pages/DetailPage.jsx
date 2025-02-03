@@ -31,9 +31,9 @@ export default function DetailPage() {
 
   return (
     <div className="container mx-auto">
-      <div className="row g-3 g-md-5">
+      <div className="row g-3 g-md-5 my-4">
         {/* Property Image */}
-        <div className="col-12 col-md-8 immagine-dettaglio p-0 mb-5">
+        <div className="col-12 col-md-8 immagine-dettaglio p-0">
           <img
             className="img-fluid rounded-4"
             draggable="false"
