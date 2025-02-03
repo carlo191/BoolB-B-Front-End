@@ -32,11 +32,11 @@ export default function DetailPage() {
 
   return (
     <div className="container-detail m-5">
-      <div className="row g-3 g-md-5 ">
+      <div className="row g-3 g-md-5">
         {/* Property Image */}
         <div className="col-8 immagine-dettaglio p-0 mb-5">
           <img
-            className="img-fluid rounded-4 "
+            className="img-fluid rounded-4"
             draggable="false"
             src={property.immagine}
             alt={property.immagine}
@@ -69,7 +69,6 @@ export default function DetailPage() {
               </p>
             </li>
             <li>
-              {/* <i className="fa-solid fa-location-dot me-2"></i> */}
               <i className="fa-solid fa-house me-2"></i>
               <strong>Tipologia: </strong>
               {property.tipologia}
@@ -100,52 +99,13 @@ export default function DetailPage() {
               {property.email_proprietario}
             </li>
             <li>
-              {/* <button
-								type="button"
-								className="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target="#exampleModal"
-							>
-								Contatta il proprietario
-							</button>
-
-							<div
-								className="modal fade"
-								id="exampleModal"
-								tabIndex="-1"
-								aria-labelledby="exampleModalLabel"
-								aria-hidden="true"
-							>
-								<div className="modal-dialog">
-									<div className="modal-content">
-										<div className="modal-body">
-											<FormMessage />
-										</div>
-										<div className="modal-footer">
-											<button
-												type="button"
-												className="btn btn-secondary"
-												data-bs-dismiss="modal"
-											>
-												Annulla
-											</button>
-											<button type="button" className="btn btn-primary">
-												Invia messaggio
-											</button>
-										</div>
-									</div>
-								</div>
-							</div> */}
               <FormMessage />
             </li>
           </ul>
         </div>
       </div>
       <div className="row g-3 g-md-5">
-        <div
-          className="col-6 mb-3
-		"
-        >
+        <div className="col-6 mb-3">
           {/* Review List */}
           <ReviewList reviews={property.recensioni} />
           {reviews.map((review, index) => (
@@ -158,7 +118,7 @@ export default function DetailPage() {
             </div>
           ))}
         </div>
-        <div className="col-6 ">
+        <div className="col-6">
           {/* Form New Review */}
           <ReviewForm />
         </div>

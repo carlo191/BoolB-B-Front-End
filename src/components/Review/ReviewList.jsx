@@ -12,9 +12,31 @@ export default function ReviewList({ reviews }) {
       {reviews.length === 0 ? (
         <p>Non ci sono recensioni</p>
       ) : (
-        <div className="row mx-0 overflow-y-auto h-100">
+        <div
+          className="d-flex flex-column overflow-y-auto"
+          style={{
+            maxHeight: "400px", // Altezza massima del contenitore per lo scroll
+            width: "100%",
+            gap: "16px", // Spazio tra le recensioni
+          }}
+        >
           {reviews.map((review) => (
-            <ReviewItem review={review} key={review.id} />
+            <div
+              key={review.id}
+              style={{
+                padding: "16px",
+                backgroundColor: "#f8f9fa",
+                borderRadius: "8px",
+                boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
+                width: "100%", // La recensione occupa tutta la larghezza disponibile
+                minHeight: "120px", // Altezza minima per evitare schiacciamenti
+                height: "auto", // La recensione si adatta al contenuto
+                overflow: "visible", // Assicura che il contenuto non venga tagliato
+                wordWrap: "break-word", // Impedisce che il testo esca dal box
+              }}
+            >
+              <ReviewItem review={review} />
+            </div>
           ))}
         </div>
       )}
