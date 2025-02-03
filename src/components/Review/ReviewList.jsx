@@ -12,7 +12,7 @@ export default function ReviewList({ reviews }) {
       {reviews.length === 0 ? (
         <p>Non ci sono recensioni</p>
       ) : (
-        <div className="row mx-0 overflow-y-auto h-50">
+        <div className="row mx-0 overflow-y-auto h-100">
           {reviews.map((review) => (
             <ReviewItem review={review} key={review.id} />
           ))}

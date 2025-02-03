@@ -31,7 +31,7 @@ export default function DetailPage() {
   }, [id, showProperty]);
 
   return (
-    <div className="container m-5">
+    <div className="container-detail m-5">
       <div className="row g-3 g-md-5 ">
         {/* Property Image */}
         <div className="col-8 immagine-dettaglio p-0 mb-5">
@@ -142,7 +142,10 @@ export default function DetailPage() {
         </div>
       </div>
       <div className="row g-3 g-md-5">
-        <div className="col-8 ">
+        <div
+          className="col-6 mb-3
+		"
+        >
           {/* Review List */}
           <ReviewList reviews={property.recensioni} />
           {reviews.map((review, index) => (
@@ -155,7 +158,7 @@ export default function DetailPage() {
             </div>
           ))}
         </div>
-        <div className="col-4">
+        <div className="col-6 ">
           {/* Form New Review */}
           <ReviewForm />
         </div>
