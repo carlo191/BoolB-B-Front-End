@@ -143,14 +143,30 @@ main {
   object-fit: cover !important;
 }
 
-/* ZOOM IMAGE MODAL */
-.modal#imageModal {
-  padding-top: 12vh;
+.immagine-dettaglio>img{
+  cursor: pointer;
 }
 
-.modal-backdrop.show {
-  background-color: rgb(0, 0, 0, 1) !important;
+/* ZOOM IMAGE MODAL */
+#imageModal img {
+  width: 80%;
+  height: auto !important; 
+  object-fit: contain;  
 }
+
+#imageModal .modal-backdrop.show {
+  background-color: rgb(0, 0, 0) !important;
+}
+
+#imageModal .btn-close {
+  color: whitesmoke;
+  font-size: 2rem; /* Imposta la dimensione della X */
+  background-color: transparent; 
+  border: none; 
+  top: 5px;
+  right: 5px;
+}
+
 
 /* PROFILE ICON */
 .profile-icon {
