@@ -14,6 +14,7 @@ export default function SearchPage() {
     letti,
     setLetti,
     categoryList,
+    navbarOpen,
   } = useGlobalContext();
   const [filteredList, setFilteredList] = useState([]);
 
@@ -67,7 +68,10 @@ export default function SearchPage() {
       >
         {/* Opening Button */}
         <button
-          className="btn btn-primary offcanvas-btn position-absolute translate-middle mt-2"
+          className={
+            "btn btn-primary offcanvas-btn position-absolute translate-middle mt-2 " +
+            (navbarOpen === true && "d-none")
+          }
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasFilter"
@@ -188,7 +192,12 @@ export default function SearchPage() {
 
               {/* Apply Filters Button */}
               <div className="col d-flex justify-content-center">
-                <button type="submit" className="btn btn-primary w-25 mt-2">
+                <button
+                  type="submit"
+                  className="btn btn-primary w-25 mt-2"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasFilter"
+                >
                   Cerca
                 </button>
               </div>

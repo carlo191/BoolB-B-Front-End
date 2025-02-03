@@ -150,7 +150,6 @@ main {
 
 .modal-backdrop.show {
   background-color: rgb(0, 0, 0, 1) !important;
-  z-index: 1040;
 }
 
 /* PROFILE ICON */
@@ -188,7 +187,10 @@ main {
 
 .offcanvas-backdrop {
   background-color: rgba(0, 0, 0, 0.3) !important; /* 30% trasparenza */
+<<<<<<< HEAD
 }
 .container-detail {
   min-width: 1450px;
+=======
+>>>>>>> 101a70102cfad6957457d1351a9742c8fefa4792
 }
