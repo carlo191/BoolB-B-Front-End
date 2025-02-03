@@ -143,15 +143,15 @@ main {
   object-fit: cover !important;
 }
 
-.immagine-dettaglio>img{
+.immagine-dettaglio > img {
   cursor: pointer;
 }
 
 /* ZOOM IMAGE MODAL */
 #imageModal img {
   width: 80%;
-  height: auto !important; 
-  object-fit: contain;  
+  height: auto !important;
+  object-fit: contain;
 }
 
 #imageModal .modal-backdrop.show {
@@ -161,12 +161,11 @@ main {
 #imageModal .btn-close {
   color: whitesmoke;
   font-size: 2rem; /* Imposta la dimensione della X */
-  background-color: transparent; 
-  border: none; 
+  background-color: transparent;
+  border: none;
   top: 5px;
   right: 5px;
 }
-
 
 /* PROFILE ICON */
 .profile-icon {
@@ -189,21 +188,29 @@ main {
   object-fit: cover;
 }
 
-/* OFFCANVAS */
-
-/* SIDEBAR */
-.offcanvas-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 0 8px 8px 0 !important;
-  left: 419px;
-  top: 11%;
-  visibility: visible;
+/* ACCORDION */
+.accordion-header button {
+  font-size: 1.3rem;
 }
 
-.offcanvas-backdrop {
-  background-color: rgba(0, 0, 0, 0.3) !important; /* 30% trasparenza */
+.accordion-button {
+  box-shadow: none !important;
 }
+.accordion-button:focus,
+.accordion-button:hover,
+.accordion-button:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+.accordion-button.collapsed {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+form.navbar-form {
+  margin-bottom: 0 !important;
+}
+
 .container-detail {
   min-width: 1450px;
 }

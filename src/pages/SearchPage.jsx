@@ -60,149 +60,150 @@ export default function SearchPage() {
 
   return (
     <div className="container">
-      {/* Sidebar */}
-      <div
-        className="offcanvas offcanvas-start"
-        tabIndex="-1"
-        id="offcanvasFilter"
-      >
-        {/* Opening Button */}
-        <button
-          className={
-            "btn btn-primary offcanvas-btn position-absolute translate-middle mt-2 " +
-            (navbarOpen === true && "d-none")
-          }
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasFilter"
-        >
-          <i className="fa-solid fa-filter" />
-        </button>
+      {/* Accordion */}
+      <div className="accordion pb-5" id="accordionExample">
+        <div className="accordion-item">
+          {/* ACCORDION HEADER */}
+          <h2 className="accordion-header">
+            <button
+              className="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="false"
+              aria-controls="collapseOne"
+              style={{ boxShadow: "none" }}
+            >
+              Filtri avanzati
+            </button>
+          </h2>
 
-        {/* Sidebar Header */}
-        <div className="offcanvas-header">
-          <h5 className="offcanvas-title">Filtri</h5>
-        </div>
-
-        {/* Sidebar Body */}
-        <div className="offcanvas-body">
-          {/* Form Advanced Filters */}
-          <form
-            className="navbar-form navbar-left mb-5"
-            onSubmit={handleAdvancedSearchSubmit}
+          {/* ACCORDION MAIN */}
+          <div
+            id="collapseOne"
+            className="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
           >
-            <div className="row row-cols-1 g-3">
-              {/* City, address */}
-              <div className="col">
-                {/* Description */}
-                <label htmlFor="searchInput" className="form-label">
-                  Città o Indirizzo:
-                </label>
+            {/* FORM */}
+            <div className="accordion-body">
+              <form
+                className="navbar-form navbar-left mb-5"
+                onSubmit={handleAdvancedSearchSubmit}
+              >
+                <div className="row row-cols-1 g-3">
+                  {/* City, address */}
+                  <div className="col">
+                    {/* Description */}
+                    <label htmlFor="searchInput" className="form-label">
+                      Città o Indirizzo:
+                    </label>
 
-                <div className="d-flex align-items-center">
-                  {/* Input Field */}
-                  <input
-                    type="text"
-                    id="searchInput"
-                    className="form-control"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                </div>
-              </div>
+                    <div className="d-flex align-items-center">
+                      {/* Input Field */}
+                      <input
+                        type="text"
+                        id="searchInput"
+                        className="form-control"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                      />
+                    </div>
+                  </div>
 
-              {/* Type */}
-              <div className="col">
-                <label htmlFor="typeInput" className="form-label">
-                  Tipologia:
-                </label>
+                  {/* Type */}
+                  <div className="col">
+                    <label htmlFor="typeInput" className="form-label">
+                      Tipologia:
+                    </label>
 
-                <div className="d-flex align-items-center">
-                  {/* Input Field */}
-                  <select
-                    id="typeInput"
-                    className="form-select"
-                    value={tipologia}
-                    onChange={(e) => {
-                      setTipologia(e.target.value);
-                    }}
-                  >
-                    <option value="">Seleziona Tipologia</option>
-                    {categoryList.map((category) => (
-                      <option
-                        key={category.tipologia}
-                        value={category.tipologia}
+                    <div className="d-flex align-items-center">
+                      {/* Input Field */}
+                      <select
+                        id="typeInput"
+                        className="form-select"
+                        value={tipologia}
+                        onChange={(e) => {
+                          setTipologia(e.target.value);
+                        }}
                       >
-                        {category.tipologia}
-                      </option>
-                    ))}
-                  </select>
+                        <option value="">Seleziona Tipologia</option>
+                        {categoryList.map((category) => (
+                          <option
+                            key={category.tipologia}
+                            value={category.tipologia}
+                          >
+                            {category.tipologia}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Rooms number */}
+                  <div className="col">
+                    <label htmlFor="roomsNumberInput" className="form-label">
+                      Numero stanze:
+                    </label>
+
+                    <div className="d-flex align-items-center">
+                      {/* Input Field */}
+                      <input
+                        type="number"
+                        id="roomsNumberInput"
+                        className="form-control"
+                        min="0"
+                        inputMode="numeric"
+                        value={stanze}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (/^\d*$/.test(value)) {
+                            setStanze(e.target.value);
+                          }
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Beds number */}
+                  <div className="col">
+                    <label htmlFor="bedsNumberInput" className="form-label">
+                      Numero letti:
+                    </label>
+
+                    <div className="d-flex align-items-center">
+                      {/* Input Field */}
+                      <input
+                        type="number"
+                        id="bedsNumberInput"
+                        className="form-control"
+                        min="0"
+                        inputMode="numeric"
+                        value={letti}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (/^\d*$/.test(value)) {
+                            setLetti(e.target.value);
+                          }
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Apply Filters Button */}
+                  <div className="col d-flex justify-content-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-25 mt-2"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                    >
+                      Cerca
+                    </button>
+                  </div>
                 </div>
-              </div>
-
-              {/* Rooms number */}
-              <div className="col">
-                <label htmlFor="roomsNumberInput" className="form-label">
-                  Numero stanze:
-                </label>
-
-                <div className="d-flex align-items-center">
-                  {/* Input Field */}
-                  <input
-                    type="number"
-                    id="roomsNumberInput"
-                    className="form-control"
-                    min="0"
-                    inputMode="numeric"
-                    value={stanze}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      if (/^\d*$/.test(value)) {
-                        setStanze(e.target.value);
-                      }
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Beds number */}
-              <div className="col">
-                <label htmlFor="bedsNumberInput" className="form-label">
-                  Numero letti:
-                </label>
-
-                <div className="d-flex align-items-center">
-                  {/* Input Field */}
-                  <input
-                    type="number"
-                    id="bedsNumberInput"
-                    className="form-control"
-                    min="0"
-                    inputMode="numeric"
-                    value={letti}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      if (/^\d*$/.test(value)) {
-                        setLetti(e.target.value);
-                      }
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Apply Filters Button */}
-              <div className="col d-flex justify-content-center">
-                <button
-                  type="submit"
-                  className="btn btn-primary w-25 mt-2"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasFilter"
-                >
-                  Cerca
-                </button>
-              </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </div>
 
