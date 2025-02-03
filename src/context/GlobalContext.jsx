@@ -108,7 +108,7 @@ export const GlobalProvider = ({ children }) => {
         nome_utente: review.nome_utente,
         contenuto: review.contenuto,
         voto: review.voto,
-        data_soggiorno: review.data,
+        data_soggiorno: new Date(review.data).toISOString().split("T")[0],
         numero_giorni: review.durata,
       }),
     })
