@@ -17,13 +17,13 @@ export default function Footer() {
 
 			<ul className="d-flex my-auto">
 				<li className="me-2 d-none d-md-block">
-					<i className="fa-solid fa-globe d-none d-lg-inline-block"></i>{" "}
+					<i className="fa-solid fa-globe d-none d-lg-inline-block me-2"></i>
 					Italiano
-					<span className="d-none d-lg-inline-block">( IT )</span>
+					<span className="d-none d-lg-inline-block ms-2">( IT )</span>
 				</li>
 				<li className="me-2 d-none d-md-block">
-					<i className="fa-solid fa-euro-sign"></i>{" "}
-					<span className="d-md-none">Eur</span>
+					<i className="fa-solid fa-euro-sign me-2"></i>
+					<span className="d-none d-lg-inline-block">Eur</span>
 				</li>
 				<li className="d-none d-md-block">
 					<a
