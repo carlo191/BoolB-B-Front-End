@@ -149,9 +149,10 @@ main {
 
 /* ZOOM IMAGE MODAL */
 #imageModal img {
-  width: 80%;
   height: auto !important;
+  max-height: 75vh !important;
   object-fit: contain;
+  max-width: 100%; /* Limita la larghezza */
 }
 
 #imageModal .modal-backdrop.show {
@@ -209,8 +210,4 @@ main {
 
 form.navbar-form {
   margin-bottom: 0 !important;
-}
-
-.container-detail {
-  min-width: 1450px;
 }
