@@ -93,6 +93,18 @@ export default function ReviewForm() {
 					/>
 				</div>
 
+				<div className="mb-3">
+					<label className="active" htmlFor="dateStandard">
+						Data di soggiorno
+					</label>
+					<input
+						className="form-control"
+						type="date"
+						id="dateStandard"
+						name="dateStandard"
+					/>
+				</div>
+
 				{/* Submit */}
 				<button type="submit" className="btn btn-primary">
 					Aggiungi recensione
