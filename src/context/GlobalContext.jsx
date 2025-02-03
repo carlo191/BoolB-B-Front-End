@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { data } from "react-router-dom";
 
 const GlobalContext = createContext();
 
@@ -107,6 +108,8 @@ export const GlobalProvider = ({ children }) => {
         nome_utente: review.nome_utente,
         contenuto: review.contenuto,
         voto: review.voto,
+        data_soggiorno: review.data,
+        numero_giorni: review.durata,
       }),
     })
       .then((res) => res.json())
