@@ -83,7 +83,11 @@ export default function PropertyCard({
 								</li>
 								<li>
 									<i className="fa-solid fa-comment-dots me-2"></i>
-									{property.numero_recensioni} recensioni &nbsp;
+									{property.numero_recensioni}{" "}
+									{property.numero_recensioni == 1
+										? "recensione"
+										: "recensioni"}
+									&nbsp;
 								</li>
 							</ul>
 						</div>
