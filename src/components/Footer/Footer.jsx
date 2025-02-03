@@ -5,22 +5,25 @@ export default function Footer() {
 				<li>
 					<i className="fa-regular fa-copyright"></i> 2025 BoolBnb, Inc.
 				</li>
-				<li className="d-none d-sm-block">&bull;</li>
+				<li className="d-none d-lg-block">&bull;</li>
 				<li>Privacy </li>
-				<li className="d-none d-sm-block">&bull;</li>
+				<li className="d-none d-lg-block">&bull;</li>
 				<li>Termini</li>
-				<li className="d-none d-sm-block">&bull;</li>
+				<li className="d-none d-lg-block">&bull;</li>
 				<li>Mappa del sito</li>
-				<li className="d-none d-sm-block">&bull;</li>
+				<li className="d-none d-lg-block">&bull;</li>
 				<li>Dettagli dell'azienda</li>
 			</ul>
 
 			<ul className="d-flex my-auto">
 				<li className="me-2 d-none d-md-block">
-					<i className="fa-solid fa-globe"></i> Italiano ( IT )
+					<i className="fa-solid fa-globe d-none d-lg-inline-block"></i>{" "}
+					Italiano
+					<span className="d-none d-lg-inline-block">( IT )</span>
 				</li>
 				<li className="me-2 d-none d-md-block">
-					<i className="fa-solid fa-euro-sign"></i> Eur
+					<i className="fa-solid fa-euro-sign"></i>{" "}
+					<span className="d-md-none">Eur</span>
 				</li>
 				<li className="d-none d-md-block">
 					<a

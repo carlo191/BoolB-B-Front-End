@@ -56,7 +56,7 @@ export default function DetailPage() {
 				</div>
 
 				{/* Property Description */}
-				<div className="col-12 col-md-4 ps-5">
+				<div className="col-12 col-md-4">
 					<ul>
 						<li>
 							<h1 className="m-0">{property.nome}</h1>
