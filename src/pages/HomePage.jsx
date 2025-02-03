@@ -68,7 +68,9 @@ export default function HomePage() {
       </form>
 
       {/* Carousel */}
-      <h2 className="text-center text-xl mb-4">Gli appartamenti più votati</h2>
+      <h2 className="text-center text-xl mt-3 mb-4">
+        Gli appartamenti più votati
+      </h2>
       <div className="row d-flex justify-content-center">
         <div className="col-12 col-md-8 d-flex justify-content-center">
           {/* Carousel */}

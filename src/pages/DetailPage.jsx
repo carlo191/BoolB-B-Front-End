@@ -12,7 +12,6 @@ import FormMessage from "../components/formMessage/formMessage";
 export default function DetailPage() {
   const { id } = useParams();
   const { showProperty, property, updateProperty } = useGlobalContext();
-  const [reviews, setReviews] = useState([]);
 
   const handleHeartClick = (event) => {
     event.stopPropagation();
@@ -104,19 +103,12 @@ export default function DetailPage() {
           </ul>
         </div>
       </div>
-      <div className="row row-cols-sm-1 row-cols-lg-2 g-3 g-md-5">
+      <div className="row row-cols-1 row-cols-lg-2 g-3 g-md-5">
         <div className="col mb-3">
           {/* Review List */}
-          <ReviewList reviews={property.recensioni} />
-          {reviews.map((review, index) => (
-            <div key={index} className="card mb-2">
-              <div className="card-body">
-                <h5 className="card-title">{review.nome_utente}</h5>
-                <p className="card-text">{review.contenuto}</p>
-                <p className="card-text">Voto: {review.voto}</p>
-              </div>
-            </div>
-          ))}
+          <div className="border rounded-5 my-5 p-4">
+            <ReviewList reviews={property.recensioni} />
+          </div>
         </div>
         <div className="col">
           {/* Form New Review */}

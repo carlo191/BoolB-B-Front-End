@@ -27,6 +27,31 @@ main {
   font-size: 2.6rem;
 }
 
+/* SCROLLBAR */
+/* Scrollbar Container */
+.custom-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 18px;
+}
+
+/* Scrollbar Thumb */
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #d4d4d4;
+  border-radius: 10px;
+}
+
+/* Hover sul thumb */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  /* background-color: #2980b9;  */
+  background-color: #bdc3c7;
+}
+
+/* Scrollbar Track */
+.custom-scroll::-webkit-scrollbar-track {
+  /* background: transparent;  */
+  background: #f1f1f1;
+}
+
 /* BIGGER BOOTSTRAP CHECKBOX */
 .big-checkbox {
   width: 20px;
@@ -143,11 +168,36 @@ main {
   object-fit: cover !important;
 }
 
+/* ACCORDION */
+.accordion-header button {
+  font-size: 1.3rem;
+}
+
+.accordion-button {
+  box-shadow: none !important;
+}
+.accordion-button:focus,
+.accordion-button:hover,
+.accordion-button:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+.accordion-button.collapsed {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+form.navbar-form {
+  margin-bottom: 0 !important;
+}
+
+/********** DETAILPAGE ***********/
+
+/* ZOOM IMAGE MODAL */
 .immagine-dettaglio > img {
   cursor: pointer;
 }
 
-/* ZOOM IMAGE MODAL */
 #imageModal img {
   height: auto !important;
   max-height: 75vh !important;
@@ -160,7 +210,7 @@ main {
 }
 
 #imageModal .btn-close {
-  background-color: red !important;
+  background-color: rgb(255, 255, 255) !important;
   font-size: 2rem;
   background-color: transparent;
   border: none;
@@ -189,25 +239,11 @@ main {
   object-fit: cover;
 }
 
-/* ACCORDION */
-.accordion-header button {
-  font-size: 1.3rem;
+/* REVIEW*/
+.review-container {
+  max-height: 525px;
 }
 
-.accordion-button {
-  box-shadow: none !important;
-}
-.accordion-button:focus,
-.accordion-button:hover,
-.accordion-button:active {
-  background-color: transparent !important;
-  border-color: transparent !important;
-}
-.accordion-button.collapsed {
-  background-color: transparent !important;
-  border-color: transparent !important;
-}
-
-form.navbar-form {
+.review-element:last-child {
   margin-bottom: 0 !important;
 }
