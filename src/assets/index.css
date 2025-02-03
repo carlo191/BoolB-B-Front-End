@@ -160,8 +160,8 @@ main {
 }
 
 #imageModal .btn-close {
-  color: whitesmoke;
-  font-size: 2rem; /* Imposta la dimensione della X */
+  background-color: red !important;
+  font-size: 2rem;
   background-color: transparent;
   border: none;
   top: 5px;
