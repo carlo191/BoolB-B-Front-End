@@ -126,14 +126,21 @@ export default function DetailPage() {
 
 			{/* Zoom Image Modal */}
 			<div
-				className="modal modal-lg fade"
+				className="modal fade"
 				id="imageModal"
 				tabIndex="-1"
 				aria-hidden="true"
 			>
-				<div className="modal-dialog">
+				<div className="modal-dialog modal-fullscreen">
 					<div className="modal-content bg-transparent border-0">
-						<div className="modal-body d-flex flex-column align-items-center p-0">
+						<div className="modal-body p-0 d-flex flex-column justify-content-center align-items-center position-relative">
+							<button
+								type="button"
+								className="btn-close position-absolute m-3"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+
 							<img
 								className="img-fluid rounded-4 detail-img"
 								src={property.immagine}
