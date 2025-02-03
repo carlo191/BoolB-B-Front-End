@@ -5,6 +5,7 @@ const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
 
 export const GlobalProvider = ({ children }) => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
   const [propertyList, setPropertyList] = useState([]);
   const [propertyListFiltered, setPropertyListFiltered] = useState([]);
@@ -180,6 +181,8 @@ export const GlobalProvider = ({ children }) => {
         propertyListFiltered,
         storeReview,
         storeProperty,
+        navbarOpen,
+        setNavbarOpen,
       }}
     >
       {children}

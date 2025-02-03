@@ -14,6 +14,7 @@ export default function SearchPage() {
     letti,
     setLetti,
     categoryList,
+    navbarOpen,
   } = useGlobalContext();
   const [filteredList, setFilteredList] = useState([]);
 
@@ -67,7 +68,10 @@ export default function SearchPage() {
       >
         {/* Opening Button */}
         <button
-          className="btn btn-primary offcanvas-btn position-absolute translate-middle mt-2"
+          className={
+            "btn btn-primary offcanvas-btn position-absolute translate-middle mt-2 " +
+            (navbarOpen === true && "d-none")
+          }
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasFilter"
