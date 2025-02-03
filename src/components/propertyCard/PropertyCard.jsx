@@ -56,7 +56,7 @@ export default function PropertyCard({
             </p>
 
             <div className="mt-3">
-              <ul className="d-flex flex-wrap mb-1">
+              <ul className="d-flex flex-wrap mb-4">
                 <li>
                   <i className="fa-solid fa-house me-2"></i>
                   {property.tipologia}

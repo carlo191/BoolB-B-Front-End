@@ -129,11 +129,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Other Column */}
-        {/* <div className="col-12 col-md-4 mt-3 mt-md-0">
-          <h2>I migliori immobili per le persone</h2>
-        </div> */}
       </div>
 
       <div className="row mt-5">

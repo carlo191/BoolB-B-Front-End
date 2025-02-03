@@ -192,7 +192,12 @@ export default function SearchPage() {
 
               {/* Apply Filters Button */}
               <div className="col d-flex justify-content-center">
-                <button type="submit" className="btn btn-primary w-25 mt-2">
+                <button
+                  type="submit"
+                  className="btn btn-primary w-25 mt-2"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasFilter"
+                >
                   Cerca
                 </button>
               </div>
