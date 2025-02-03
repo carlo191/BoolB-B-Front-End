@@ -45,7 +45,7 @@ export default function ReviewForm() {
 	}
 
 	return (
-		<div className="border rounded-5 my-5 p-4">
+		<div className="border rounded-5 p-4">
 			<h2 className="mb-3">
 				<i className="fa-solid fa-pencil fa-md me-2"></i>
 				Scrivi la tua recensione:
@@ -61,6 +61,7 @@ export default function ReviewForm() {
 						name="nome_utente"
 						type="text"
 						className="form-control"
+						placeholder="Scrivici il tuo nome"
 						id="nome_utente"
 						value={formData.nome_utente}
 						onChange={(e) => handleChange(e)}
@@ -75,6 +76,7 @@ export default function ReviewForm() {
 						name="contenuto"
 						className="form-control"
 						id="contenuto"
+						placeholder="Scrivici come è stata la tua esperienza"
 						rows="3"
 						value={formData.contenuto}
 						onChange={(e) => handleChange(e)}
@@ -90,6 +92,7 @@ export default function ReviewForm() {
 						type="number"
 						min="1"
 						max="5"
+						placeholder="Inserisci un voto da 1 a 5"
 						className="form-control"
 						id="voto"
 						value={formData.voto}
@@ -98,8 +101,8 @@ export default function ReviewForm() {
 				</div>
 
 				<div className="mb-3">
-					<label className="active" htmlFor="data">
-						Data di soggiorno
+					<label className="active form-label" htmlFor="data">
+						Data di soggiorno:
 					</label>
 					<input
 						className="form-control"
@@ -113,13 +116,14 @@ export default function ReviewForm() {
 				</div>
 				<div className="mb-3">
 					<label htmlFor="durata" className="form-label">
-						Durata soggiorno:
+						Durata del soggiorno:
 					</label>
 					<input
 						name="durata"
 						type="number"
 						min="1"
 						className="form-control"
+						placeholder="Inserisci il n. di giorni della tua permanenza"
 						id="durata"
 						value={formData.durata}
 						onChange={(e) => handleChange(e)}

@@ -37,8 +37,8 @@ export default function ReviewItem({ review }) {
 				</div>
 				<div>
 					<h6>
-						Durata: {review.numero_giorni}{" "}
-						{review.numero_giorni == 1 ? "giorno" : "giorni"}{" "}
+						Durata: {review.numero_giorni}
+						{review.numero_giorni == 1 ? "giorno" : "giorni"}
 					</h6>
 				</div>
 			</div>
