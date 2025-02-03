@@ -48,6 +48,7 @@ export default function SearchPage() {
   useEffect(() => {
     if (propertyList.length > 0) {
       setFilteredList(propertyList);
+      applyFilters();
     }
   }, [propertyList]);
 
