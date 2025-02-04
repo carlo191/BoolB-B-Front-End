@@ -160,7 +160,7 @@ main {
 }
 
 #imageModal .btn-close {
-  background-color: red !important;
+  background-color: white !important;
   font-size: 2rem;
   background-color: transparent;
   border: none;

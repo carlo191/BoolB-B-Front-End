@@ -45,6 +45,7 @@ export default function FormMessage() {
         className="modal fade"
         id="contactModal"
         tabIndex="-1"
+        data-bs-backdrop="static"
         aria-labelledby="contactModalLabel"
         aria-hidden="true"
         onHide={handleClose}
