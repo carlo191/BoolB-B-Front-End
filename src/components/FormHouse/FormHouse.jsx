@@ -17,6 +17,7 @@ export default function FormHouse() {
     id_tipologia: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [showModal, setShowModal] = useState(false);
 
   function handleCloseModal() {
@@ -26,15 +27,8 @@ export default function FormHouse() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (
-      formData.nome.length < 3 ||
-      formData.indirizzo.length < 5 ||
-      formData.email_proprietario.length < 5
-    ) {
-      alert(`Indirizzo e email devono avere almeno 5 caratteri di lunghezza,
-            nome deve avere almeno 3 caratteri di lunghezza.`);
-      return;
-    }
+    // Esegui la validazione prima di inviare il modulo
+    if (!validateForm()) return;
 
     storeProperty(formData);
     setShowModal(true);
@@ -52,33 +46,10 @@ export default function FormHouse() {
     });
   }
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    const numberFields = [
-      "numero_stanze",
-      "numero_letti",
-      "numero_bagni",
-      "metri_quadrati",
-    ];
+  function validateForm() {
+    const newErrors = {};
 
-    if (e.target.name === "immagine") {
-      setFormData((formData) => ({
-        ...formData,
-        [e.target.name]: "default.jpg",
-      }));
-    } else {
-      setFormData((formData) => ({
-        ...formData,
-        [name]: numberFields.includes(name) ? parseInt(value) || "" : value,
-      }));
-    }
-  }
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    let newErrors = {};
-
+    // Controlli di validità per ciascun campo
     if (formData.nome.trim().length < 3) {
       newErrors.nome = "Il nome deve avere almeno 3 caratteri.";
     }
@@ -105,6 +76,26 @@ export default function FormHouse() {
       }
     });
 
+    // Se ci sono errori, aggiornali nello stato e ritorna false
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return false;
+    }
+
+    // Se non ci sono errori, ritorna true
+    setErrors({});
+    return true;
+  }
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    const numberFields = [
+      "numero_stanze",
+      "numero_letti",
+      "numero_bagni",
+      "metri_quadrati",
+    ];
+
     if (e.target.name === "immagine") {
       setFormData((formData) => ({
         ...formData,
@@ -116,9 +107,6 @@ export default function FormHouse() {
         [name]: numberFields.includes(name) ? parseInt(value) || "" : value,
       }));
     }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   }
 
   return (
@@ -144,6 +132,7 @@ export default function FormHouse() {
               onChange={handleChange}
               required
             />
+            {errors.nome && <div className="text-danger">{errors.nome}</div>}
           </div>
           <div className="col-md-6">
             {/* Numero stanze Input */}
@@ -160,6 +149,9 @@ export default function FormHouse() {
               onChange={handleChange}
               required
             />
+            {errors.numero_stanze && (
+              <div className="text-danger">{errors.numero_stanze}</div>
+            )}
           </div>
         </div>
         <div className="row mb-2">
@@ -178,6 +170,9 @@ export default function FormHouse() {
               onChange={handleChange}
               required
             />
+            {errors.numero_letti && (
+              <div className="text-danger">{errors.numero_letti}</div>
+            )}
           </div>
           <div className="col-md-6">
             {/* Numero bagni Input */}
@@ -194,6 +189,9 @@ export default function FormHouse() {
               onChange={handleChange}
               required
             />
+            {errors.numero_bagni && (
+              <div className="text-danger">{errors.numero_bagni}</div>
+            )}
           </div>
         </div>
         <div className="row mb-2">
@@ -212,6 +210,9 @@ export default function FormHouse() {
               onChange={handleChange}
               required
             />
+            {errors.metri_quadrati && (
+              <div className="text-danger">{errors.metri_quadrati}</div>
+            )}
           </div>
           <div className="col-md-6">
             {/* Indirizzo Input */}
@@ -227,6 +228,9 @@ export default function FormHouse() {
               onChange={handleChange}
               required
             />
+            {errors.indirizzo && (
+              <div className="text-danger">{errors.indirizzo}</div>
+            )}
           </div>
         </div>
         <div className="row mb-2">
@@ -244,6 +248,9 @@ export default function FormHouse() {
               onChange={handleChange}
               required
             />
+            {errors.email_proprietario && (
+              <div className="text-danger">{errors.email_proprietario}</div>
+            )}
           </div>
           <div className="col-md-6">
             {/* Immagine Input */}
