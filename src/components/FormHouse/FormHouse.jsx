@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Modal } from "bootstrap";
 
 // Global variables
 import { useGlobalContext } from "../../context/GlobalContext";
@@ -31,7 +32,13 @@ export default function FormHouse() {
     }
     console.log(formData);
     storeProperty(formData);
-    alert("Casa inserita correttamente!");
+    // Trova la modale e mostralo
+    const modalElement = document.getElementById("exampleModalAddHouse");
+    if (modalElement) {
+      const modal = new Modal(modalElement);
+      modal.show();
+    }
+    // alert("Casa inserita correttamente!");
     setFormData({
       nome: "",
       numero_stanze: "",
@@ -232,6 +239,24 @@ export default function FormHouse() {
         <button type="submit" className="btn btn-primary mt-2 ">
           Aggiungi la tua casa
         </button>
+        <div className="modal fade" id="exampleModalAddHouse" tabIndex="-1">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-body fs-5 fw-semibold">
+                L' immobile è stato aggiunto con successo!
+              </div>
+              <div className="modal-footer border-0">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Chiudi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   );
