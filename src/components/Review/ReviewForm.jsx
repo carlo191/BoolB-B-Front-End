@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-// Global variables
 import { useGlobalContext } from "../../context/GlobalContext";
+
 export default function ReviewForm() {
   const { storeReview, property } = useGlobalContext();
   const [formData, setFormData] = useState({
@@ -11,6 +11,8 @@ export default function ReviewForm() {
     data: "",
     durata: "",
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   useEffect(() => {
     if (property && property.id) {
       setFormData((prevFormData) => ({
@@ -19,15 +21,11 @@ export default function ReviewForm() {
       }));
     }
   }, [property]);
+
   function handleSubmit(e) {
     e.preventDefault();
     storeReview(formData);
-    // Trova la modale e mostralo
-    const modalElement = document.getElementById("exampleModalReview");
-    if (modalElement) {
-      const modal = new Modal(modalElement);
-      modal.show();
-    }
+    setIsSubmitted(true);
     setFormData({
       id_immobile: "",
       nome_utente: "",
@@ -37,6 +35,7 @@ export default function ReviewForm() {
       durata: "",
     });
   }
+
   function handleChange(e) {
     setFormData((formData) => ({
       ...formData,
@@ -44,6 +43,11 @@ export default function ReviewForm() {
         e.target.name === "voto" ? parseInt(e.target.value) : e.target.value,
     }));
   }
+
+  function handleClose() {
+    setIsSubmitted(false);
+  }
+
   return (
     <div className="border rounded-5 p-4">
       <h2 className="mb-3">
@@ -52,7 +56,6 @@ export default function ReviewForm() {
       </h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
-          {/* Username Input */}
           <label htmlFor="nome_utente" className="form-label">
             Username:
           </label>
@@ -67,7 +70,6 @@ export default function ReviewForm() {
             onChange={(e) => handleChange(e)}
           />
         </div>
-        {/* Description Input */}
         <div className="mb-3">
           <label htmlFor="contenuto" className="form-label">
             Testo:
@@ -82,7 +84,6 @@ export default function ReviewForm() {
             onChange={(e) => handleChange(e)}
           ></textarea>
         </div>
-        {/* Vote Input */}
         <div className="mb-3">
           <label htmlFor="voto" className="form-label">
             Voto:
@@ -131,29 +132,42 @@ export default function ReviewForm() {
             onChange={(e) => handleChange(e)}
           />
         </div>
-        {/* Submit */}
         <button type="submit" className="btn btn-primary">
           Aggiungi recensione
         </button>
-        <div className="modal fade" id="exampleModalReview" tabIndex="-1">
+      </form>
+      {isSubmitted && (
+        <div
+          className="modal fade show d-block"
+          tabIndex="-1"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        >
           <div className="modal-dialog">
             <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Recensione Inviata</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={handleClose}
+                ></button>
+              </div>
               <div className="modal-body">
-                La recensione è stata aggiunta con successo!
+                <p>La tua recensione è stata inviata con successo!</p>
               </div>
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
+                  className="btn btn-primary"
+                  onClick={handleClose}
                 >
-                  Chiudi
+                  Ok
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </form>
+      )}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-// Global variables
+import { Modal } from "bootstrap"; // Importazione per mostrare la modale
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function FormHouse() {
@@ -17,9 +16,11 @@ export default function FormHouse() {
     id_tipologia: "",
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
+
     if (
       formData.nome.length < 3 ||
       formData.indirizzo.length < 5 ||
@@ -29,9 +30,10 @@ export default function FormHouse() {
             nome deve avere almeno 3 caratteri di lunghezza.`);
       return;
     }
-    console.log(formData);
+
     storeProperty(formData);
-    alert("Casa inserita correttamente!");
+    setShowModal(true); // Mostra la modale di conferma
+
     setFormData({
       nome: "",
       numero_stanze: "",
@@ -67,6 +69,10 @@ export default function FormHouse() {
     }
   }
 
+  function handleCloseModal() {
+    setShowModal(false);
+  }
+
   return (
     <div className="border rounded-5 my-3 p-3">
       <h2 className="mb-2">
@@ -77,7 +83,6 @@ export default function FormHouse() {
       <form onSubmit={handleSubmit}>
         <div className="row mb-2">
           <div className="col-md-6">
-            {/* Nome Input */}
             <label htmlFor="nome" className="form-label">
               Nome:
             </label>
@@ -92,7 +97,6 @@ export default function FormHouse() {
             />
           </div>
           <div className="col-md-6">
-            {/* Numero stanze Input */}
             <label htmlFor="numero_stanze" className="form-label">
               Numero stanze:
             </label>
@@ -108,9 +112,9 @@ export default function FormHouse() {
             />
           </div>
         </div>
+
         <div className="row mb-2">
           <div className="col-md-6">
-            {/* Numero letti Input */}
             <label htmlFor="numero_letti" className="form-label">
               Numero letti:
             </label>
@@ -126,7 +130,6 @@ export default function FormHouse() {
             />
           </div>
           <div className="col-md-6">
-            {/* Numero bagni Input */}
             <label htmlFor="numero_bagni" className="form-label">
               Numero bagni:
             </label>
@@ -142,9 +145,9 @@ export default function FormHouse() {
             />
           </div>
         </div>
+
         <div className="row mb-2">
           <div className="col-md-6">
-            {/* Metri quadrati Input */}
             <label htmlFor="metri_quadrati" className="form-label">
               Metri quadrati:
             </label>
@@ -160,7 +163,6 @@ export default function FormHouse() {
             />
           </div>
           <div className="col-md-6">
-            {/* Indirizzo Input */}
             <label htmlFor="indirizzo" className="form-label">
               Indirizzo:
             </label>
@@ -175,65 +177,81 @@ export default function FormHouse() {
             />
           </div>
         </div>
-        <div className="row mb-2">
-          <div className="col-md-6">
-            {/* Email Input */}
-            <label htmlFor="email_proprietario" className="form-label">
-              Email:
-            </label>
-            <input
-              type="email"
-              name="email_proprietario"
-              className="form-control"
-              id="email_proprietario"
-              value={formData.email_proprietario}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="col-md-6">
-            {/* Immagine Input */}
-            <label htmlFor="immagine" className="form-label">
-              Immagine:
-            </label>
-            <input
-              type="file"
-              name="immagine"
-              className="form-control"
-              id="immagine"
-              onChange={handleChange}
-              required
-            />
-          </div>
+
+        <div className="mb-2">
+          <label htmlFor="email_proprietario" className="form-label">
+            Email:
+          </label>
+          <input
+            type="email"
+            name="email_proprietario"
+            className="form-control"
+            id="email_proprietario"
+            value={formData.email_proprietario}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <div className="row mb-2">
-          <div className="col-md-6">
-            {/* Tipologia Input */}
-            <label htmlFor="id_tipologia" className="form-label">
-              Tipologia:
-            </label>
-            <select
-              name="id_tipologia"
-              id="id_tipologia"
-              className="form-select"
-              value={formData.id_tipologia}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Seleziona Tipologia</option>
-              {categoryList.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.tipologia}
-                </option>
-              ))}
-            </select>
-          </div>
+
+        <div className="mb-2">
+          <label htmlFor="id_tipologia" className="form-label">
+            Tipologia:
+          </label>
+          <select
+            name="id_tipologia"
+            id="id_tipologia"
+            className="form-select"
+            value={formData.id_tipologia}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Seleziona Tipologia</option>
+            {categoryList.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.tipologia}
+              </option>
+            ))}
+          </select>
         </div>
-        {/* Submit */}
-        <button type="submit" className="btn btn-primary mt-2 ">
+
+        <button type="submit" className="btn btn-primary mt-2">
           Aggiungi la tua casa
         </button>
       </form>
+
+      {/* Modale di conferma */}
+      {showModal && (
+        <div
+          className="modal fade show"
+          style={{ display: "block" }}
+          tabIndex="-1"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Casa inserita con successo!</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={handleCloseModal}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p>Il tuo immobile è stato aggiunto correttamente.</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleCloseModal}
+                >
+                  Ok
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
