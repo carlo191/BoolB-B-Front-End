@@ -11,6 +11,7 @@ export default function ReviewForm() {
     data: "",
     durata: "",
   });
+  const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
@@ -22,18 +23,32 @@ export default function ReviewForm() {
     }
   }, [property]);
 
+  function validateForm() {
+    let newErrors = {};
+    if (formData.nome_utente.trim().length < 3) {
+      newErrors.nome_utente = "Il nome deve contenere almeno 3 caratteri.";
+    }
+    if (formData.contenuto.trim().length < 10) {
+      newErrors.contenuto = "La recensione deve contenere almeno 10 caratteri.";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    storeReview(formData);
-    setIsSubmitted(true);
-    setFormData({
-      id_immobile: "",
-      nome_utente: "",
-      contenuto: "",
-      voto: "",
-      data: "",
-      durata: "",
-    });
+    if (validateForm()) {
+      storeReview(formData);
+      setIsSubmitted(true);
+      setFormData({
+        id_immobile: property?.id || "",
+        nome_utente: "",
+        contenuto: "",
+        voto: "",
+        data: "",
+        durata: "",
+      });
+    }
   }
 
   function handleChange(e) {
@@ -69,6 +84,9 @@ export default function ReviewForm() {
             value={formData.nome_utente}
             onChange={(e) => handleChange(e)}
           />
+          {errors.nome_utente && (
+            <div className="text-danger">{errors.nome_utente}</div>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="contenuto" className="form-label">
@@ -83,6 +101,9 @@ export default function ReviewForm() {
             value={formData.contenuto}
             onChange={(e) => handleChange(e)}
           ></textarea>
+          {errors.contenuto && (
+            <div className="text-danger">{errors.contenuto}</div>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="voto" className="form-label">

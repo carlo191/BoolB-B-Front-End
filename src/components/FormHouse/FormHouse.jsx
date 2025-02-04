@@ -76,12 +76,34 @@ export default function FormHouse() {
 
   function handleChange(e) {
     const { name, value } = e.target;
+
+    let newErrors = {};
+
+    if (formData.nome.trim().length < 3) {
+      newErrors.nome = "Il nome deve avere almeno 3 caratteri.";
+    }
+    if (formData.indirizzo.trim().length < 5) {
+      newErrors.indirizzo = "L'indirizzo deve avere almeno 5 caratteri.";
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_proprietario)) {
+      newErrors.email_proprietario = "Inserisci un'email valida.";
+    }
+
     const numberFields = [
       "numero_stanze",
       "numero_letti",
       "numero_bagni",
       "metri_quadrati",
     ];
+
+    numberFields.forEach((field) => {
+      if (
+        formData[field] !== "" &&
+        (isNaN(formData[field]) || formData[field] < 0)
+      ) {
+        newErrors[field] = "Inserisci un valore valido.";
+      }
+    });
 
     if (e.target.name === "immagine") {
       setFormData((formData) => ({
@@ -94,6 +116,9 @@ export default function FormHouse() {
         [name]: numberFields.includes(name) ? parseInt(value) || "" : value,
       }));
     }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   }
 
   return (
@@ -191,7 +216,7 @@ export default function FormHouse() {
           <div className="col-md-6">
             {/* Indirizzo Input */}
             <label htmlFor="indirizzo" className="form-label">
-               Città e Indirizzo:
+              Indirizzo:
             </label>
             <input
               type="text"
@@ -231,7 +256,7 @@ export default function FormHouse() {
               className="form-control"
               id="immagine"
               onChange={handleChange}
-             
+              required
             />
           </div>
         </div>
@@ -263,39 +288,6 @@ export default function FormHouse() {
           Aggiungi la tua casa
         </button>
       </form>
-      {/* Modale di conferma */}
-      {showModal && (
-        <div
-          className="modal fade show"
-          style={{ display: "block" }}
-          tabIndex="-1"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Casa inserita con successo!</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={handleCloseModal}
-                ></button>
-              </div>
-              <div className="modal-body">
-                <p>Il tuo immobile è stato aggiunto correttamente.</p>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleCloseModal}
-                >
-                  Ok
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
