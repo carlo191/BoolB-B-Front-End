@@ -131,13 +131,11 @@ export default function DetailPage() {
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
-
               <img
                 className="img-fluid rounded-4 detail-img"
                 src={property.immagine}
                 alt={property.immagine}
               />
-
               <h1 className="text-light mt-3">{property.nome}</h1>
             </div>
           </div>
