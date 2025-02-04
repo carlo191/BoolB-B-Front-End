@@ -17,8 +17,8 @@ export default function ReviewItem({ review }) {
   };
 
   return (
-    <div className="review-element d-flex flex-column flex-sm-row border rounded-4 p-2 mt-1 mb-3">
-      <div className="user-text flex-grow-1 mb-1">
+    <div className="col-12 d-flex flex-column flex-sm-row border rounded-4 p-2 mb-3">
+      <div className="user-text flex-grow-1">
         <h5 className="d-flex align-items-center">
           <ProfileIcon name={review.nome_utente} />
           {review.nome_utente}
@@ -26,14 +26,17 @@ export default function ReviewItem({ review }) {
 
         <div>{review.contenuto}</div>
       </div>
-      <div className="ps-lg-2">
+      <div>
         <div className="vote">
           <h6 className="review-vote">
             Voto: {generateStars(review.voto).map((star) => star)}
           </h6>
         </div>
         <div>
-          <h6>Data di soggiorno: {review.data_soggiorno.split("T", 1)}</h6>
+          <h6>
+            Data di soggiorno:{" "}
+            {new Date(review.data_soggiorno).toISOString().split("T")[0]}
+          </h6>
         </div>
         <div>
           <h6>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Modal } from "bootstrap";
 
 export default function FormMessage() {
   const [formData, setFormData] = useState({
@@ -20,30 +19,14 @@ export default function FormMessage() {
     if (formData.email === "" || formData.message === "") {
       alert("Inserisci una email e un messaggio");
       return;
+      setIsSubmitted(true);
+      setShowModal(true);
+      setFormData({ email: "", message: "" });
     }
-    setIsSubmitted(true);
-    setShowModal(true);
-
-    // Trova la modale e mostralo
-    const modalElement = document.getElementById("exampleModalFormMessage");
-    if (modalElement) {
-      const modal = new Modal(modalElement);
-      modal.show();
-    }
-
-    setFormData({ email: "", message: "" });
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    // Chiudi la modale attualmente aperta
-    const modalElement = document.getElementById("exampleModal");
-    if (modalElement) {
-      const modal = Modal.getInstance(modalElement);
-      if (modal) {
-        modal.hide();
-      }
-    }
   };
 
   return (
@@ -70,19 +53,10 @@ export default function FormMessage() {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
             <div className="modal-body">
               <form className=" p-4" onSubmit={handleSubmit}>
                 <div className="mb-3 mt-3">
                   <input
-                    required
                     value={formData.email}
                     onChange={handleChange}
                     name="email"
@@ -94,7 +68,6 @@ export default function FormMessage() {
                 </div>
                 <div className="mb-3">
                   <textarea
-                    required
                     value={formData.message}
                     onChange={handleChange}
                     name="message"
@@ -122,59 +95,41 @@ export default function FormMessage() {
           </div>
         </div>
       </div>
-      <div className="modal fade " id="exampleModalFormMessage" tabIndex="-1">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-body">
-              Il messaggio è stato inviato con successo!
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Chiudi
-              </button>
+
+      {showModal && (
+        <div
+          className="modal fade show"
+          style={{ display: "block" }}
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button
+                  type="button"
+                  className="btn-close"
+                  aria-label="Close"
+                  onClick={handleCloseModal}
+                ></button>
+              </div>
+
+              <div className="modal-body">
+                {isSubmitted ? (
+                  <h4>
+                    Il tuo messaggio è stato inviato correttamente, il
+                    proprietario ti risponderà al più presto!
+                    <i className="fa-regular fa-face-smile"></i>
+                  </h4>
+                ) : (
+                  <h4>Inserisci una email e un messaggio</h4>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* {showModal && (
-				<div
-					className="modal fade show"
-					style={{ display: "block" }}
-					tabIndex="-1"
-					aria-labelledby="exampleModalLabel"
-					aria-hidden="true"
-				>
-					<div className="modal-dialog">
-						<div className="modal-content">
-							<div className="modal-header">
-								<button
-									type="button"
-									className="btn-close"
-									aria-label="Close"
-									onClick={handleCloseModal}
-								></button>
-							</div>
-
-							<div className="modal-body">
-								{isSubmitted ? (
-									<h4>
-										Il tuo messaggio è stato inviato correttamente, il
-										proprietario ti risponderà al più presto!
-										<i className="fa-regular fa-face-smile"></i>
-									</h4>
-								) : (
-									<h4>Inserisci una email e un messaggio</h4>
-								)}
-							</div>
-						</div>
-					</div>
-				</div>
-			)} */}
+      )}
     </>
   );
 }

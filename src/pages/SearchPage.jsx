@@ -61,7 +61,7 @@ export default function SearchPage() {
   return (
     <div className="container">
       {/* Accordion */}
-      <div className="accordion pb-5" id="accordionFilter">
+      <div className="accordion pb-5" id="accordionExample">
         <div className="accordion-item">
           {/* ACCORDION HEADER */}
           <h2 className="accordion-header">
@@ -82,7 +82,7 @@ export default function SearchPage() {
           <div
             id="collapseOne"
             className="accordion-collapse collapse"
-            data-bs-parent="#accordionFilter"
+            data-bs-parent="#accordionExample"
           >
             {/* FORM */}
             <div className="accordion-body">

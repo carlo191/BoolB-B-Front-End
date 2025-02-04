@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Modal } from "bootstrap";
 
 // Global variables
 import { useGlobalContext } from "../../context/GlobalContext";
@@ -28,14 +26,6 @@ export default function ReviewForm() {
   function handleSubmit(e) {
     e.preventDefault();
     storeReview(formData);
-
-    // Trova la modale e mostralo
-    const modalElement = document.getElementById("exampleModalReview");
-    if (modalElement) {
-      const modal = new Modal(modalElement);
-      modal.show();
-    }
-
     setFormData({
       id_immobile: "",
       nome_utente: "",
@@ -68,11 +58,9 @@ export default function ReviewForm() {
             Username:
           </label>
           <input
-            required
             name="nome_utente"
             type="text"
             className="form-control"
-            placeholder="Scrivici il tuo nome"
             id="nome_utente"
             value={formData.nome_utente}
             onChange={(e) => handleChange(e)}
@@ -87,7 +75,6 @@ export default function ReviewForm() {
             name="contenuto"
             className="form-control"
             id="contenuto"
-            placeholder="Scrivici come è stata la tua esperienza"
             rows="3"
             value={formData.contenuto}
             onChange={(e) => handleChange(e)}
@@ -99,12 +86,10 @@ export default function ReviewForm() {
             Voto:
           </label>
           <input
-            required
             name="voto"
             type="number"
             min="1"
             max="5"
-            placeholder="Inserisci un voto da 1 a 5"
             className="form-control"
             id="voto"
             value={formData.voto}
@@ -113,11 +98,10 @@ export default function ReviewForm() {
         </div>
 
         <div className="mb-3">
-          <label className="active form-label" htmlFor="data">
-            Data di soggiorno:
+          <label className="active" htmlFor="data">
+            Data di soggiorno
           </label>
           <input
-            required
             className="form-control"
             type="date"
             id="data"
@@ -129,15 +113,13 @@ export default function ReviewForm() {
         </div>
         <div className="mb-3">
           <label htmlFor="durata" className="form-label">
-            Durata del soggiorno:
+            Durata soggiorno:
           </label>
           <input
-            required
             name="durata"
             type="number"
             min="1"
             className="form-control"
-            placeholder="Inserisci il n. di giorni della tua permanenza"
             id="durata"
             value={formData.durata}
             onChange={(e) => handleChange(e)}
@@ -148,24 +130,6 @@ export default function ReviewForm() {
         <button type="submit" className="btn btn-primary">
           Aggiungi recensione
         </button>
-        <div className="modal fade" id="exampleModalReview" tabIndex="-1">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-body">
-                La recensione è stata aggiunta con successo!
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Chiudi
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </form>
     </div>
   );
