@@ -202,6 +202,7 @@ export default function FormHouse() {
               className="form-control"
               id="immagine"
               onChange={handleChange}
+              required
             />
           </div>
         </div>
