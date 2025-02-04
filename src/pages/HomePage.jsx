@@ -52,7 +52,7 @@ export default function HomePage() {
               type="text"
               className="form-control"
               placeholder="Inserisci una città o una via"
-              value={search.value}
+              value={search}
               onChange={handleSearch}
             />
           </div>
