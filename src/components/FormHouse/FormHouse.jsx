@@ -31,7 +31,7 @@ export default function FormHouse() {
     if (!validateForm()) return;
 
     storeProperty(formData);
-    setShowModal(true);
+    setShowModal(true); // Rende visibile la modale
 
     setFormData({
       nome: "",
@@ -214,6 +214,7 @@ export default function FormHouse() {
               <div className="text-danger">{errors.metri_quadrati}</div>
             )}
           </div>
+
           <div className="col-md-6">
             {/* Indirizzo Input */}
             <label htmlFor="indirizzo" className="form-label">
@@ -263,7 +264,6 @@ export default function FormHouse() {
               className="form-control"
               id="immagine"
               onChange={handleChange}
-              required
             />
           </div>
         </div>
@@ -291,10 +291,35 @@ export default function FormHouse() {
           </div>
         </div>
         {/* Submit */}
-        <button type="submit" className="btn btn-primary mt-2 ">
+        <button type="submit" className="btn btn-primary mt-2">
           Aggiungi la tua casa
         </button>
       </form>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal" style={{ display: "block" }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Immobile Aggiunto</h5>
+              </div>
+              <div className="modal-body">
+                <p>L'immobile è stato aggiunto con successo!</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={handleCloseModal}
+                >
+                  Chiudi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
