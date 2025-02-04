@@ -15,7 +15,7 @@ export default function ReviewList({ reviews }) {
         <div
           className="d-flex flex-column overflow-y-auto"
           style={{
-            maxHeight: "400px", // Altezza massima del contenitore per lo scroll
+            height: "600px", // Altezza massima del contenitore per lo scroll
             width: "100%",
             gap: "16px", // Spazio tra le recensioni
           }}

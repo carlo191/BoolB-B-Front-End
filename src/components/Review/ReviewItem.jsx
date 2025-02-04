@@ -17,7 +17,7 @@ export default function ReviewItem({ review }) {
   };
 
   return (
-    <div className="col-12 d-flex flex-column flex-sm-row border rounded-4 p-2 mb-3">
+    <div className="col-12 d-flex flex-column flex-sm-row border rounded-4 p-2 ">
       <div className="user-text flex-grow-1">
         <h5 className="d-flex align-items-center">
           <ProfileIcon name={review.nome_utente} />

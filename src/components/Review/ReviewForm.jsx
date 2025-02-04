@@ -45,7 +45,7 @@ export default function ReviewForm() {
   }
 
   return (
-    <div className="border rounded-5 my-5 p-4">
+    <div className="border rounded-5 my-5 p-4" style={{ height: "600px" }}>
       <h2 className="mb-3">
         <i className="fa-solid fa-pencil fa-md me-2"></i>
         Scrivi la tua recensione:
