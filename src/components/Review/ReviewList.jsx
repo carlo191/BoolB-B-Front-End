@@ -5,7 +5,7 @@ export default function ReviewList({ reviews }) {
 	return (
 		<>
 			<h2 className="py-2">
-				<i className="fa-solid fa-comment-dots fa-lg me-2"></i>       
+				<i className="fa-solid fa-comment-dots fa-lg me-2"></i>
 				Recensioni:{" "}
 			</h2>
 
