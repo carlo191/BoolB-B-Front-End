@@ -23,17 +23,17 @@ export default function ReviewList({ reviews }) {
           {reviews.map((review) => (
             <div
               key={review.id}
-              style={{
-                padding: "16px",
+              // style={{
+              //   padding: "16px",
 
-                borderRadius: "8px",
+              //   borderRadius: "8px",
 
-                width: "100%", // La recensione occupa tutta la larghezza disponibile
-                minHeight: "120px", // Altezza minima per evitare schiacciamenti
-                height: "auto", // La recensione si adatta al contenuto
-                overflow: "visible", // Assicura che il contenuto non venga tagliato
-                wordWrap: "break-word", // Impedisce che il testo esca dal box
-              }}
+              //   width: "100%", // La recensione occupa tutta la larghezza disponibile
+              //   minHeight: "120px", // Altezza minima per evitare schiacciamenti
+              //   height: "auto", // La recensione si adatta al contenuto
+              //   overflow: "visible", // Assicura che il contenuto non venga tagliato
+              //   wordWrap: "break-word", // Impedisce che il testo esca dal box
+              // }}
             >
               <ReviewItem review={review} />
             </div>
