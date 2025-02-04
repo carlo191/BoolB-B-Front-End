@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Modal } from "bootstrap";
 // Global variables
 import { useGlobalContext } from "../../context/GlobalContext";
 export default function ReviewForm() {
