@@ -6,7 +6,7 @@ export default function Navbar() {
   const { setNavbarOpen } = useGlobalContext();
 
   return (
-    <nav className="z-2 navbar navbar-expand-lg bg-primary position-fixed w-100">
+    <nav className="z-3 navbar navbar-expand-lg bg-primary position-fixed w-100">
       <div className="container-fluid">
         {/* Logo */}
         <Link className="fs-2 fw-semibold pe-4 text-light" to="/">
