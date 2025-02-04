@@ -30,8 +30,8 @@ export default function DetailPage() {
   }, [id]);
 
   return (
-    <div className="container mx-auto">
-      <div className="row g-3 g-md-5 my-4">
+    <div className="container">
+      <div className="row g-3 g-md-5">
         {/* Property Image */}
         <div className="col-12 col-md-8 immagine-dettaglio p-0">
           <img

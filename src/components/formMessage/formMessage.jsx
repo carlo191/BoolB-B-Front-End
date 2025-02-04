@@ -122,7 +122,7 @@ export default function FormMessage() {
           </div>
         </div>
       </div>
-      <div className="modal fade " id="exampleModalFormMessage" tabindex="-1">
+      <div className="modal fade " id="exampleModalFormMessage" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-body">
@@ -145,7 +145,7 @@ export default function FormMessage() {
 				<div
 					className="modal fade show"
 					style={{ display: "block" }}
-					tabindex="-1"
+					tabIndex="-1"
 					aria-labelledby="exampleModalLabel"
 					aria-hidden="true"
 				>

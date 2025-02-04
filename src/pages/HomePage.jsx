@@ -131,7 +131,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="row mt-4">
+      <div className="row mt-5">
         <div className="col-12">
           <h2 className="text-center text-xl m-0">Immobili in evidenza</h2>
         </div>

@@ -148,7 +148,7 @@ export default function ReviewForm() {
         <button type="submit" className="btn btn-primary">
           Aggiungi recensione
         </button>
-        <div className="modal fade" id="exampleModalReview" tabindex="-1">
+        <div className="modal fade" id="exampleModalReview" tabIndex="-1">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-body">
