@@ -25,7 +25,7 @@ export default function ReviewItem({ review }) {
 					</h5>
 				</div>
 
-				<div className="col-7 flex-grow-1">
+				<div className="col-7 flex-grow-1 text-break">
 					<div>{review.contenuto}</div>
 				</div>
 
