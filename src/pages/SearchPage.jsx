@@ -60,8 +60,35 @@ export default function SearchPage() {
 
   return (
     <div className="container">
+      <form className="mb-3" onSubmit={handleAdvancedSearchSubmit}>
+        <h2>Cerca la tua città o indirizzo:</h2>
+        <div className="d-flex">
+          {/* City, address */}
+          <div className="flex-grow-1 align-items-center me-2">
+            {/* Input Field */}
+            <input
+              type="text"
+              id="searchInput"
+              className="form-control"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+
+          {/* Apply Filters Button */}
+          <div className="d-flex align-items-center">
+            <button type="submit" className="btn btn-primary w-100">
+              <span className="me-2 d-none d-md-inline-block">Cerca</span>
+              <span>
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </form>
+
       {/* Accordion */}
-      <div className="accordion pb-5" id="accordionExample">
+      <div className="accordion mb-4" id="accordionExample">
         <div className="accordion-item">
           {/* ACCORDION HEADER */}
           <h2 className="accordion-header">
@@ -86,30 +113,8 @@ export default function SearchPage() {
           >
             {/* FORM */}
             <div className="accordion-body">
-              <form
-                className="navbar-form navbar-left mb-5"
-                onSubmit={handleAdvancedSearchSubmit}
-              >
+              <form className="" onSubmit={handleAdvancedSearchSubmit}>
                 <div className="row row-cols-1 g-3">
-                  {/* City, address */}
-                  <div className="col">
-                    {/* Description */}
-                    <label htmlFor="searchInput" className="form-label">
-                      Città o Indirizzo:
-                    </label>
-
-                    <div className="d-flex align-items-center">
-                      {/* Input Field */}
-                      <input
-                        type="text"
-                        id="searchInput"
-                        className="form-control"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                      />
-                    </div>
-                  </div>
-
                   {/* Type */}
                   <div className="col">
                     <label htmlFor="typeInput" className="form-label">
