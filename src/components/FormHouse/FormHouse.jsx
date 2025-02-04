@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Modal } from "bootstrap"; // Importazione per mostrare la modale
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function FormHouse() {
