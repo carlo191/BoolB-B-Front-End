@@ -191,7 +191,7 @@ export default function FormHouse() {
           <div className="col-md-6">
             {/* Indirizzo Input */}
             <label htmlFor="indirizzo" className="form-label">
-              Indirizzo:
+               Città e Indirizzo:
             </label>
             <input
               type="text"
@@ -231,7 +231,7 @@ export default function FormHouse() {
               className="form-control"
               id="immagine"
               onChange={handleChange}
-              required
+             
             />
           </div>
         </div>
