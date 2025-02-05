@@ -224,7 +224,7 @@ export default function SearchPage() {
       ) : (
         <div className="text-center mt-5">
           <h2 className="mt-5">
-            Nessun risultato trovato
+            Nessun risultato trovato&nbsp;
             <i className="fa-regular fa-face-sad-tear"></i>
           </h2>
         </div>
